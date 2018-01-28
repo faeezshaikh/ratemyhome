@@ -12,6 +12,10 @@ export class FirebaseProvider {
    return this.afd.list('/shoppingItems/');
  }
 
+ getIcoList() {
+  return this.afd.list('/icoList/');
+}
+
  addItem(name) {
    this.afd.list('/shoppingItems/').push(name);
  }

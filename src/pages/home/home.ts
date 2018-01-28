@@ -1,7 +1,7 @@
-import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
  
 @Component({
   selector: 'page-home',
