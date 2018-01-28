@@ -16,6 +16,13 @@ export class FirebaseProvider {
   return this.afd.list('/icoList/');
 }
 
+getIcoDetails(id:number) {
+  console.log('Fetching Details for: ', id);
+  return this.afd.object('/icoDetails/' + id + '/');
+
+  // return this.afd.object('/icoDetails/' + id + '/').valueChanges();
+}
+
  addItem(name) {
    this.afd.list('/shoppingItems/').push(name);
  }

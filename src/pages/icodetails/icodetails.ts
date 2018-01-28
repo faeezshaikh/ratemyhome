@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+// import { Observable } from 'angularfire2/database';
 
 /**
  * Generated class for the IcodetailsPage page.
@@ -15,7 +18,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class IcodetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ico:any;
+  // icoDetails: any;
+  public icoDetails$: FirebaseObjectObservable<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+            public firebaseProvider: FirebaseProvider) {
+    this.ico = this.navParams.get('ico');
+    // this.firebaseProvider.getIcoDetails(this.ico.id).subscribe((result) => {
+    //   console.log(result); 
+    //   this.icoDetails$ = result;
+    //   console.log("Ico Details ===> ", this.icoDetails$);
+    //  });;
+
+    this.icoDetails$ = this.firebaseProvider.getIcoDetails(this.ico.id);
+
+
   }
 
   ionViewDidLoad() {

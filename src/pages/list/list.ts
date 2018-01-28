@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { IcodetailsPage } from '../icodetails/icodetails';
  
 
 @Component({
@@ -35,8 +36,12 @@ export class ListPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+
+    this.navCtrl.push(IcodetailsPage, {
+      ico: item
     });
+    // this.navCtrl.push(ListPage, {
+    //   item: item
+    // });
   }
 }
