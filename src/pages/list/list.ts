@@ -13,6 +13,7 @@ export class ListPage {
   // selectedItem: any;
   // items: Array<{title: string, note: string, icon: string}>;
   icoList: FirebaseListObservable<any[]>;
+  poolSegment:string = "presale";
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {

@@ -19,6 +19,7 @@ import { FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 export class IcodetailsPage {
 
   ico:any;
+  
   // icoDetails: any;
   public icoDetails$: FirebaseObjectObservable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams,

@@ -5,13 +5,24 @@
     </button>
     <ion-title>Upcoming ICOs</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="poolSegment">
+          <ion-segment-button value="presale">
+            Presale Pools
+          </ion-segment-button>
+          <ion-segment-button value="upcoming">
+              Upcoming
+            </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page">
     
-     
-
-
-        <ion-card *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
+    <div [ngSwitch]="poolSegment">
+    
+        <ion-list *ngSwitchCase="'presale'">
+        <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
             <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>
             <ion-card-content>
               <ion-card-title>
@@ -43,6 +54,51 @@
               </ion-row>
           
           </ion-card>
+          </ion-list>
+
+
+
+          <ion-list *ngSwitchCase="'upcoming'">
+    
+          <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
+              <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>
+              <ion-card-content>
+                <ion-card-title>
+                    {{ico.title}}
+                  </ion-card-title>
+                <p>
+                  {{ico.description | slice:0:200}} ...
+                </p>
+              </ion-card-content>
+              <ion-row no-padding>
+                  <ion-col>
+                    <button ion-button clear small color="danger" icon-start>
+                      <ion-icon name='star'></ion-icon>
+                      Favorite
+                    </button>
+                  </ion-col>
+                  <ion-col text-center>
+                    <button ion-button clear small color="danger" icon-start>
+                      <ion-icon name='musical-notes'></ion-icon>
+                      Listen
+                    </button>
+                  </ion-col>
+                  <ion-col text-right>
+                    <button ion-button clear small color="danger" icon-start>
+                      <ion-icon name='share-alt'></ion-icon>
+                      Share
+                    </button>
+                  </ion-col>
+                </ion-row>
+            
+            </ion-card>
+          </ion-list>
+    </div>
+
+     
+
+
+       
 
 
     
