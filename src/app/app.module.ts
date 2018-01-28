@@ -8,6 +8,21 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule , FirebaseListObservable} from 'angularfire2/database-deprecated';
+import { AngularFireModule } from 'angularfire2';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
+  authDomain: "poolico-86069.firebaseapp.com",
+  databaseURL: "https://poolico-86069.firebaseio.com",
+  projectId: "poolico-86069",
+  storageBucket: "",
+  messagingSenderId: "740732068871"
+};
+
 
 @NgModule({
   declarations: [
@@ -17,6 +32,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -28,7 +46,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    FirebaseProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}
