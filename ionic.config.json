@@ -1,0 +1,8 @@
+{
+  "name": "poolico",
+  "app_id": "5bc8e4c9",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
