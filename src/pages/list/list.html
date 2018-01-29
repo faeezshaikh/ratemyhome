@@ -59,7 +59,6 @@
 
 
           <ion-list *ngSwitchCase="'crowdsale'">
-    
           <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
               <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>
               <ion-card-content>

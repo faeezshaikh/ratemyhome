@@ -16,62 +16,62 @@
 
 
 <ion-content padding >
-    <ion-card *ngIf="icoDetails$ | async">
+    <ion-card *ngIf="icoDetails$ | async as icoDetails">
         
           <ion-item>
             <ion-avatar item-start>
-              <img src="{{icoDetails$.logoUrl}}">
+              <img src="{{icoDetails.logoUrl}}">
             </ion-avatar>
-            <h2>{{icoDetails$.title}}</h2>
-            <p>{{icoDetails$.presaleDate}}</p>
+            <h2>{{icoDetails.title}}</h2>
+            <p>{{icoDetails.presaleDate}}</p>
           </ion-item>
         
-          <img src="{{icoDetails$.imgUrl}}">
+          <img src="{{icoDetails.imgUrl}}">
         
           <ion-card-content>
-            <p>{{icoDetails$.description}}</p>
+            <p>{{icoDetails.description}}</p>
           </ion-card-content>
 
 
           <ion-grid>
               <ion-row>
                 <ion-col col-6>Crowdsale Date: </ion-col>
-                <ion-col col-6>{{icoDetails$.crowdsaleDate}}</ion-col>
+                <ion-col col-6>{{icoDetails.crowdsaleDate}}</ion-col>
               </ion-row>
 
               <ion-row>
                   <ion-col col-6>Crowdsale Minimum: </ion-col>
-                  <ion-col col-6>{{icoDetails$.crowdsaleMinimum}}</ion-col>
+                  <ion-col col-6>{{icoDetails.crowdsaleMinimum}}</ion-col>
                 </ion-row>
 
                 <ion-row>
                     <ion-col col-6>Crowdsale Price: </ion-col>
-                    <ion-col col-6>{{icoDetails$.crowdsalePrice}}</ion-col>
+                    <ion-col col-6>{{icoDetails.crowdsalePrice}}</ion-col>
                 </ion-row>
 
                 <ion-row>
                     <ion-col col-6>Presale Date: </ion-col>
-                    <ion-col col-6>{{icoDetails$.presaleDate}}</ion-col>
+                    <ion-col col-6>{{icoDetails.presaleDate}}</ion-col>
                   </ion-row>
     
                   <ion-row>
                       <ion-col col-6>Presale Minimum: </ion-col>
-                      <ion-col col-6>{{icoDetails$.presaleMinimum}}</ion-col>
+                      <ion-col col-6>{{icoDetails.presaleMinimum}}</ion-col>
                     </ion-row>
     
                     <ion-row>
                         <ion-col col-6>Presale Price: </ion-col>
-                        <ion-col col-6>{{icoDetails$.presalePrice}}</ion-col>
+                        <ion-col col-6>{{icoDetails.presalePrice}}</ion-col>
                     </ion-row>
 
 
                     <ion-row>
                         <ion-col col-6>Exchange Price: </ion-col>
-                        <ion-col col-6>{{icoDetails$.exchangePrice}}</ion-col>
+                        <ion-col col-6>{{icoDetails.exchangePrice}}</ion-col>
                     </ion-row>
                     <ion-row>
                         <ion-col col-6>Website: </ion-col>
-                        <ion-col col-6>{{icoDetails$.website}}</ion-col>
+                        <ion-col col-6>{{icoDetails.website}}</ion-col>
                     </ion-row>
 <!-- 
                     <ion-row>
