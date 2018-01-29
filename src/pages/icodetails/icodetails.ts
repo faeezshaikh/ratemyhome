@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 // import { Observable } from 'angularfire2/database';
+import { ContributePage } from '../contribute/contribute';
 
 /**
  * Generated class for the IcodetailsPage page.
@@ -23,7 +24,7 @@ export class IcodetailsPage {
   // icoDetails: any;
   public icoDetails$: FirebaseObjectObservable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-            public firebaseProvider: FirebaseProvider) {
+            public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     this.ico = this.navParams.get('ico');
     // this.firebaseProvider.getIcoDetails(this.ico.id).subscribe((result) => {
     //   console.log(result); 
@@ -40,5 +41,11 @@ export class IcodetailsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad IcodetailsPage');
   }
+
+  openModal(characterNum) {
+    
+        let modal = this.modalCtrl.create(ContributePage, characterNum);
+        modal.present();
+      }
 
 }
