@@ -11,7 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
 import { HttpModule } from '@angular/http';
-import { AngularFireDatabaseModule , FirebaseListObservable} from 'angularfire2/database-deprecated';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { IcodetailsPage } from '../pages/icodetails/icodetails';
 

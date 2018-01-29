@@ -11,8 +11,8 @@
           <ion-segment-button value="presale">
             Presale Pools
           </ion-segment-button>
-          <ion-segment-button value="upcoming">
-              Upcoming
+          <ion-segment-button value="crowdsale">
+              Crowdsale
             </ion-segment-button>
         </ion-segment>
       </ion-toolbar>
@@ -58,7 +58,7 @@
 
 
 
-          <ion-list *ngSwitchCase="'upcoming'">
+          <ion-list *ngSwitchCase="'crowdsale'">
     
           <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
               <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>

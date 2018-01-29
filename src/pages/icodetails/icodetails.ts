@@ -32,6 +32,7 @@ export class IcodetailsPage {
     //  });;
 
     this.icoDetails$ = this.firebaseProvider.getIcoDetails(this.ico.id);
+    console.log("Ico Details ===> ", this.icoDetails$);
 
 
   }

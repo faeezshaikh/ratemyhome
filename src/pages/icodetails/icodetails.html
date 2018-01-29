@@ -16,7 +16,7 @@
 
 
 <ion-content padding >
-    <ion-card *ngIf="icoDetails$">
+    <ion-card *ngIf="icoDetails$ | async">
         
           <ion-item>
             <ion-avatar item-start>
