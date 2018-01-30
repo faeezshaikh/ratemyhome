@@ -15,6 +15,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { IcodetailsPage } from '../pages/icodetails/icodetails';
 import { ContributePage } from '../pages/contribute/contribute';
+import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
@@ -32,7 +33,8 @@ const firebaseConfig = {
     HomePage,
     ListPage,
     IcodetailsPage,
-    ContributePage
+    ContributePage,
+    MycontributionsPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ const firebaseConfig = {
     HomePage,
     ListPage,
     IcodetailsPage,
-    ContributePage
+    ContributePage,
+    MycontributionsPage
   ],
   providers: [
     StatusBar,

@@ -10,7 +10,7 @@
         </ion-card-header>
         <ion-card-content style="text-align: center">
           <strong>456.5 ETH</strong>
-          <p>$510,345.00</p>
+          <p>$510,345.00 &nbsp;  <i style="color:green" class="fa fa-line-chart" aria-hidden="true"></i></p>
         </ion-card-content>
       </ion-card>
   </ion-header>
@@ -18,7 +18,7 @@
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          <i class="fa fa-shopping-basket" aria-hidden="true"></i> {{p.title}}
+          <i class="{{p.icon}}" aria-hidden="true"></i> &nbsp; {{p.title}}
       </button>
     </ion-list>
   </ion-content>
