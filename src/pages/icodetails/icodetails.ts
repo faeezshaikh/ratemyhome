@@ -42,9 +42,13 @@ export class IcodetailsPage {
     console.log('ionViewDidLoad IcodetailsPage');
   }
 
-  openModal(characterNum) {
+  openModal(icodetails) {
     
-        let modal = this.modalCtrl.create(ContributePage, characterNum);
+        console.log("Ico details ==> ", icodetails);
+        let modal = this.modalCtrl.create(ContributePage, { icotitle: icodetails.title,
+               presaleMin: icodetails.presaleMinimum, 
+               presaleBonus: icodetails.presaleBonu,
+              presalePrice: icodetails.presalePrice});
         modal.present();
       }
 

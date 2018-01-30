@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar  color="primary">
     <ion-title *ngIf="icoDetails$">{{icoDetails$.title}}</ion-title>
   </ion-navbar>
 
@@ -15,7 +15,7 @@
 
 
 
-<ion-content padding >
+<ion-content padding  >
     <ion-card *ngIf="icoDetails$ | async as icoDetails">
         
           <ion-item>
@@ -103,5 +103,5 @@
           </ion-row>
         
         </ion-card>
-        <button ion-button block  (click)="openModal({charNum: 0})">Contribute</button>
+        <button *ngIf="icoDetails$ | async as icoDetails" ion-button block  (click)="openModal(icoDetails)">Contribute</button>
 </ion-content>
