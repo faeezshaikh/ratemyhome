@@ -364,4 +364,10 @@ export class Web3ServiceProvider {
     return res;
   }
 
+  withdrawContribution(amount) {
+    let res = this.icoContract.withdrawContribution(amount,{gas:3000000});
+    console.log('Withdrawal result: ', res);
+    return res;
+  }
+
 }
