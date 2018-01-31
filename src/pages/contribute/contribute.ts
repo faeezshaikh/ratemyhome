@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController,AlertController,ToastController} from 'ionic-angular';
+import { Web3ServiceProvider } from '../../providers/web3-service/web3-service';
 
-/**
- * Generated class for the ContributePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,7 +16,7 @@ export class ContributePage {
   contribution = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
-    public alertCtrl: AlertController,public toastCtrl: ToastController) {
+    public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider) {
     this.icotitle = navParams.get('icotitle');
     this.presaleBonus = navParams.get('presaleBonus');
     this.presaleMin = navParams.get('presaleMin');
@@ -53,6 +48,7 @@ export class ContributePage {
             console.log('Agree clicked');
             this.dismiss();
             this.presentToast(contribution);
+            this.web3Service.contribute(contribution);
           }
         }
       ]

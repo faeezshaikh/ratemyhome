@@ -11,12 +11,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { IcodetailsPage } from '../pages/icodetails/icodetails';
 import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
+import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
@@ -41,6 +43,7 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
@@ -60,7 +63,8 @@ const firebaseConfig = {
     SplashScreen,
     FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    Web3ServiceProvider
   ]
 })
 export class AppModule {}
