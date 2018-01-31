@@ -16,6 +16,7 @@ import { AngularFireModule } from 'angularfire2';
 import { IcodetailsPage } from '../pages/icodetails/icodetails';
 import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
+import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
@@ -34,7 +35,8 @@ const firebaseConfig = {
     ListPage,
     IcodetailsPage,
     ContributePage,
-    MycontributionsPage
+    MycontributionsPage,
+    ContributionDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ const firebaseConfig = {
     ListPage,
     IcodetailsPage,
     ContributePage,
-    MycontributionsPage
+    MycontributionsPage,
+    ContributionDetailsPage
   ],
   providers: [
     StatusBar,
