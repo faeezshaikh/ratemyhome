@@ -14,6 +14,7 @@ export class ContributePage {
   presaleBonus: string;
   presalePrice:string;
   contribution = 0;
+  poolBalance:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider) {
@@ -21,6 +22,7 @@ export class ContributePage {
     this.presaleBonus = navParams.get('presaleBonus');
     this.presaleMin = navParams.get('presaleMin');
     this.presalePrice = navParams.get('presalePrice');
+    this.poolBalance = this.web3Service.getPoolBalance();
 
   }
 
@@ -46,9 +48,10 @@ export class ContributePage {
           text: 'Yes',
           handler: () => {
             console.log('Agree clicked');
-            this.dismiss();
-            this.presentToast(contribution);
+            // this.dismiss();
             this.web3Service.contribute(contribution);
+            this.poolBalance = this.web3Service.getPoolBalance();
+            this.presentToast(contribution);
           }
         }
       ]

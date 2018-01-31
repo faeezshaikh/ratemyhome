@@ -348,11 +348,15 @@ export class Web3ServiceProvider {
 
    contribute(amount) {
       console.log('Calling contribute on smart contract' , amount);
-      
       let res = this.icoContract.contribute({value:amount, gas:3000000});
       console.log('Result ===> ',res);
-      
+  }
 
+  getPoolBalance() {
+    let res = this.icoContract.getPoolBalance({gas:3000000});
+    console.log("Pool Balance ==> ", res.toString());
+    return res;
+    
   }
 
 }
