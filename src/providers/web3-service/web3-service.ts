@@ -356,7 +356,12 @@ export class Web3ServiceProvider {
     let res = this.icoContract.getPoolBalance({gas:3000000});
     console.log("Pool Balance ==> ", res.toString());
     return res;
-    
+  }
+
+  getMyContribution() {
+    let res = this.icoContract.getMyContribution({gas:3000000});
+    console.log('My contribution: ', res.toString());
+    return res;
   }
 
 }
