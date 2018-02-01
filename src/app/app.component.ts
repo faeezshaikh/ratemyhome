@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
+import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,11 +15,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = ListPage;
+  myBalance:string;
 
   pages: Array<{title: string, component: any,icon:string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private web3Service: Web3ServiceProvider) {
     this.initializeApp();
+    this.myBalance = this.web3Service.getMyCurrentBalance();
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -29,6 +32,9 @@ export class MyApp {
 
   }
 
+  refresh() {
+    this.myBalance = this.web3Service.getMyCurrentBalance();
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

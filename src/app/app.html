@@ -9,7 +9,8 @@
             
         </ion-card-header>
         <ion-card-content style="text-align: center">
-          <strong>456.5 ETH</strong>
+          <!-- <i style="color:green" class="fas fa-sync" aria-hidden="true" ></i>  -->
+          <strong (click)="refresh()">{{myBalance}} ETH</strong>
           <p>$510,345.00 &nbsp;  <i style="color:green" class="fa fa-line-chart" aria-hidden="true"></i></p>
         </ion-card-content>
       </ion-card>

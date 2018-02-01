@@ -17,8 +17,10 @@ export class Web3ServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello Web3ServiceProvider Provider');
-    this.icoContractAddress = '0xc3aeb85ccfee8f2e883e5cf7d03837cb192b12e8';
+    this.icoContractAddress = '0x51eee02daa65b4c1cd7eff928967ced5d87cf0c1';
 
+    console.log("WEB3 ===>", this.web3);
+    
     if (typeof this.web3 !== 'undefined') {
           this.web3 = new Web3(this.web3.currentProvider);
     } else {
@@ -26,7 +28,7 @@ export class Web3ServiceProvider {
     }
 
         // Step 2: Set default account (address)
-        this.web3.eth.defaultAccount = this.web3.eth.accounts[0];
+        this.web3.eth.defaultAccount = this.web3.eth.accounts[1];
         // Step 3: Get Interface to the contact - ABI from remix
         let abi = [
           {
@@ -347,21 +349,36 @@ export class Web3ServiceProvider {
   }
 
    contribute(amount) {
+      // amount = this.web3.fromWei(amount, 'ether');
+      amount = amount * 1000000000000000000;
       console.log('Calling contribute on smart contract' , amount);
       let res = this.icoContract.contribute({value:amount, gas:3000000});
       console.log('Result ===> ',res);
+
+      this.refresh();
   }
 
+  refresh() {
+    this.getMyCurrentBalance();
+  }
   getPoolBalance() {
     let res = this.icoContract.getPoolBalance({gas:3000000});
     console.log("Pool Balance ==> ", res.toString());
-    return res;
+    return  this.web3.fromWei(res, 'ether');
   }
 
   getMyContribution() {
     let res = this.icoContract.getMyContribution({gas:3000000});
     console.log('My contribution: ', res.toString());
-    return res;
+    return this.web3.fromWei(res, 'ether');
+  }
+
+  getMyCurrentBalance() {
+    var balance = this.web3.eth.getBalance(this.web3.eth.defaultAccount);
+    console.log(balance); // instanceof BigNumber
+    console.log(balance.toString(10)); // '1000000000000'
+    return this.web3.fromWei(balance, 'ether');
+    // return balance;
   }
 
   withdrawContribution(amount) {
