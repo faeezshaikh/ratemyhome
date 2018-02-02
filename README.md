@@ -6,11 +6,13 @@ ICOs provide funding to the startup team to develop and launch their project whi
 
  because the ICOs happen on blockchains, they benefit from the advantages of this decentralized ledger.  ICOs are decentralized with no single point of failure or middle man being in control.
  
- The earlier an investor can acquire the tokens the better return on investment she can hope to have. In some cases, depending on the token metrics a higher ROI may be virtually guaranteed. Hence the key for savvy investors is to get in early on, in the fund raising rounds. However individual investors are faced with challenges participating in the earlly rounds of funding. 
+ The earlier an investor can acquire the tokens the better return on investment she can hope to have. In some cases, depending on the token metrics a higher ROI may be virtually guaranteed (guranteed bonus tokens resulting in a lower cost basis). Hence the key for savvy investors is to get in early on, in the fund raising rounds. However individual investors are faced with challenges participating in the earlly rounds of funding. 
  
  1. Very high minimum contribution requriements.
  2. Requirement for accredition for US based investors.
  
+Right off the bat, the above two requirements  eliminate a significant segment of individual investors from taking part in the early rounds of ICO aka presales. This limits the participation Only a very small percentage of (high-net worth) investors 
+
  
  
  
