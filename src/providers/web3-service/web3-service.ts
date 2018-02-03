@@ -466,15 +466,32 @@ export class Web3ServiceProvider {
 
     });
     return p;
-    //  this.icoContract.getMyContribution({gas:3000000});
-    // console.log('My contribution: ', res.toString());
-    // return this.web3.fromWei(res, 'ether');
   }
 
+  // withdrawContribution(amount) {
+  //   let res = this.icoContract.withdrawContribution(amount,{gas:3000000});
+  //   console.log('Withdrawal result: ', res);
+  //   return res;
+  // }
+
   withdrawContribution(amount) {
-    let res = this.icoContract.withdrawContribution(amount,{gas:3000000});
-    console.log('Withdrawal result: ', res);
-    return res;
+    amount = amount * 1000000000000000000;
+    let that = this;
+    let p = new Promise<any>((resolve, reject) => {
+      this.icoContract.withdrawContribution(amount,{gas:3000000},function(error,result){
+        if (!error) {
+          // let res = that.web3.fromWei(result.toString(), 'ether');
+          console.log('Withdrawal Successful: ');
+          resolve();
+          that.refresh();
+        } else {
+          console.error(error);
+          reject(error);
+        }
+      });
+    });
+    return p; 
+
   }
 
 
