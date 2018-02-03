@@ -27,7 +27,9 @@ export class ContributionDetailsPage {
      this.web3Service.getPoolBalance().then(function(res){
       that.poolBalance = res;
     });
-    this.myContribution=  this.web3Service.getMyContribution();
+     this.web3Service.getMyContribution().then(function(res){
+      that.myContribution = res;
+     });
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributionDetailsPage');

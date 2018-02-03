@@ -444,10 +444,31 @@ export class Web3ServiceProvider {
 
 
 
+  // getMyContribution() {
+  //   let res = this.icoContract.getMyContribution({gas:3000000});
+  //   console.log('My contribution: ', res.toString());
+  //   return this.web3.fromWei(res, 'ether');
+  // }
+
   getMyContribution() {
-    let res = this.icoContract.getMyContribution({gas:3000000});
-    console.log('My contribution: ', res.toString());
-    return this.web3.fromWei(res, 'ether');
+    let that = this;
+    let p = new Promise<any>((resolve, reject) => {
+      return this.icoContract.getMyContribution({gas:3000000},function(error,result){
+        if (!error) {
+          let res = that.web3.fromWei(result.toString(), 'ether');
+          console.log('My Contribution: ' ,res);
+          resolve(res);
+        } else {
+          console.error(error);
+          reject(error);
+        }
+      });
+
+    });
+    return p;
+    //  this.icoContract.getMyContribution({gas:3000000});
+    // console.log('My contribution: ', res.toString());
+    // return this.web3.fromWei(res, 'ether');
   }
 
   withdrawContribution(amount) {
