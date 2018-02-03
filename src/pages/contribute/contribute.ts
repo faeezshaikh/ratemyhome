@@ -22,7 +22,10 @@ export class ContributePage {
     this.presaleBonus = navParams.get('presaleBonus');
     this.presaleMin = navParams.get('presaleMin');
     this.presalePrice = navParams.get('presalePrice');
-    this.poolBalance = this.web3Service.getPoolBalance();
+    let that = this;
+    this.web3Service.getPoolBalance().then(function(res){
+     that.poolBalance = res;
+   });
 
   }
 
@@ -50,7 +53,10 @@ export class ContributePage {
             console.log('Agree clicked');
             // this.dismiss();
             this.web3Service.contribute(contribution);
-            this.poolBalance = this.web3Service.getPoolBalance();
+            let that = this;
+            this.web3Service.getPoolBalance().then(function(res){
+             that.poolBalance = res;
+           });
             this.presentToast(contribution);
           }
         }

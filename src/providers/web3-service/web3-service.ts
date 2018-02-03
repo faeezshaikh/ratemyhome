@@ -367,38 +367,63 @@ export class Web3ServiceProvider {
      
   }
 
+
+  // contribute(amount) {
+  //   amount = amount * 1000000000000000000;
+  //   console.log('Calling contribute on smart contract' , amount);
+  //   let res = this.icoContract.contribute({value:amount, gas:3000000});
+  //   console.log('Result ===> ',res);
+  // }
    contribute(amount) {
-      // amount = this.web3.fromWei(amount, 'ether');
       amount = amount * 1000000000000000000;
       console.log('Calling contribute on smart contract' , amount);
-      let res = this.icoContract.contribute({value:amount, gas:3000000});
-      console.log('Result ===> ',res);
+      let that = this;
+      let p = new Promise<any>((resolve, reject) => {
+          return this.icoContract.contribute({value:amount, gas:3000000},function(error,result){
+            if (!error) {
+              // let res = that.web3.fromWei(result.toString(), 'ether');
+              console.log('Contribution Successful: ');
+              resolve();
+              that.refresh();
+            } else {
+              console.error(error);
+              reject(error);
+            }
+          });
 
-      this.refresh();
+      });
+      
   }
 
-  refresh() {
-    this.getMyCurrentBalance();
-  }
+  // getPoolBalance() {
+  //   let res = this.icoContract.getPoolBalance({gas:3000000});
+  //   console.log("Pool Balance ==> ", res.toString());
+  //   return  this.web3.fromWei(res, 'ether');
+  // }
+
   getPoolBalance() {
-    let res = this.icoContract.getPoolBalance({gas:3000000});
-    console.log("Pool Balance ==> ", res.toString());
-    return  this.web3.fromWei(res, 'ether');
+    let that = this;
+    let p = new Promise<any>((resolve, reject) => {
+        return  this.icoContract.getPoolBalance({gas:3000000},function(error, result) {
+          if (!error) {
+            let res = that.web3.fromWei(result.toString(), 'ether');
+            console.log('Current Balance: ' ,res);
+            resolve(res);
+          } else {
+            console.error(error);
+            reject(error);
+          }
+        });
+    });
+    return p;
   }
 
-  getMyContribution() {
-    let res = this.icoContract.getMyContribution({gas:3000000});
-    console.log('My contribution: ', res.toString());
-    return this.web3.fromWei(res, 'ether');
-  }
-
-  getMyCurrentBalance2() {
+  // getMyCurrentBalance() {
     // var balance = this.web3.eth.getBalance(this.web3.eth.defaultAccount);
     // console.log(balance); 
     // console.log(balance.toString(10)); 
     // return this.web3.fromWei(balance, 'ether');
-
-  }
+  // }
 
   getMyCurrentBalance() {
     let p = new Promise<any>((resolve, reject) => {
@@ -419,10 +444,21 @@ export class Web3ServiceProvider {
 
 
 
+  getMyContribution() {
+    let res = this.icoContract.getMyContribution({gas:3000000});
+    console.log('My contribution: ', res.toString());
+    return this.web3.fromWei(res, 'ether');
+  }
+
   withdrawContribution(amount) {
     let res = this.icoContract.withdrawContribution(amount,{gas:3000000});
     console.log('Withdrawal result: ', res);
     return res;
+  }
+
+
+  refresh() {
+    this.getMyCurrentBalance();
   }
 
 }

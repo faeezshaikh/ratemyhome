@@ -23,7 +23,10 @@ export class ContributionDetailsPage {
   }
 
   getBalances() {
-    this.poolBalance = this.web3Service.getPoolBalance();
+    let that = this;
+     this.web3Service.getPoolBalance().then(function(res){
+      that.poolBalance = res;
+    });
     this.myContribution=  this.web3Service.getMyContribution();
   }
   ionViewDidLoad() {
