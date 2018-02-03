@@ -21,7 +21,10 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private web3Service: Web3ServiceProvider) {
     this.initializeApp();
-    this.myBalance = this.web3Service.getMyCurrentBalance();
+    let that = this;
+    this.web3Service.getMyCurrentBalance().then(function(res) {
+      that.myBalance = res;
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -33,7 +36,10 @@ export class MyApp {
   }
 
   refresh() {
-    this.myBalance = this.web3Service.getMyCurrentBalance();
+    let that = this;
+    this.web3Service.getMyCurrentBalance().then(function(res) {
+      that.myBalance = res;
+    });
   }
   initializeApp() {
     this.platform.ready().then(() => {

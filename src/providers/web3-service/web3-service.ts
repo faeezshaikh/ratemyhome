@@ -17,24 +17,29 @@ export class Web3ServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello Web3ServiceProvider Provider');
-    this.icoContractAddress = '0x51eee02daa65b4c1cd7eff928967ced5d87cf0c1';
+    this.icoContractAddress = '0x2563f3fdef35e2d712e9c70710f70a12b5432c41';
 
-    console.log("WEB3 ===>", this.web3);
+    console.log("WEB3 ===>",typeof window['web3']);
     
-    if (typeof this.web3 !== 'undefined') {
-          this.web3 = new Web3(this.web3.currentProvider);
+    // if (typeof window['web3']  !== 'undefined') {
+        if (typeof window['web3'] !== 'undefined') {
+          // this.web3 = new Web3(window.web3.currentProvider);
+          // this.web3 = new Web3(window['web3'].currentProvider);
+          this.web3 = new Web3(window['web3'].currentProvider);
     } else {
           this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 
         // Step 2: Set default account (address)
-        this.web3.eth.defaultAccount = this.web3.eth.accounts[1];
+        this.web3.eth.defaultAccount = this.web3.eth.accounts[0];
+        console.log("Got default account ==>",this.web3.eth.defaultAccount);
+        
         // Step 3: Get Interface to the contact - ABI from remix
         let abi = [
           {
             "constant": true,
             "inputs": [],
-            "name": "getMaxPerContributor",
+            "name": "getMaxPoolAllocation",
             "outputs": [
               {
                 "name": "",
@@ -99,20 +104,6 @@ export class Web3ServiceProvider {
           },
           {
             "constant": true,
-            "inputs": [],
-            "name": "getPoolCreator",
-            "outputs": [
-              {
-                "name": "",
-                "type": "address"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "constant": true,
             "inputs": [
               {
                 "name": "addr",
@@ -133,7 +124,35 @@ export class Web3ServiceProvider {
           {
             "constant": true,
             "inputs": [],
+            "name": "getPoolBalance",
+            "outputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [],
             "name": "getMyContribution",
+            "outputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [],
+            "name": "getMinPerContributorn",
             "outputs": [
               {
                 "name": "",
@@ -161,7 +180,7 @@ export class Web3ServiceProvider {
           {
             "constant": true,
             "inputs": [],
-            "name": "getMinPerContributorn",
+            "name": "getMaxPerContributor",
             "outputs": [
               {
                 "name": "",
@@ -175,49 +194,16 @@ export class Web3ServiceProvider {
           {
             "constant": true,
             "inputs": [],
-            "name": "getMaxPoolAllocation",
+            "name": "getPoolCreator",
             "outputs": [
               {
                 "name": "",
-                "type": "uint256"
+                "type": "address"
               }
             ],
             "payable": false,
             "stateMutability": "view",
             "type": "function"
-          },
-          {
-            "constant": true,
-            "inputs": [],
-            "name": "getPoolBalance",
-            "outputs": [
-              {
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "name": "maxPoolAllocation1",
-                "type": "uint256"
-              },
-              {
-                "name": "maxPerContributor1",
-                "type": "uint256"
-              },
-              {
-                "name": "minPerContributor1",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "constructor"
           },
           {
             "anonymous": false,
@@ -282,6 +268,25 @@ export class Web3ServiceProvider {
             "type": "function"
           },
           {
+            "inputs": [
+              {
+                "name": "maxPoolAllocation1",
+                "type": "uint256"
+              },
+              {
+                "name": "maxPerContributor1",
+                "type": "uint256"
+              },
+              {
+                "name": "minPerContributor1",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+          },
+          {
             "constant": false,
             "inputs": [
               {
@@ -296,6 +301,20 @@ export class Web3ServiceProvider {
                 "type": "bool"
               }
             ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "tokens",
+                "type": "uint256"
+              }
+            ],
+            "name": "distributeTokens",
+            "outputs": [],
             "payable": false,
             "stateMutability": "nonpayable",
             "type": "function"
@@ -373,13 +392,32 @@ export class Web3ServiceProvider {
     return this.web3.fromWei(res, 'ether');
   }
 
-  getMyCurrentBalance() {
-    var balance = this.web3.eth.getBalance(this.web3.eth.defaultAccount);
-    console.log(balance); // instanceof BigNumber
-    console.log(balance.toString(10)); // '1000000000000'
-    return this.web3.fromWei(balance, 'ether');
-    // return balance;
+  getMyCurrentBalance2() {
+    // var balance = this.web3.eth.getBalance(this.web3.eth.defaultAccount);
+    // console.log(balance); 
+    // console.log(balance.toString(10)); 
+    // return this.web3.fromWei(balance, 'ether');
+
   }
+
+  getMyCurrentBalance() {
+    let p = new Promise<any>((resolve, reject) => {
+      let that = this;
+      return this.web3.eth.getBalance(this.web3.eth.defaultAccount, function (error, result) {
+        if (!error) {
+          let res = that.web3.fromWei(result.toString(), 'ether');
+          console.log('Current Balance: ' ,res);
+          resolve(res);
+        } else {
+          console.error(error);
+          reject(error);
+        }
+      });
+    }); 
+    return p;
+  }
+
+
 
   withdrawContribution(amount) {
     let res = this.icoContract.withdrawContribution(amount,{gas:3000000});
