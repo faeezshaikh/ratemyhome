@@ -11,7 +11,7 @@ ICOs typically have multiple rounds of fund raising in that involve selling toke
  1. Very high minimum contribution requriements.
  2. Requirement for accredition for US based investors.
  
-Right off the bat, the above two requirements  eliminate a significant segment of individual investors from taking part in the early rounds of ICO (aka presales). This limits the participation to only a very small percentage of (high-net worth) investors 
+Right off the bat, the above two requirements  eliminate a significant segment of individual investors from taking part in the early rounds of ICO (aka presales). This limits the participation to only a very small percentage of (high-net worth) investors. The incentive to participate in presales is very high and in absence of any convenient option, several 'underground' online groups and forums have cropped up where members pool the money in to meet the minimum contribution requirement. The pooled contribution is then sent to the ICO team by a member who is either an accredited investor or has negotiated a deal with the ICO team.
 
  
  
