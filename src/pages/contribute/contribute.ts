@@ -52,12 +52,16 @@ export class ContributePage {
           handler: () => {
             console.log('Agree clicked');
             // this.dismiss();
-            this.web3Service.contribute(contribution);
             let that = this;
+            this.web3Service.contribute(contribution).then(function(res) {
+                that.dismiss();
+                that.presentToast(contribution);
+            });
+            
             this.web3Service.getPoolBalance().then(function(res){
              that.poolBalance = res;
            });
-            this.presentToast(contribution);
+            
           }
         }
       ]

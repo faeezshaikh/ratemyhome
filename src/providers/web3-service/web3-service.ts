@@ -392,6 +392,7 @@ export class Web3ServiceProvider {
           });
 
       });
+      return p;
       
   }
 

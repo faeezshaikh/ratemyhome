@@ -6,8 +6,8 @@
     <ion-title>Upcoming ICOs</ion-title>
   </ion-navbar>
 
-  <ion-toolbar no-border-top>
-      <ion-segment [(ngModel)]="poolSegment">
+  <ion-toolbar no-border-top >
+      <ion-segment [(ngModel)]="poolSegment" >
           <ion-segment-button value="presale">
             Presale Pools
           </ion-segment-button>
@@ -21,7 +21,7 @@
     
     <div [ngSwitch]="poolSegment">
     
-        <ion-list *ngSwitchCase="'presale'">
+        <ion-list *ngSwitchCase="'presale'" style="margin-left:200px;margin-right:200px">
         <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
             <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>
             <ion-card-content>
