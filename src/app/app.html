@@ -10,8 +10,9 @@
         </ion-card-header>
         <ion-card-content style="text-align: center">
           <!-- <i style="color:green" class="fas fa-sync" aria-hidden="true" ></i>  -->
-          <strong (click)="refresh()">{{myBalance}} ETH</strong>
-          <p>$510,345.00 &nbsp;  <i style="color:green" class="fa fa-line-chart" aria-hidden="true"></i></p>
+          <p>{{myAccount}}</p>
+          <strong (click)="refresh()">{{myBalance}} ETH</strong> <button (click)="refresh()" style="color:green"> <ion-icon name="refresh-circle"></ion-icon></button>
+          <!-- <p>$510,345.00 &nbsp;  <i style="color:green" class="fa fa-line-chart" aria-hidden="true"></i></p> -->
         </ion-card-content>
       </ion-card>
   </ion-header>

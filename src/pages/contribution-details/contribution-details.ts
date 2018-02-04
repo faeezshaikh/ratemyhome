@@ -41,14 +41,15 @@ export class ContributionDetailsPage {
 
   withdraw(amount:any) {
     console.log('Requesting withdrawal for ' + amount + ' ETH...');
-    let res = this.web3Service.withdrawContribution(amount);
+    this.web3Service.withdrawContribution(amount);
   }
 
 
   presentToast(contribution) {
     let toast = this.toastCtrl.create({
       message: contribution + ' ETH successfully withdrawan from the ICO smart contract.',
-      duration: 3000
+      duration: 3000,
+      cssClass: "toastClass"
     });
     toast.present();
   }

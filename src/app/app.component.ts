@@ -16,13 +16,16 @@ export class MyApp {
 
   rootPage: any = ListPage;
   myBalance:string;
+  myAccount:string;
 
   pages: Array<{title: string, component: any,icon:string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private web3Service: Web3ServiceProvider) {
     this.initializeApp();
     let that = this;
-    this.web3Service.getMyCurrentBalance().then(function(res) {
+
+     that.myAccount = this.web3Service.getMyAccount();
+      this.web3Service.getMyCurrentBalance().then(function(res) {
       that.myBalance = res;
     });
 

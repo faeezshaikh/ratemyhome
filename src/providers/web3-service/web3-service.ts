@@ -14,6 +14,7 @@ export class Web3ServiceProvider {
   web3: any;
   icoContract: any;
   icoContractAddress: string;
+  accountAddress: string;
 
   constructor(public http: HttpClient) {
     console.log('Hello Web3ServiceProvider Provider');
@@ -22,7 +23,7 @@ export class Web3ServiceProvider {
     console.log("WEB3 ===>",typeof window['web3']);
     
     // if (typeof window['web3']  !== 'undefined') {
-        if (typeof window['web3'] !== 'undefined') {
+    if (typeof window['web3'] !== 'undefined') {
           // this.web3 = new Web3(window.web3.currentProvider);
           // this.web3 = new Web3(window['web3'].currentProvider);
           this.web3 = new Web3(window['web3'].currentProvider);
@@ -32,6 +33,7 @@ export class Web3ServiceProvider {
 
         // Step 2: Set default account (address)
         this.web3.eth.defaultAccount = this.web3.eth.accounts[0];
+        this.accountAddress = this.web3.eth.defaultAccount;
         console.log("Got default account ==>",this.web3.eth.defaultAccount);
         
         // Step 3: Get Interface to the contact - ABI from remix
@@ -443,6 +445,10 @@ export class Web3ServiceProvider {
     return p;
   }
 
+
+  getMyAccount() {
+    return this.accountAddress;
+  }
 
 
   // getMyContribution() {
