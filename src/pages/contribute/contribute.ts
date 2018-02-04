@@ -72,7 +72,7 @@ export class ContributePage {
   presentToast(contribution) {
     let toast = this.toastCtrl.create({
       message: contribution + ' ETH successfully sent to the ICO smart contract.',
-      duration: 30000
+      duration: 3000
     });
     toast.present();
   }

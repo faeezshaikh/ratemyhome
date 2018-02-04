@@ -41,7 +41,11 @@ export class ContributionDetailsPage {
 
   withdraw(amount:any) {
     console.log('Requesting withdrawal for ' + amount + ' ETH...');
-    this.web3Service.withdrawContribution(amount);
+    this.web3Service.withdrawContribution(amount).then(() => {
+      this.presentToast(amount);
+      this.getBalances();
+      this.cancel();
+    });
   }
 
 
@@ -69,10 +73,9 @@ export class ContributionDetailsPage {
           text: 'Yes',
           handler: () => {
             console.log('Agree clicked');
-            // this.dismiss();
+            
             this.withdraw(contribution);
-            this.presentToast(contribution);
-            this.getBalances();
+         
           }
         }
       ]
