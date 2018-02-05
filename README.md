@@ -17,7 +17,4 @@ The incentive to participate in presales is very high and in absence of any conv
 
 Besides the fee that is charged by the pool representative, there is a serious issue with this type of investing model. The issue is that of 'trust'. The pool contributors have to trust the anonymous representative to collect the funds on their behalf and broker the deal with the ICO teams. This may not be an issue if the minimum contribution for the presale is small, which can be fulfiled by a small group whose members know and trust each other. However, the majority of big projects that seek to raise funds have an enormous figure as the minimum required contribution for presales. This necessitates the group to comprise of a large number of members with small individual contributions.
  
- Ref:
-   https://bitcoinmagazine.com/guides/what-ico/
- 
  
