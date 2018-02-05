@@ -1,6 +1,6 @@
 # Abstract
 
-One kind of investment that has become very popular among tech savvy investors in recent times is ICO investing. ICO or Initial Coin Offering is a fund raising mechanism used by blockchain projects in which the project teams  sell their underlying crypto tokens in exchange for bitcoin and ether. It’s somewhat similar to an Initial Public Offering (IPO) in which investors purchase shares of a company.
+One kind of investment that has become very popular among tech savvy investors in recent times is ICO investing. ICO or Initial Coin Offering is a fund raising mechanism used by blockchain projects in which the project teams  sell their underlying crypto tokens in exchange for Bitcoin or Ether. Somewhat similar to an Initial Public Offering (IPO) in which investors purchase shares of a company, ICOs combine kicstarter-style fund raising with traditional selling of shares, except that that shares are replaced by tokens, which may or may not have utility in the project thats being built by the ICO Ttam.
 
 ICOs provide funding to a startup team to develop and launch their project while also incentivizing the community to invest. If the project succeeds and the tokens increase in value, the investor can sell them and make a profit.
 
