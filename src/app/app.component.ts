@@ -17,6 +17,7 @@ export class MyApp {
   rootPage: any = ListPage;
   myBalance:string;
   myAccount:string;
+  contractAddress: string;
 
   pages: Array<{title: string, component: any,icon:string}>;
 
@@ -25,6 +26,7 @@ export class MyApp {
     let that = this;
 
      that.myAccount = this.web3Service.getMyAccount();
+     this.contractAddress = this.web3Service.getContractAddress();
       this.web3Service.getMyCurrentBalance().then(function(res) {
       that.myBalance = res;
     });
@@ -39,6 +41,7 @@ export class MyApp {
   }
 
   refresh() {
+    this.contractAddress = this.web3Service.getContractAddress();
     let that = this;
     this.web3Service.getMyCurrentBalance().then(function(res) {
       that.myBalance = res;
