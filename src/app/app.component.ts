@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
+import { CreatePoolPage } from '../pages/create-pool/create-pool';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,6 +34,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Create Pool', component: CreatePoolPage, icon:'fa fa-cart-plus' },
       { title: 'Upcoming ICOs', component: ListPage, icon:'fa fa-cart-plus' },
       { title: 'My contributions', component: MycontributionsPage, icon:'fa fa-users' }
       // { title: 'Home', component: HomePage, icon:'fa fa-users' }

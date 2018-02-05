@@ -19,6 +19,7 @@ import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
+import { CreatePoolPage } from '../pages/create-pool/create-pool';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
@@ -38,7 +39,8 @@ const firebaseConfig = {
     IcodetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+    CreatePoolPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ const firebaseConfig = {
     IcodetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+    CreatePoolPage
   ],
   providers: [
     StatusBar,
