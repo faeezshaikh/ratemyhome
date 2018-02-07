@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CreatePoolPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Web3ServiceProvider } from '../../providers/web3-service/web3-service';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreatePoolPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private web3Service: Web3ServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePoolPage');
+  }
+
+  createPool() {
+    this.web3Service.createPool();
   }
 
 }

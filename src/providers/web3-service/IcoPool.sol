@@ -1,31 +1,6 @@
-pragma solidity ^0.4.18;
-
-import "./ERC20Interface.sol";
-contract IcoPool {
+pragma solidity ^0.4.18; import "./ERC20Interface.sol"; contract IcoPool { address icoContract; address poolCreator;uint maxPoolAllocation;uint maxPerContributor;uint minPerContributor;address[] admins; address[] whitelist;mapping (address => bool) contributors;address[] contributorsList;uint fee;bool automaticDistribution;
     
-    address icoContract;
-    address poolCreator;
-    uint maxPoolAllocation;
-    uint maxPerContributor;
-    uint minPerContributor;
-    address[] admins;
-    address[] whitelist;
-    mapping (address => bool) contributors;
-    address[] contributorsList;
-    uint fee;
-    bool automaticDistribution;
-    
-    struct erc20token {
-        address tokenAddress;
-        string name;
-    }
-    mapping (address => uint) tokenBalanceForAddress;
-    
-    ERC20Interface token;
-   
-    mapping (address => uint) contributions;
-    
-    modifier onlyPoolCreator() {
+    struct erc20token {address tokenAddress;string name;}mapping (address => uint) tokenBalanceForAddress;ERC20Interface token;mapping (address => uint) contributions;modifier onlyPoolCreator() {
         if (msg.sender == poolCreator) {
             _;
         }
@@ -131,8 +106,8 @@ contract IcoPool {
         return true;
     }
     
-    function distributeTokens(uint tokens) public  {
-          for(uint i=0;i<=contributorsList.length;i++) {
+    function distributeTokens(uint tokens) public {
+          for (uint i = 0; i <= contributorsList.length; i++) {
             var percentContribution = getPercentContribution(contributorsList[i]);
             var numberOfTokens = getTokenPercentReward(percentContribution,tokens);
             tokenBalanceForAddress[contributorsList[i]] += numberOfTokens;
@@ -147,5 +122,4 @@ contract IcoPool {
             return (percentContribution * amt) / 100;
     }
   
-  // 0xf828377c9048dac1e072734cf1ffc01db5887758
 }

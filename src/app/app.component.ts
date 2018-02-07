@@ -15,7 +15,7 @@ import { CreatePoolPage } from '../pages/create-pool/create-pool';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ListPage;
+  rootPage: any = CreatePoolPage;
   myBalance:string;
   myAccount:string;
   contractAddress: string;

@@ -1,10 +1,11 @@
-<!--
-  Generated template for the CreatePoolPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Upcoming ICOs</ion-title>
+      </ion-navbar>
+    
 
   <ion-navbar>
     <ion-title>createPool</ion-title>
@@ -15,4 +16,28 @@
 
 <ion-content padding>
 
+    <ion-card>
+        <ion-card-header style="text-align:left">
+      
+          <ion-item>
+              <ion-label>Create Pool:</ion-label>
+              <button ion-button item-end color="secondary">OPEN</button>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+
+            <ion-list>
+                
+                <ion-item>
+                    <ion-label>Pool Address:</ion-label>
+                    <ion-label>{{poolBalance}}</ion-label>
+                  </ion-item>
+
+                   
+                
+                </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <button ion-button block  (click)="createPool()">Create Pool</button>
 </ion-content>
