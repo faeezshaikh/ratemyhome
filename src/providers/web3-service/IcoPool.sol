@@ -1,6 +1,43 @@
-pragma solidity ^0.4.18; import "./ERC20Interface.sol"; contract IcoPool { address icoContract; address poolCreator;uint maxPoolAllocation;uint maxPerContributor;uint minPerContributor;address[] admins; address[] whitelist;mapping (address => bool) contributors;address[] contributorsList;uint fee;bool automaticDistribution;
+pragma solidity ^0.4.18;
+
+
+contract ERC20Interface {
+    function totalSupply() public constant returns (uint);
+    function balanceOf(address tokenOwner) public constant returns (uint balance);
+    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
+    function transfer(address to, uint tokens) public returns (bool success);
+    function approve(address spender, uint tokens) public returns (bool success);
+    function transferFrom(address from, address to, uint tokens) public returns (bool success);
+
+    event Transfer(address indexed from, address indexed to, uint tokens);
+    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+}
+
+contract IcoPool {
     
-    struct erc20token {address tokenAddress;string name;}mapping (address => uint) tokenBalanceForAddress;ERC20Interface token;mapping (address => uint) contributions;modifier onlyPoolCreator() {
+    address icoContract;
+    address poolCreator;
+    uint maxPoolAllocation;
+    uint maxPerContributor;
+    uint minPerContributor;
+    address[] admins;
+    address[] whitelist;
+    mapping (address => bool) contributors;
+    address[] contributorsList;
+    uint fee;
+    bool automaticDistribution;
+    
+    struct erc20token {
+        address tokenAddress;
+        string name;
+    }
+    mapping (address => uint) tokenBalanceForAddress;
+    
+    ERC20Interface token;
+   
+    mapping (address => uint) contributions;
+    
+    modifier onlyPoolCreator() {
         if (msg.sender == poolCreator) {
             _;
         }
@@ -90,7 +127,7 @@ pragma solidity ^0.4.18; import "./ERC20Interface.sol"; contract IcoPool { addre
         return true;
     }
     
-    function registerToken(address tokenAddress) public onlyPoolCreator returns (bool){
+    function registerToken(address tokenAddress) public returns (bool){
         require(tokenAddress != address(0));
         token = ERC20Interface(tokenAddress);
         return true;
@@ -106,8 +143,14 @@ pragma solidity ^0.4.18; import "./ERC20Interface.sol"; contract IcoPool { addre
         return true;
     }
     
-    function distributeTokens(uint tokens) public {
-          for (uint i = 0; i <= contributorsList.length; i++) {
+    function registerAndDeposit(address tokenAddress,uint amount) public returns (bool) {
+        registerToken(tokenAddress);
+        depositToken(amount);
+        return true;
+    }
+    
+    function distributeTokens(uint tokens) public  {
+          for(uint i=0;i<=contributorsList.length;i++) {
             var percentContribution = getPercentContribution(contributorsList[i]);
             var numberOfTokens = getTokenPercentReward(percentContribution,tokens);
             tokenBalanceForAddress[contributorsList[i]] += numberOfTokens;
@@ -121,5 +164,29 @@ pragma solidity ^0.4.18; import "./ERC20Interface.sol"; contract IcoPool { addre
     function getTokenPercentReward(uint percentContribution,uint amt) internal pure  returns (uint) {
             return (percentContribution * amt) / 100;
     }
+    /*
+            
+        FSCoin Contract
+        0x063ff877d3b5f65d263c1be6cbe7f2ad9449d8d0
+        
+        FSCoin Owner
+        0x685b52098293cfb4e93be80303f7d667e8106035
+        
+        
+        IcoPool Contract
+        0x116044f5d5b966be963cb4d7de4e741eeb52c127
+        
+        IcoPool Owner
+        0x67a1e27c036fe8325feb30812ded1b51475c4915
+        
+        1. Anyone checks his ICO owner’s balance. GetTokenBalance(his addr)
+        2. Anyone  checks the ‘getRegisteredTokenSupply’ (should be zero)
+        3. Token owner approves the ICO pool creator(failed), ICO contract passed  —> In Token Contract
+        4. Token Owner registers and deposits to token to ICO
+        5. Anyone checks the ‘getRegisteredTokenSupply’ (should be max supply)
+        6. Anyone checks his balance.. If its 10K that means ICO contract passed it on to the ICO pool creator
+
+    */
+     
   
 }
