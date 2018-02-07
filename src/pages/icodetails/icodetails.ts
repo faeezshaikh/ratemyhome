@@ -48,7 +48,8 @@ export class IcodetailsPage {
         let modal = this.modalCtrl.create(ContributePage, { icotitle: icodetails.title,
                presaleMin: icodetails.presaleMinimum, 
                presaleBonus: icodetails.presaleBonu,
-              presalePrice: icodetails.presalePrice});
+              presalePrice: icodetails.presalePrice,
+            status:icodetails.status});
         modal.present();
       }
 

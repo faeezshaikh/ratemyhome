@@ -15,7 +15,7 @@ import { CreatePoolPage } from '../pages/create-pool/create-pool';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreatePoolPage;
+  rootPage: any = ListPage;
   myBalance:string;
   myAccount:string;
   contractAddress: string;
@@ -26,8 +26,8 @@ export class MyApp {
     this.initializeApp();
     let that = this;
 
-     that.myAccount = this.web3Service.getMyAccount();
-     this.contractAddress = this.web3Service.getContractAddress();
+     this.myAccount = web3Service.getMyAccount();
+     this.contractAddress = web3Service.getContractAddress();
       this.web3Service.getMyCurrentBalance().then(function(res) {
       that.myBalance = res;
     });

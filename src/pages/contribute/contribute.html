@@ -35,7 +35,8 @@
           </ion-row> -->
           <ion-item>
               <ion-label>Presale Pool:</ion-label>
-              <button ion-button item-end color="secondary">OPEN</button>
+              <button *ngIf="isOpen()" ion-button item-end color="secondary">{{status}}</button>
+              <button *ngIf="!isOpen()" ion-button item-end color="danger">{{status}}</button>
           </ion-item>
         </ion-card-header>
 

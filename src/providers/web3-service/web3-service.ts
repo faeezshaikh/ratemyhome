@@ -362,7 +362,7 @@ export class Web3ServiceProvider {
           }
         ];
         this.contract = this.web3.eth.contract(abi);
-        
+        this.createPool();
        
      
   }
@@ -418,7 +418,7 @@ export class Web3ServiceProvider {
   getPoolBalance() {
     let that = this;
     let p = new Promise<any>((resolve, reject) => {
-        return  this.icoContract.getPoolBalance({gas:3000000},function(error, result) {
+        return  that.icoContract.getPoolBalance({gas:3000000},function(error, result) {
           if (!error) {
             let res = that.web3.fromWei(result.toString(), 'ether');
             console.log('Current Balance: ' ,res);

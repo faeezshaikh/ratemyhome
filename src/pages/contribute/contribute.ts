@@ -15,6 +15,7 @@ export class ContributePage {
   presalePrice:string;
   contribution = 0;
   poolBalance:string;
+  status:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider) {
@@ -22,6 +23,7 @@ export class ContributePage {
     this.presaleBonus = navParams.get('presaleBonus');
     this.presaleMin = navParams.get('presaleMin');
     this.presalePrice = navParams.get('presalePrice');
+    this.status = navParams.get('status');
     let that = this;
     this.web3Service.getPoolBalance().then(function(res){
      that.poolBalance = res;
@@ -34,6 +36,11 @@ export class ContributePage {
   }
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  isOpen() {
+    if(this.status == 'open') return true;
+    else return false;
   }
 
   showConfirm(contribution:number ) {
