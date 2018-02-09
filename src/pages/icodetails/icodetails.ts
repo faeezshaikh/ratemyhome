@@ -49,7 +49,8 @@ export class IcodetailsPage {
                presaleMin: icodetails.presaleMinimum, 
                presaleBonus: icodetails.presaleBonu,
               presalePrice: icodetails.presalePrice,
-            status:icodetails.status});
+            status:icodetails.status,
+          id:icodetails.$key});
         modal.present();
       }
 

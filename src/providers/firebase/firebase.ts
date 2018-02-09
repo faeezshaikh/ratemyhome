@@ -27,6 +27,12 @@ getIcoDetails(id:number) {
   // return this.afd.object('/icoDetails/' + id + '/').valueChanges();
 }
 
+updateIcodetails(icoDetailsId: any, status: string): void {
+  this.afd.object('/icoDetails/' + icoDetailsId)
+    .update({ status: status});    
+    console.log('Update successful');
+    
+}
  addItem(name) {
    this.afd.list('/shoppingItems/').push(name);
  }
