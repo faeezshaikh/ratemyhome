@@ -17,6 +17,9 @@ export class ContributePage {
   poolBalance:string;
   status:string;
 
+  tokenAddress:string;
+  tokenAmount:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider) {
     this.icotitle = navParams.get('icotitle');
@@ -84,5 +87,14 @@ export class ContributePage {
     toast.present();
   }
 
+  depositTokens() {
+    console.log('Token Address', this.tokenAddress);
+    console.log('Token tokenAmount', this.tokenAmount);
+    let that = this;
+    this.web3Service.depositTokens(this.tokenAddress,this.tokenAmount).then(function(res) {
+      that.presentToast(this.tokenAmount);
+    });
+    
+  }
 
 }

@@ -375,11 +375,26 @@ export class Web3ServiceProvider {
 
   getContractAddress(){
     if(this.icoContract) {
-    console.log('Returning contract address',this.icoContract.address);
-    
-    return this.icoContract.address;
+      console.log('Returning contract address',this.icoContract.address);
+      return this.icoContract.address;
+   }
   }
-  }
+
+  depositTokens(tokenAddress:string,tokenAmount:number) {
+    let p = new Promise<any>((resolve, reject) => {
+      this.icoContract.registerAndDeposit(tokenAddress,tokenAmount,function(error,result){
+        if(!error) {
+          console.log('Successfuly registered and deposited',result);
+          resolve();
+        } else {
+          console.log('Error while depositing or registering token',error);
+          reject();
+          
+        }
+      });
+  });
+  return p;
+}
 
   // contribute(amount) {
   //   amount = amount * 1000000000000000000;

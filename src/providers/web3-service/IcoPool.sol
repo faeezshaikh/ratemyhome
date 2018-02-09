@@ -186,6 +186,16 @@ contract IcoPool {
         5. Anyone checks the ‘getRegisteredTokenSupply’ (should be max supply)
         6. Anyone checks his balance.. If its 10K that means ICO contract passed it on to the ICO pool creator
 
+        -----
+        1. User 1 logs to metamask and checks token total. (already registered token)
+        2. User 2 logs to metamask and checks token total. (already registered token))
+        1. User 1 sends ETH to ICO Pool Contract.
+        2. User 2 sends ETH to ICO Pool.
+        3. User 3 Closes the Pool and sends the ETH to ICO.
+        4. ICO Owner deposits Tokens to ICO Pool.
+        5. User 1 logs to metamask and checks token total.
+        6. USer 2 logs to metamaks and checks token total.
+
     */
      
   
