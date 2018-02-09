@@ -45,8 +45,6 @@ export class ContributePage {
   }
 
   isOpen() {
-    console.log('Status :' , this.status);
-    
     if(this.status == 'open') return true;
     else return false;
   }
@@ -119,13 +117,11 @@ export class ContributePage {
         {
           text: 'No',
           handler: () => {
-            console.log('Disagree clicked');
           }
         },
         {
           text: 'Yes',
           handler: () => {
-            console.log('Agree clicked');
             // this.dismiss();
             this.status = 'paid';
             this.firebaseProvider.updateIcodetails(this.icodetailsId,'paid');

@@ -191,10 +191,16 @@ contract IcoPool {
         2. User 2 logs to metamask and checks token total. (already registered token))
         1. User 1 sends ETH to ICO Pool Contract.
         2. User 2 sends ETH to ICO Pool.
-        3. User 3 Closes the Pool and sends the ETH to ICO.
+        3. User 2 Closes the Pool and sends the ETH to ICO.
         4. ICO Owner deposits Tokens to ICO Pool.
         5. User 1 logs to metamask and checks token total.
         6. USer 2 logs to metamaks and checks token total.
+
+
+        Prep:
+        1. Start testrpc, connect remix to testrpc and use the TJIRD addr to deploy FSCoin using the last address.
+        2. Connect Metamask to testrpc and add 3 accounts.. First two will be user1 and user2, third will be ICO owner.
+        3. Register STAR Token in Metamask
 
     */
      
