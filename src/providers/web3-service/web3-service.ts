@@ -19,7 +19,8 @@ export class Web3ServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello Web3ServiceProvider Provider');
-    this.icoContractAddress = '0x22281d6e890bc53d93276e50d9963a6e4fba4af0';
+    this.icoContractAddress = '0xcf5d7db4b239583d830a053ceb17d55ddea6cdc9';
+    
 
     console.log("WEB3 ===>",typeof window['web3']);
     
@@ -40,22 +41,17 @@ export class Web3ServiceProvider {
         // Step 3: Get Interface to the contact - ABI from remix
         let abi = [
           {
-            "constant": false,
-            "inputs": [
-              {
-                "name": "tokenAddress",
-                "type": "address"
-              }
-            ],
-            "name": "registerToken",
+            "constant": true,
+            "inputs": [],
+            "name": "getMinPerContributorn",
             "outputs": [
               {
                 "name": "",
-                "type": "bool"
+                "type": "uint256"
               }
             ],
             "payable": false,
-            "stateMutability": "nonpayable",
+            "stateMutability": "view",
             "type": "function"
           },
           {
@@ -80,7 +76,26 @@ export class Web3ServiceProvider {
           {
             "constant": true,
             "inputs": [],
-            "name": "getMaxPerContributor",
+            "name": "getContributors",
+            "outputs": [
+              {
+                "name": "",
+                "type": "address[]"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "addr",
+                "type": "address"
+              }
+            ],
+            "name": "getTokenBalance",
             "outputs": [
               {
                 "name": "",
@@ -113,72 +128,6 @@ export class Web3ServiceProvider {
           {
             "constant": true,
             "inputs": [],
-            "name": "getRegisteredTokenSupply",
-            "outputs": [
-              {
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "constant": true,
-            "inputs": [
-              {
-                "name": "addr",
-                "type": "address"
-              }
-            ],
-            "name": "getTokenBalance",
-            "outputs": [
-              {
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "constant": true,
-            "inputs": [],
-            "name": "getMinPerContributorn",
-            "outputs": [
-              {
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "constant": false,
-            "inputs": [
-              {
-                "name": "amount",
-                "type": "uint256"
-              }
-            ],
-            "name": "depositToken",
-            "outputs": [
-              {
-                "name": "",
-                "type": "bool"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "constant": true,
-            "inputs": [],
             "name": "getPoolCreator",
             "outputs": [
               {
@@ -191,23 +140,37 @@ export class Web3ServiceProvider {
             "type": "function"
           },
           {
-            "constant": false,
-            "inputs": [
+            "constant": true,
+            "inputs": [],
+            "name": "getPoolBalance",
+            "outputs": [
               {
-                "name": "tokens",
+                "name": "",
                 "type": "uint256"
               }
             ],
-            "name": "distributeTokens",
-            "outputs": [],
             "payable": false,
-            "stateMutability": "nonpayable",
+            "stateMutability": "view",
             "type": "function"
           },
           {
             "constant": true,
             "inputs": [],
             "name": "getMyContribution",
+            "outputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [],
+            "name": "getMaxPerContributor",
             "outputs": [
               {
                 "name": "",
@@ -233,23 +196,9 @@ export class Web3ServiceProvider {
             "type": "function"
           },
           {
-            "constant": false,
-            "inputs": [
-              {
-                "name": "contribution",
-                "type": "uint256"
-              }
-            ],
-            "name": "setMinPerContributorn",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
             "constant": true,
             "inputs": [],
-            "name": "getPoolBalance",
+            "name": "getRegisteredTokenSupply",
             "outputs": [
               {
                 "name": "",
@@ -259,84 +208,6 @@ export class Web3ServiceProvider {
             "payable": false,
             "stateMutability": "view",
             "type": "function"
-          },
-          {
-            "constant": true,
-            "inputs": [],
-            "name": "getContributors",
-            "outputs": [
-              {
-                "name": "",
-                "type": "address[]"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "constant": false,
-            "inputs": [
-              {
-                "name": "amount",
-                "type": "uint256"
-              }
-            ],
-            "name": "withdrawContribution",
-            "outputs": [
-              {
-                "name": "",
-                "type": "bool"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "constant": false,
-            "inputs": [],
-            "name": "contribute",
-            "outputs": [],
-            "payable": true,
-            "stateMutability": "payable",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "name": "maxPoolAllocation1",
-                "type": "uint256"
-              },
-              {
-                "name": "maxPerContributor1",
-                "type": "uint256"
-              },
-              {
-                "name": "minPerContributor1",
-                "type": "uint256"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "constructor"
-          },
-          {
-            "anonymous": false,
-            "inputs": [
-              {
-                "indexed": false,
-                "name": "contributor",
-                "type": "address"
-              },
-              {
-                "indexed": false,
-                "name": "amount",
-                "type": "uint256"
-              }
-            ],
-            "name": "withdrawal",
-            "type": "event"
           },
           {
             "anonymous": false,
@@ -359,19 +230,171 @@ export class Web3ServiceProvider {
             ],
             "name": "DepositForTokenReceived",
             "type": "event"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": false,
+                "name": "contributor",
+                "type": "address"
+              },
+              {
+                "indexed": false,
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "withdrawal",
+            "type": "event"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "contribution",
+                "type": "uint256"
+              }
+            ],
+            "name": "setMinPerContributorn",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [],
+            "name": "contribute",
+            "outputs": [],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "depositToken",
+            "outputs": [
+              {
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "name": "maxPoolAllocation1",
+                "type": "uint256"
+              },
+              {
+                "name": "maxPerContributor1",
+                "type": "uint256"
+              },
+              {
+                "name": "minPerContributor1",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "tokens",
+                "type": "uint256"
+              }
+            ],
+            "name": "distributeTokens",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "tokenAddress",
+                "type": "address"
+              }
+            ],
+            "name": "registerToken",
+            "outputs": [
+              {
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "tokenAddress",
+                "type": "address"
+              },
+              {
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "registerAndDeposit",
+            "outputs": [
+              {
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "withdrawContribution",
+            "outputs": [
+              {
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
           }
         ];
         this.contract = this.web3.eth.contract(abi);
-        this.createPool();
-       
+        // this.createPool();
+
+         // Step 4: Get Contract instance at the address from remix
+     this.icoContract = this.contract.at(this.icoContractAddress);
+     console.log("Got the smart contract ==> " , this.icoContract);
      
   }
 
-  createPool(){
-     // Step 4: Get Contract instance at the address from remix
-     this.icoContract = this.contract.at(this.icoContractAddress);
-     console.log("Got the smart contract ==> " , this.icoContract);
-  }
+ 
 
   getContractAddress(){
     if(this.icoContract) {
@@ -404,13 +427,14 @@ export class Web3ServiceProvider {
   // }
    contribute(amount) {
       amount = amount * 1000000000000000000;
+      // var value = this.web3.fromWei(amount, 'ether');
       console.log('Calling contribute on smart contract' , amount);
-      let that = this;
       let p = new Promise<any>((resolve, reject) => {
+        let that = this;
           return this.icoContract.contribute({value:amount, gas:3000000},function(error,result){
             if (!error) {
-              // let res = that.web3.fromWei(result.toString(), 'ether');
-              console.log('Contribution Successful: ');
+              let res = that.web3.fromWei(result.toString(), 'ether');
+              console.log('Contribution Successful: ',res);
               resolve();
               that.refresh();
             } else {
@@ -432,11 +456,13 @@ export class Web3ServiceProvider {
 
   getPoolBalance() {
     let that = this;
+    console.log('Getting pool balance for contract address..',that.icoContract);
+    
     let p = new Promise<any>((resolve, reject) => {
         return  that.icoContract.getPoolBalance({gas:3000000},function(error, result) {
           if (!error) {
             let res = that.web3.fromWei(result.toString(), 'ether');
-            console.log('Current Balance: ' ,res);
+            console.log('Current Pool Balance: ' ,res);
             resolve(res);
           } else {
             console.error(error);
@@ -457,7 +483,7 @@ export class Web3ServiceProvider {
   getMyCurrentBalance() {
     let p = new Promise<any>((resolve, reject) => {
       let that = this;
-      return this.web3.eth.getBalance(this.web3.eth.defaultAccount, function (error, result) {
+      return this.web3.eth.getBalance(that.web3.eth.defaultAccount, function (error, result) {
         if (!error) {
           let res = that.web3.fromWei(result.toString(), 'ether');
           console.log('Current Balance: ' ,res);
@@ -474,6 +500,26 @@ export class Web3ServiceProvider {
 
   getMyAccount() {
     return this.accountAddress;
+  }
+
+  getTokenBalance(addr: any) {
+    let that = this;
+    addr = that.web3.eth.defaultAccount;
+    let p = new Promise<any>((resolve, reject) => {
+    return  this.icoContract.getTokenBalance(addr,{gas:3000000},function(e,result){
+        if(!e) {
+          // let res = that.web3.fromWei(result.toString(), 'ether');
+          console.log('Token Balance for : ' + addr + ' is : ',result);
+          resolve(result);
+        } else {
+          console.error(e);
+          reject(e);
+        }
+
+      })
+
+    });
+    return p;
   }
 
 

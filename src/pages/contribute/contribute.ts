@@ -21,6 +21,7 @@ export class ContributePage {
 
   tokenAddress:string;
   tokenAmount:any;
+  tokenBalance:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider, public firebaseProvider: FirebaseProvider) {
@@ -31,7 +32,10 @@ export class ContributePage {
     this.status = navParams.get('status');
     this.icodetailsId = navParams.get('id');
     let that = this;
+
     this.web3Service.getPoolBalance().then(function(res){
+      console.log('Got Pool balance', res);
+      
      that.poolBalance = res;
    });
 
@@ -104,9 +108,16 @@ export class ContributePage {
     console.log('Token tokenAmount', this.tokenAmount);
     let that = this;
     this.web3Service.depositTokens(this.tokenAddress,this.tokenAmount).then(function(res) {
-      that.presentToast(this.tokenAmount);
+      that.presentToast(that.tokenAmount);
     });
     
+  }
+
+  getTokenBalance(addr:any){
+    let that = this;
+    this.web3Service.getTokenBalance(addr).then(function(res){
+      that.tokenBalance = res;
+    });
   }
 
   closePool() {

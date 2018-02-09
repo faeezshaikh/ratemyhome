@@ -166,18 +166,7 @@ contract IcoPool {
     }
     /*
             
-        FSCoin Contract
-        0x063ff877d3b5f65d263c1be6cbe7f2ad9449d8d0
-        
-        FSCoin Owner
-        0x685b52098293cfb4e93be80303f7d667e8106035
-        
-        
-        IcoPool Contract
-        0x116044f5d5b966be963cb4d7de4e741eeb52c127
-        
-        IcoPool Owner
-        0x67a1e27c036fe8325feb30812ded1b51475c4915
+       
         
         1. Anyone checks his ICO owner’s balance. GetTokenBalance(his addr)
         2. Anyone  checks the ‘getRegisteredTokenSupply’ (should be zero)
@@ -198,9 +187,32 @@ contract IcoPool {
 
 
         Prep:
-        1. Start testrpc, connect remix to testrpc and use the TJIRD addr to deploy FSCoin using the last address.
+        1. Start testrpc, connect remix to testrpc and use the THIRD addr to deploy FSCoin using the last address.
+        2. Use First address to deploy ICO contract ...this needs to be made dynamic in the future.
         2. Connect Metamask to testrpc and add 3 accounts.. First two will be user1 and user2, third will be ICO owner.
         3. Register STAR Token in Metamask
+
+        FSCoin Contract
+        0x3d43cb0ae468f9414c983b62370d04dce9f0d789
+        
+        FSCoin Owner
+        0x59cbf2040069fbd55e3430b53d1508dc1d83cd1e
+        
+        
+        IcoPool Contract
+        0x40371c6ed8307a4c0281fe623e5cbd4f266859e7
+        
+        IcoPool Owner
+        0x9682760d9ce370cab9ded51ca71be04ea88fe796
+
+
+        1. Logout of Metamask, Start testrpc, refresh remix and connect to testrpc and deploy IcoPool contract in remix using addr 1. 
+        2. Copy ICO contract from remix to code. Copy ABI from remix to code.
+        3. Login to Metamask using seed words from testrpc.
+        4. Switch between main network and localhost:8545 in Metamask to refresh .
+        5. Using addr 1 contribute 10 ETH. Check Pool balance and My contribution for addr 1.
+        6. In Metamask 'create account' to switch to addr 2. Using addr2 contribute 20 ETH. Check balances.
+        7. In Remix deploy FSCoin using addr3. Add FSCoin in Metamask using its contract address.
 
     */
      
