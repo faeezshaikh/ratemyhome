@@ -13,7 +13,7 @@ export class FirebaseProvider {
  }
 
  getIcoList() {
-  return this.afd.list('/icoList/');
+  return this.afd.list('/mealList/');
 }
 getMyContributions(id:number) {
   id = 1;
@@ -22,7 +22,7 @@ getMyContributions(id:number) {
 
 getIcoDetails(id:number) {
   console.log('Fetching Details for: ', id);
-  return this.afd.object('/icoDetails/' + id + '/');
+  return this.afd.object('/mealDetails/' + id + '/');
 
   // return this.afd.object('/icoDetails/' + id + '/').valueChanges();
 }

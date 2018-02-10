@@ -18,22 +18,22 @@
 <ion-content padding  >
     <ion-card *ngIf="icoDetails$ | async as icoDetails">
         
-          <ion-item>
+          <!-- <ion-item>
             <ion-avatar item-start>
-              <img src="{{icoDetails.logoUrl}}">
+              <img src="{{icoDetails.img}}">
             </ion-avatar>
             <h2>{{icoDetails.title}}</h2>
             <p>{{icoDetails.presaleDate}}</p>
-          </ion-item>
+          </ion-item> -->
         
-          <img src="{{icoDetails.imgUrl}}">
+          <img src="{{icoDetails.img}}">
         
           <ion-card-content>
             <p>{{icoDetails.description}}</p>
           </ion-card-content>
 
 
-          <ion-grid>
+          <!-- <ion-grid>
               <ion-row>
                 <ion-col col-6>Crowdsale Date: </ion-col>
                 <ion-col col-6>{{icoDetails.crowdsaleDate}}</ion-col>
@@ -73,12 +73,8 @@
                         <ion-col col-6>Website: </ion-col>
                         <ion-col col-6>{{icoDetails.website}}</ion-col>
                     </ion-row>
-<!-- 
-                    <ion-row>
-                        <ion-col col-6>Telegram Members: </ion-col>
-                        <ion-col col-6>{{icoDetails$.telegram}}</ion-col>
-                    </ion-row> -->
-            </ion-grid>
+
+            </ion-grid> -->
 
 
         
@@ -103,5 +99,5 @@
           </ion-row>
         
         </ion-card>
-        <button *ngIf="icoDetails$ | async as icoDetails" ion-button block  (click)="openModal(icoDetails)">View Pool</button>
+        <button *ngIf="icoDetails$ | async as icoDetails" ion-button block  (click)="openModal(icoDetails)">Select Plan</button>
 </ion-content>

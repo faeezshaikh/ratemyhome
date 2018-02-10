@@ -22,13 +22,15 @@ import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
 import { CreatePoolPage } from '../pages/create-pool/create-pool';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDYKbBWdcmhEVRBUPeEQA1aklPATJfK-Wc",
-  authDomain: "poolico-86069.firebaseapp.com",
-  databaseURL: "https://poolico-86069.firebaseio.com",
-  projectId: "poolico-86069",
+  apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
+  authDomain: "finebites-ab56b.firebaseapp.com",
+  databaseURL: "https://finebites-ab56b.firebaseio.com",
+  projectId: "finebites-ab56b",
   storageBucket: "",
-  messagingSenderId: "740732068871"
+  messagingSenderId: "478181878634"
 };
+
+
 
 
 @NgModule({
