@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ToastController,AlertController} from 'ionic-angular';
-import { Web3ServiceProvider } from '../../providers/web3-service/web3-service';
 
-/**
- * Generated class for the ContributionDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,18 +11,12 @@ export class ContributionDetailsPage {
   poolBalance: string;
   myContribution: string;
 
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController, public navParams: NavParams,private web3Service: Web3ServiceProvider,public alertCtrl: AlertController,) {
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController, public navParams: NavParams,public alertCtrl: AlertController,) {
     this.getBalances();
   }
 
   getBalances() {
-    let that = this;
-     this.web3Service.getPoolBalance().then(function(res){
-      that.poolBalance = res;
-    });
-     this.web3Service.getMyContribution().then(function(res){
-      that.myContribution = res;
-     });
+  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributionDetailsPage');
@@ -41,11 +28,7 @@ export class ContributionDetailsPage {
 
   withdraw(amount:any) {
     console.log('Requesting withdrawal for ' + amount + ' ETH...');
-    this.web3Service.withdrawContribution(amount).then(() => {
-      this.presentToast(amount);
-      this.getBalances();
-      this.cancel();
-    });
+  
   }
 
 

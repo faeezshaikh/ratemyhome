@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController,AlertController,ToastController} from 'ionic-angular';
-import { Web3ServiceProvider } from '../../providers/web3-service/web3-service';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 
@@ -25,7 +24,7 @@ export class ContributePage {
   icoContractAddress:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
-    public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider, public firebaseProvider: FirebaseProvider) {
+    public alertCtrl: AlertController,public toastCtrl: ToastController, public firebaseProvider: FirebaseProvider) {
     this.icotitle = navParams.get('icotitle');
     this.presaleBonus = navParams.get('presaleBonus');
     this.presaleMin = navParams.get('presaleMin');
@@ -34,20 +33,14 @@ export class ContributePage {
     this.icodetailsId = navParams.get('id');
     let that = this;
 
-    this.icoContractAddress = this.web3Service.getContractAddress();
     console.log("Contract address...",this.icoContractAddress);
     
-    this.web3Service.getPoolBalance().then(function(res){
-      console.log('Got Pool balance', res);
-      
-     that.poolBalance = res;
-   });
+ 
 
   }
 
 
   getContractAddress() {
-    this.icoContractAddress = this.web3Service.getContractAddress();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributePage');
@@ -78,14 +71,7 @@ export class ContributePage {
             console.log('Agree clicked');
             // this.dismiss();
             let that = this;
-            this.web3Service.contribute(contribution).then(function(res) {
-                that.dismiss();
-                that.presentToast(contribution);
-            });
-            
-            this.web3Service.getPoolBalance().then(function(res){
-             that.poolBalance = res;
-           });
+          
             
           }
         }
@@ -115,17 +101,11 @@ export class ContributePage {
     console.log('Token Address', this.tokenAddress);
     console.log('Token tokenAmount', this.tokenAmount);
     let that = this;
-    this.web3Service.depositTokens(this.tokenAddress,this.tokenAmount).then(function(res) {
-      that.presentToast(that.tokenAmount);
-    });
     
   }
 
   getTokenBalance(addr:any){
     let that = this;
-    this.web3Service.getTokenBalance(addr).then(function(res){
-      that.tokenBalance = res;
-    });
   }
 
   closePool() {

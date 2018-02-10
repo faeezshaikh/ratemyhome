@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -14,12 +13,10 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
-import { IcodetailsPage } from '../pages/icodetails/icodetails';
+import { DetailsPage } from '../pages/icodetails/icodetails';
 import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
-import { Web3ServiceProvider } from '../providers/web3-service/web3-service';
-import { CreatePoolPage } from '../pages/create-pool/create-pool';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -36,13 +33,11 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
-    IcodetailsPage,
+    DetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage,
-    CreatePoolPage
+    ContributionDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -55,21 +50,18 @@ const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
-    IcodetailsPage,
+    DetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage,
-    CreatePoolPage
+    ContributionDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider,
-    Web3ServiceProvider
+    FirebaseProvider
   ]
 })
 export class AppModule {}
