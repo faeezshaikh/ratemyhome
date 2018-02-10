@@ -1,9 +1,40 @@
+<style>
+   #notification-button {            
+            position: relative;
+            width: 42px;
+            top:1px;
+            right: 1px;
+            overflow: visible!important;
+        }
+
+
+   #notifications-badge {
+            background-color: #990066;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            border-radius: 100%;
+        }
+</style>
+
+
 <ion-header>
   <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Upcoming ICOs</ion-title>
+
+    <ion-buttons end> 
+    <button id="notification-button" ion-button >
+        <ion-icon name="cart">
+          <ion-badge id="notifications-badge" >1</ion-badge>
+        </ion-icon>              
+    </button>
+
+
+   </ion-buttons>
+   
   </ion-navbar>
 
   <ion-toolbar no-border-top >
@@ -15,9 +46,30 @@
               Breakfast
             </ion-segment-button>
         </ion-segment>
+
+
+      
       </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page">
+
+
+    <ion-fab top right edge>
+        <!-- <button  id="notification-button"  ion-fab color="vibrant" mini>
+          <ion-icon name="cart" >
+              <ion-badge id="notifications-badge" item-end>260</ion-badge>
+          </ion-icon>
+        </button> -->
+
+       
+        <ion-fab-list>
+          <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+
     
     <div [ngSwitch]="poolSegment">
     

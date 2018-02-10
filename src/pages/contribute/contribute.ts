@@ -73,8 +73,8 @@ export class ContributePage {
   }
   showConfirm(contribution:number ) {
     let confirm = this.alertCtrl.create({
-      title: 'Contribute to this ICO?',
-      message: 'Are you sure you want to send ' + contribution + ' ETH to this ICO?',
+      title: 'Add to Cart',
+      message: 'Are you sure you want to add this meal to cart for a total of: $ ' + this.total,
       buttons: [
         {
           text: 'No',
@@ -86,10 +86,8 @@ export class ContributePage {
           text: 'Yes',
           handler: () => {
             console.log('Agree clicked');
-            // this.dismiss();
-            let that = this;
-          
-            
+            this.dismiss();
+            this.presentToast('Order for $' + this.total + ' successfully added to your cart.');
           }
         }
       ]
@@ -97,15 +95,9 @@ export class ContributePage {
     confirm.present();
   }
 
-  presentToast(contribution) {
-    let toast = this.toastCtrl.create({
-      message: contribution + ' ETH successfully sent to the ICO smart contract.',
-      duration: 3000
-    });
-    toast.present();
-  }
 
-  presentToast2(msg:string) {
+
+  presentToast(msg:string) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000
@@ -114,40 +106,7 @@ export class ContributePage {
   }
 
 
-  depositTokens() {
-    console.log('Token Address', this.tokenAddress);
-    console.log('Token tokenAmount', this.tokenAmount);
-    let that = this;
-    
-  }
 
-  getTokenBalance(addr:any){
-    let that = this;
-  }
 
-  closePool() {
-    let confirm = this.alertCtrl.create({
-      title: 'Close the Pool',
-      message: 'Are you sure you want to send ETH to this ICO and close the Pool?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {
-          }
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            // this.dismiss();
-            this.status = 'paid';
-            this.firebaseProvider.updateIcodetails(this.icodetailsId,'paid');
-            this.dismiss();
-            this.presentToast2("Pool successfully closed. ETH sent to the ICO contract");
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
 
 }
