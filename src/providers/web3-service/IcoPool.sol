@@ -11,6 +11,8 @@ contract ERC20Interface {
 
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+    
+    
 }
 
 contract IcoPool {
@@ -45,6 +47,9 @@ contract IcoPool {
     
     event withdrawal(address contributor, uint amount);
     event DepositForTokenReceived(address, uint, uint);
+    event PercentContribution(address indexed contributor, uint percentage);
+    event TokenBalance(address indexed contributor, uint percentage);
+    
     
     function IcoPool( uint maxPoolAllocation1, uint maxPerContributor1, uint minPerContributor1) public {
         poolCreator = msg.sender;
@@ -134,12 +139,14 @@ contract IcoPool {
     }
   
     
-    // Token owner most likely invokes this method. msg.sender is the token owner that calls this function
-     function depositToken(uint amount) public returns (bool) {
+    // Token owner  invokes this method. msg.sender is the token owner that calls this function
+      function depositToken(uint amount) public returns (bool) {
         require(token.transferFrom(msg.sender, address(this), amount) == true);
         require(tokenBalanceForAddress[poolCreator] + amount >= tokenBalanceForAddress[poolCreator]);
-        tokenBalanceForAddress[poolCreator] += amount;
-        DepositForTokenReceived(poolCreator, amount, now);
+        // tokenBalanceForAddress[poolCreator] += amount;
+        tokenBalanceForAddress[address(this)] += amount;
+        // DepositForTokenReceived(poolCreator, amount, now);
+        DepositForTokenReceived(address(this), amount, now);
         return true;
     }
     
@@ -149,20 +156,38 @@ contract IcoPool {
         return true;
     }
     
-    function distributeTokens(uint tokens) public  {
-          for(uint i=0;i<=contributorsList.length;i++) {
-            var percentContribution = getPercentContribution(contributorsList[i]);
-            var numberOfTokens = getTokenPercentReward(percentContribution,tokens);
+    function distributeTokens() public returns (bool) {
+        uint tokens = tokenBalanceForAddress[address(this)];
+          for(uint i=0;i<contributorsList.length;i++) {
+            // var percentContribution = getPercentContribution(contributorsList[i]);
+            // var numberOfTokens = getTokenPercentReward(percentContribution,tokens);
+            var numberOfTokens = foo(contributorsList[i],tokens);
+            // token.transferFrom(address(this),contributorsList[i],numberOfTokens);
             tokenBalanceForAddress[contributorsList[i]] += numberOfTokens;
+            tokenBalanceForAddress[address(this)] -= numberOfTokens;
         }
+        return true;
     }
+    
+    
+     function foo(address addr,uint totalTokens) private constant returns (uint) {
+        uint contrib = contributions[addr];
+        uint poolBal = this.balance;
+        uint ans = (contrib * totalTokens) / poolBal;
+       return ans;
+     }
     
     function getPercentContribution(address addr) private constant returns (uint) {
-       return contributions[addr] / this.balance;
-    }
+        uint contrib = contributions[addr];
+        uint poolBal = this.balance;
+        uint ans = contrib / poolBal;
+       return ans;
+     }
     
     function getTokenPercentReward(uint percentContribution,uint amt) internal pure  returns (uint) {
-            return (percentContribution * amt) / 100;
+        uint p = percentContribution * amt;
+        uint r = p/100;
+            return r;
     }
     /*
             
@@ -215,6 +240,7 @@ contract IcoPool {
         7. In Remix deploy FSCoin using addr3. Add FSCoin in Metamask using its contract address.
 
     */
+     
      
   
 }
