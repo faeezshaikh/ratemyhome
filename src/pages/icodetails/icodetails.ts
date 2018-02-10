@@ -8,7 +8,7 @@ import { ContributePage } from '../contribute/contribute';
 @IonicPage()
 @Component({
   selector: 'page-icodetails',
-  templateUrl: 'icodetails.html',
+  templateUrl: 'details.html',
 })
 export class DetailsPage {
 
