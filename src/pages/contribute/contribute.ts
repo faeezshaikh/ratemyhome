@@ -25,7 +25,8 @@ export class ContributePage {
 
   meals:number=2;
   size:number=8;
-  cost:number;
+  total:number=168;
+  perMeal:number=12;
 
   
   
@@ -44,8 +45,6 @@ export class ContributePage {
 
     console.log("Contract address...",this.icoContractAddress);
     
-    console.log("MEals ", this.meals);
-    console.log("≠Size ", this.size);
 
   }
 
@@ -63,6 +62,15 @@ export class ContributePage {
    return true;
   }
 
+  onChange(val) {
+    console.log("MEals ", this.meals);
+    console.log("≠Size ", this.size);
+
+    if(this.meals == 2 && this.size == 4) { this.perMeal=9;  this.total=126;}
+    if(this.meals == 2 && this.size == 8) { this.perMeal=12;  this.total=168;}
+    if(this.meals == 3 && this.size == 4) { this.perMeal=8;  this.total=168;}
+    if(this.meals == 3 && this.size == 8) { this.perMeal=11;  this.total=231;}
+  }
   showConfirm(contribution:number ) {
     let confirm = this.alertCtrl.create({
       title: 'Contribute to this ICO?',

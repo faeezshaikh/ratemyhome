@@ -41,7 +41,7 @@
 
     <ion-item>
       <ion-label>Meals per day</ion-label>
-      <ion-select [(ngModel)]="meals" interface="popover">
+      <ion-select [(ngModel)]="meals" interface="popover" #C (ionChange)="onChange(C.value)">
         <ion-option value="2">2 meals</ion-option>
         <ion-option value="3">3 meals</ion-option>
       </ion-select>
@@ -50,7 +50,7 @@
 
     <ion-item>
       <ion-label>Size</ion-label>
-      <ion-select [(ngModel)]="size" interface="popover">
+      <ion-select [(ngModel)]="size" interface="popover" #D (ionChange)="onChange(D.value)">
         <ion-option value="4">4 oz</ion-option>
         <ion-option value="8">8 oz</ion-option>
       </ion-select>
@@ -67,7 +67,7 @@
 
                 <ion-item>
                   <ion-label>Total Cost:</ion-label>
-                  <ion-label>{{cost}} ETH</ion-label>
+                  <ion-label style="text-align:right;">$ {{total}} </ion-label>
                 </ion-item>
         </ion-card-content>
     </ion-card>
