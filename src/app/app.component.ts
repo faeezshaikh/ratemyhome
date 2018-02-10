@@ -34,7 +34,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Create Pool', component: CreatePoolPage, icon:'fa fa-cart-plus' },
+      // { title: 'Create Pool', component: CreatePoolPage, icon:'fa fa-cart-plus' },
       { title: 'Upcoming ICOs', component: ListPage, icon:'fa fa-cart-plus' },
       { title: 'My contributions', component: MycontributionsPage, icon:'fa fa-users' }
       // { title: 'Home', component: HomePage, icon:'fa fa-users' }

@@ -17,7 +17,7 @@ export class CreatePoolPage {
   }
 
   createPool() {
-    this.web3Service.createPool();
+   // this.web3Service.createPool();
   }
 
 }

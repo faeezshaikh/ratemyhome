@@ -22,6 +22,7 @@ export class ContributePage {
   tokenAddress:string;
   tokenAmount:any;
   tokenBalance:any;
+  icoContractAddress:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public web3Service: Web3ServiceProvider, public firebaseProvider: FirebaseProvider) {
@@ -33,6 +34,9 @@ export class ContributePage {
     this.icodetailsId = navParams.get('id');
     let that = this;
 
+    this.icoContractAddress = this.web3Service.getContractAddress();
+    console.log("Contract address...",this.icoContractAddress);
+    
     this.web3Service.getPoolBalance().then(function(res){
       console.log('Got Pool balance', res);
       
@@ -41,6 +45,10 @@ export class ContributePage {
 
   }
 
+
+  getContractAddress() {
+    this.icoContractAddress = this.web3Service.getContractAddress();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributePage');
   }
