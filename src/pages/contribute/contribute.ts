@@ -23,6 +23,13 @@ export class ContributePage {
   tokenBalance:any;
   icoContractAddress:any;
 
+  meals:number=2;
+  size:number=8;
+  cost:number;
+
+  
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
     public alertCtrl: AlertController,public toastCtrl: ToastController, public firebaseProvider: FirebaseProvider) {
     this.icotitle = navParams.get('icotitle');
@@ -31,11 +38,14 @@ export class ContributePage {
     this.presalePrice = navParams.get('presalePrice');
     this.status = navParams.get('status');
     this.icodetailsId = navParams.get('id');
-    let that = this;
+
+
+
 
     console.log("Contract address...",this.icoContractAddress);
     
- 
+    console.log("MEals ", this.meals);
+    console.log("≠Size ", this.size);
 
   }
 
@@ -50,8 +60,7 @@ export class ContributePage {
   }
 
   isOpen() {
-    if(this.status == 'open') return true;
-    else return false;
+   return true;
   }
 
   showConfirm(contribution:number ) {
