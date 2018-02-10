@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { DetailsPage } from '../icodetails/icodetails';
+import { DetailsPage } from '../details/details';
  
 
 @Component({

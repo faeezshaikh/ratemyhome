@@ -13,7 +13,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
-import { DetailsPage } from '../pages/icodetails/icodetails';
+import { DetailsPage } from '../pages/details/details';
 import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
