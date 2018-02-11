@@ -22,7 +22,7 @@ export class ListPage {
   itemTapped(event, item) {
 
     this.navCtrl.push(DetailsPage, {
-      ico: item
+      item: item
     });
   }
 }

@@ -11,16 +11,17 @@ import { CustomizePlanPage } from '../customize-plan/customize-plan';
   templateUrl: 'details.html',
 })
 export class DetailsPage {
+  itemDetails$: FirebaseObjectObservable<any>;
 
-  ico:any;
+  item:any;
   
   public icoDetails$: FirebaseObjectObservable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
             public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
-    this.ico = this.navParams.get('ico');
+    this.item = this.navParams.get('item');
   
-    this.icoDetails$ = this.firebaseProvider.getIcoDetails(this.ico.id);
-    console.log("Ico Details ===> ", this.icoDetails$);
+    this.itemDetails$ = this.firebaseProvider.getItemDetails(this.item.id);
+    console.log("Ico Details ===> ", this.itemDetails$);
 
 
   }

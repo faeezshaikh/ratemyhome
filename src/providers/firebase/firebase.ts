@@ -20,7 +20,7 @@ export class FirebaseProvider {
     return this.afd.list('/contributions/' + id + '/');
   }
 
-  getIcoDetails(id: number) {
+  getItemDetails(id: number) {
     console.log('Fetching Details for: ', id);
     return this.afd.object('/mealDetails/' + id + '/');
   }
