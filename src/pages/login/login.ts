@@ -26,12 +26,19 @@ export class LoginPage {
   loginWithFacebook() {
     this.login.loginWithFacebook().then(res => {
       this.navCtrl.setRoot(ListPage);
-    })
+    });
   }
 
   logoutOfFacebook() {
     this.login.logoutOfFacebook();
     this.navCtrl.setRoot(LoginPage);
+  }
+  loginWithTwitter() {
+    console.log('Calling login with Twitter');
+    
+    this.login.loginWithTwitter().then(res => {
+      this.navCtrl.setRoot(ListPage);
+    });
   }
 
 }

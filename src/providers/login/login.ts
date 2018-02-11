@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
-import { ListPage } from '../../pages/list/list';
-import { LoginPage } from '../../pages/login/login';
 
 
 @Injectable()
@@ -18,6 +16,11 @@ export class LoginProvider {
   loginWithFacebook() {
     console.log('Login with FB called');
     return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  }
+
+  loginWithTwitter() {
+    console.log('Login with Twitter called');
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
 
   logoutOfFacebook() {
