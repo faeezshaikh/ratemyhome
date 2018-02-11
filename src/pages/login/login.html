@@ -9,7 +9,17 @@
 
 
 <ion-content padding>
-    <button ion-button block  (click)="loginWithFacebook()">Login with FB</button>
+    
+    <a class="btn btn-block btn-social btn-facebook">
+        <span class="fa fa-facebook"></span> Sign in with Facebook
+      </a>
+      <a class="btn btn-block btn-social btn-google">
+          <span class="fa fa-google"></span> Sign in with Google
+        </a>
+    <a class="btn btn-block btn-social btn-twitter">
+        <span class="fa fa-twitter"></span> Sign in with Twitter
+      </a>
 
+      <button ion-button block  (click)="loginWithFacebook()">Login with FB</button>
     <button ion-button block  (click)="logoutOfFacebook()">Logout of FB</button>
 </ion-content>
