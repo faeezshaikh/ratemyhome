@@ -17,6 +17,8 @@ import { DetailsPage } from '../pages/details/details';
 import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
+import {AngularFireAuthModule } from 'angularfire2/auth';
+import { LoginPage } from '../pages/login/login';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -37,13 +39,15 @@ const firebaseConfig = {
     DetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
@@ -54,7 +58,8 @@ const firebaseConfig = {
     DetailsPage,
     ContributePage,
     MycontributionsPage,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
