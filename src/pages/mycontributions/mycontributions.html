@@ -10,13 +10,15 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>My Contributions</ion-title>
+      <ion-title>My Contributions!!</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <button ion-button block  (click)="logoutOfFacebook()">Logout of FB</button>
 
     <ion-list>
         <ion-item *ngFor="let contribution of mycontributions | async" (click)="itemTapped($event,contribution)">

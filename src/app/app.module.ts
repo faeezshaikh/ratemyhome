@@ -19,6 +19,7 @@ import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 import {AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
+import { LoginProvider } from '../providers/login/login';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -66,7 +67,8 @@ const firebaseConfig = {
     SplashScreen,
     FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}
