@@ -15,17 +15,9 @@ export class LoginProvider {
     console.log('Hello LoginProvider Provider');
   }
 
-
   loginWithFacebook() {
     console.log('Login with FB called');
-    // this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(res => {
-    //   console.log('Login successful..', res);
-    //   console.log('Current user..',firebase.auth().currentUser);
-    // });
-
     return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-    
-
   }
 
   logoutOfFacebook() {
