@@ -20,6 +20,7 @@ import {AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
 import { CustomizePlanPage } from '../pages/customize-plan/customize-plan';
+import { PlansPage } from '../pages/plans/plans';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -41,7 +42,8 @@ const firebaseConfig = {
     CustomizePlanPage,
     MycontributionsPage,
     ContributionDetailsPage,
-    LoginPage
+    LoginPage,
+    PlansPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ const firebaseConfig = {
     CustomizePlanPage,
     MycontributionsPage,
     ContributionDetailsPage,
-    LoginPage
+    LoginPage,
+    PlansPage
   ],
   providers: [
     StatusBar,

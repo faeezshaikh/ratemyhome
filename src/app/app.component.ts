@@ -8,6 +8,7 @@ import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { LoginPage } from '../pages/login/login';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import * as firebase from 'firebase/app';
+import { PlansPage } from '../pages/plans/plans';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +16,7 @@ import * as firebase from 'firebase/app';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = LoginPage;
+  rootPage: any = PlansPage;
   name:string;
   email:string;
   pic:string;
@@ -48,7 +49,7 @@ export class MyApp {
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-          that.nav.setRoot(ListPage);
+          that.nav.setRoot(that.rootPage);
           console.log('Found user logged in. User details :' ,user);
           that.name = user.displayName;
           that.email = user.email;
