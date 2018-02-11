@@ -1,7 +1,15 @@
 # FineBites
 
+You need to first install i.e. npm install ng2-bootstrap in your project.
+then in the index.html page add the link for bootstrap 3
 
-https://www.trifectanutrition.com/hs-fs/hubfs/healthy-meals-trifecta.jpg?t=1500585308844&width=600&height=400&name=healthy-meals-trifecta.jpg
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+and you are good to enjoy bootstrap in ionic app
 
-https://www.bbcgoodfood.com/sites/default/files/styles/category_retina/public/recipe-collections/collection-image/2017/06/600-calorie-meal-collection-main-image.jpg?itok=PqZdkwgN
 
+npm install ng2-bootstrap
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" rel="stylesheet"> 
