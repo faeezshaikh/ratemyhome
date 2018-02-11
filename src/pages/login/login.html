@@ -1,4 +1,7 @@
 
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" rel="stylesheet"> 
 <ion-header>
 
   <!-- <ion-navbar>
@@ -10,7 +13,9 @@
 
 <ion-content padding>
     
-    <a class="btn btn-block btn-social btn-facebook">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+    <a class="btn btn-block btn-social btn-facebook" (click)="loginWithFacebook()">
         <span class="fa fa-facebook"></span> Sign in with Facebook
       </a>
       <a class="btn btn-block btn-social btn-google">
@@ -20,6 +25,6 @@
         <span class="fa fa-twitter"></span> Sign in with Twitter
       </a>
 
-      <button ion-button block  (click)="loginWithFacebook()">Login with FB</button>
-    <button ion-button block  (click)="logoutOfFacebook()">Logout of FB</button>
+      <!-- <button ion-button block  (click)="loginWithFacebook()">Login with FB</button> -->
+    <!-- <button ion-button block  (click)="logoutOfFacebook()">Logout</button> -->
 </ion-content>
