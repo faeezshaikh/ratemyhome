@@ -23,6 +23,11 @@ export class LoginProvider {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
 
+  loginWithGoogle() {
+    console.log('Login with Google called');
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
   logoutOfFacebook() {
     console.log('Logout of FB called');
     this.afAuth.auth.signOut();

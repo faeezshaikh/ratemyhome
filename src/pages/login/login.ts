@@ -33,9 +33,14 @@ export class LoginPage {
     this.login.logoutOfFacebook();
     this.navCtrl.setRoot(LoginPage);
   }
+
+  loginWithGoogle() {
+    this.login.loginWithGoogle().then(res => {
+      this.navCtrl.setRoot(ListPage);
+    });
+  }
   loginWithTwitter() {
     console.log('Calling login with Twitter');
-    
     this.login.loginWithTwitter().then(res => {
       this.navCtrl.setRoot(ListPage);
     });
