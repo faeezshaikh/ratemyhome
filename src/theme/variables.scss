@@ -96,3 +96,15 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+@font-face {
+  font-family: 'Learning Curve';
+  src: url('../assets/fonts/learningcurve/LearningCurve.ttf');
+}
+
+// $font-family-base: "Learning Curve";
+
+.card-subtitle {
+  font-family: "Learning Curve" !important;
+  // font-weight: 400 !important
+}
