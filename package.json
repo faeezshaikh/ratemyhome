@@ -1,8 +1,8 @@
 {
-  "name": "poolico",
+  "name": "FineBites",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Faeez Shaikh",
+  "homepage": "http://cnn.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -44,7 +44,7 @@
     "@ionic/app-scripts": "3.1.8",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project",
+  "description": "FineBites project",
   "config": {
     "ionic_copy": "./config/copy.config.js"
   }
