@@ -6,9 +6,9 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 @IonicPage()
 @Component({
   selector: 'page-contribute',
-  templateUrl: 'contribute.html',
+  templateUrl: 'customize-plan.html',
 })
-export class ContributePage {
+export class CustomizePlanPage {
   icotitle: string;
   presaleMin: string;
   presaleBonus: string;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseObjectObservable } from 'angularfire2/database-deprecated';
-import { ContributePage } from '../contribute/contribute';
+import { CustomizePlanPage } from '../customize-plan/customize-plan';
 
 
 @IonicPage()
@@ -32,7 +32,7 @@ export class DetailsPage {
   openModal(icodetails) {
     
         console.log("Ico details ==> ", icodetails);
-        let modal = this.modalCtrl.create(ContributePage, { icotitle: icodetails.title,
+        let modal = this.modalCtrl.create(CustomizePlanPage, { icotitle: icodetails.title,
                presaleMin: icodetails.presaleMinimum, 
                presaleBonus: icodetails.presaleBonu,
               presalePrice: icodetails.presalePrice,

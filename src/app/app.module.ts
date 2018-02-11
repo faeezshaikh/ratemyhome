@@ -14,12 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { DetailsPage } from '../pages/details/details';
-import { ContributePage } from '../pages/contribute/contribute';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 import {AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
+import { CustomizePlanPage } from '../pages/customize-plan/customize-plan';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -38,7 +38,7 @@ const firebaseConfig = {
     MyApp,
     ListPage,
     DetailsPage,
-    ContributePage,
+    CustomizePlanPage,
     MycontributionsPage,
     ContributionDetailsPage,
     LoginPage
@@ -57,7 +57,7 @@ const firebaseConfig = {
     MyApp,
     ListPage,
     DetailsPage,
-    ContributePage,
+    CustomizePlanPage,
     MycontributionsPage,
     ContributionDetailsPage,
     LoginPage

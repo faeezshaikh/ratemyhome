@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ContributePage } from './contribute';
+import { CustomizePlanPage } from '../customize-plan/customize-plan';
 
 @NgModule({
   declarations: [
-    ContributePage,
+    CustomizePlanPage,
   ],
   imports: [
-    IonicPageModule.forChild(ContributePage),
+    IonicPageModule.forChild(CustomizePlanPage),
   ],
 })
 export class ContributePageModule {}
