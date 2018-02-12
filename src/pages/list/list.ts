@@ -18,9 +18,12 @@ export class ListPage {
   mealSize:string = '4 oz at $9 per meal';
   selectedMealPlan:any;
   banner:string;
+  breakfastList:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     this.icoList = this.firebaseProvider.getIcoList();
+
+    this.breakfastList = this.firebaseProvider.getBreakfastList();
     this.selectedMealPlan = navParams.get('plan');
     if(this.selectedMealPlan == 2) {
       this.banner = 'Plan: 2 meals per day (14 | week)';
@@ -46,7 +49,7 @@ export class ListPage {
         modal.present();
       }
 
-  increment4oz(meal) {
+  increment4oz(meal,isBreakfast:boolean) {
     
     if(this.totalMeals == 14) { // This will change for 21 meals 
       return;
@@ -54,37 +57,42 @@ export class ListPage {
       meal.count4oz++;
       this.totalMeals++;
     }
+
+    this.firebaseProvider.updateItem(meal,isBreakfast);
   }
 
 
-  decrement4oz(meal) {
+  decrement4oz(meal,isBreakfast:boolean) {
     if(meal.count4oz > 0)  {
       meal.count4oz--; 
       this.totalMeals--;
+      this.firebaseProvider.updateItem(meal,isBreakfast);
     }
 
       if(meal.count4oz == 0) return
   }
 
 
-  increment8oz(meal) {
+  increment8oz(meal,isBreakfast:boolean) {
    
     if(this.totalMeals == 14) { // This will change for 21 meals 
       return;
     } else {
       meal.count8oz++;
       this.totalMeals++;
+      this.firebaseProvider.updateItem(meal,isBreakfast);
     }
   }
 
 
-  decrement8oz(meal) {
+  decrement8oz(meal,isBreakfast:boolean) {
     if(meal.count8oz > 0)  {
       meal.count8oz--; 
       this.totalMeals--;
+      this.firebaseProvider.updateItem(meal,isBreakfast);
     }
 
-      if(meal.count8oz == 0) return
+      if(meal.count8oz == 0) return;
   }
 
   public notify() {

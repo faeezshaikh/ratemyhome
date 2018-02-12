@@ -15,6 +15,10 @@ export class FirebaseProvider {
   getIcoList() {
     return this.afd.list('/mealList/');
   }
+
+  getBreakfastList() {
+    return this.afd.list('/breakfastList/');
+  }
   getMyContributions(id: number) {
     id = 1;
     return this.afd.list('/contributions/' + id + '/');
@@ -25,12 +29,20 @@ export class FirebaseProvider {
     return this.afd.object('/mealDetails/' + id + '/');
   }
 
-  updateIcodetails(icoDetailsId: any, status: string): void {
-    this.afd.object('/icoDetails/' + icoDetailsId)
-      .update({ status: status });
-    console.log('Update successful');
-
-  }
+  updateItem(item,isBreakfast) {
+    console.log('Updating for  ',item.$key);
+    let str:string;
+    if(!isBreakfast) {
+      str = '/mealList/';
+    } else {
+      str =  '/breakfastList/';
+    }
+    this.afd.object(str + item.$key)
+    .update({ count4oz: item.count4oz, count8oz: item.count8oz });
+  console.log('Update successful');
+  }  
+  
+  
   addItem(name) {
     this.afd.list('/shoppingItems/').push(name);
   }

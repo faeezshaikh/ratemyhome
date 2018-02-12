@@ -137,7 +137,7 @@
             <!-- <ion-grid> -->
                 <ion-row>
                 
-                  <ion-col col-2> <button ion-button outline (click)="decrement4oz(meal)">
+                  <ion-col col-2> <button ion-button outline (click)="decrement4oz(meal,false)">
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
@@ -146,13 +146,13 @@
                       <button ion-button >{{meal.count4oz}}</button>
                     <!-- </div> -->
                   </ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment4oz(meal)">
+                  <ion-col col-2> <button ion-button outline (click)="increment4oz(meal,false)">
                       <ion-icon name="add"></ion-icon>
                     </button>
                   </ion-col>
 
 
-                  <ion-col col-2> <button ion-button outline (click)="decrement8oz(meal)">
+                  <ion-col col-2> <button ion-button outline (click)="decrement8oz(meal,false)">
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
@@ -161,7 +161,7 @@
                         <button ion-button >{{meal.count8oz}}</button>
                       <!-- </div> -->
                     </ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment8oz(meal)">
+                  <ion-col col-2> <button ion-button outline (click)="increment8oz(meal,false)">
                       <ion-icon name="add"></ion-icon>
                     </button>
                   </ion-col>
@@ -185,38 +185,95 @@
 
 
           <ion-list *ngSwitchCase="'crowdsale'">
-          <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)">
-              <img style="width:100%;max-height:50%" src="{{ico.picUrl}}"/>
-              <ion-card-content>
-                <ion-card-title>
-                    {{ico.title}}
-                  </ion-card-title>
-                <p>
-                  {{ico.description | slice:0:200}} ...
-                </p>
-              </ion-card-content>
-              <ion-row no-padding>
-                  <ion-col>
-                    <button ion-button clear small color="danger" icon-start>
-                      <ion-icon name='star'></ion-icon>
-                      Favorite
-                    </button>
-                  </ion-col>
-                  <ion-col text-center>
-                    <button ion-button clear small color="danger" icon-start>
-                      <ion-icon name='musical-notes'></ion-icon>
-                      Listen
-                    </button>
-                  </ion-col>
-                  <ion-col text-right>
-                    <button ion-button clear small color="danger" icon-start>
-                      <ion-icon name='share-alt'></ion-icon>
-                      Share
-                    </button>
-                  </ion-col>
-                </ion-row>
-            
-            </ion-card>
+              <ion-card   *ngFor="let bf of breakfastList | async" >
+                  <img style="width:100%;max-height:50%" src="{{bf.img}}" (click)="itemTapped($event,bf)"/>
+                  <ion-card-content>
+                    <ion-card-title>
+                        {{bf.title}}
+                      </ion-card-title>
+                    <p (click)="itemTapped($event,meal)">
+                      {{bf.description | slice:0:100}} ...Read more
+                    </p>
+                  </ion-card-content>
+      
+                  <ion-row no-padding>
+                      <ion-col>
+                        <button ion-button clear small color="primary" icon-start>
+                          <ion-icon *ngFor="let i of [0,1,2]" name='star'></ion-icon><ion-icon name='star-half'></ion-icon>
+                          <!-- <img src="https://res.cloudinary.com/freshly/image/upload/badge_icon_soy_free.png" alt="Soy Free"> -->
+      
+                        </button>
+                      </ion-col>
+                      <ion-col text-center>
+                        <button ion-button clear small color="primary" icon-start>
+                          <ion-icon name="speedometer"></ion-icon>
+                          {{bf.cals}} calories
+                        </button>
+                      </ion-col>
+                      <ion-col text-right>
+                        <button ion-button clear small color="primary" icon-start>
+                           <ion-icon name="flame" style="color:red"></ion-icon>
+                           Hot
+                        </button>
+                      </ion-col>
+                    </ion-row>
+      
+      
+                    <ion-row>
+                        <ion-col col-1></ion-col>
+                        <ion-col col-4 class="sizeDish">4 oz dish</ion-col>
+                        <ion-col col-1></ion-col>
+                        <ion-col col-1></ion-col>
+                        <ion-col col-4 class="sizeDish">8 oz dish</ion-col>
+                        <ion-col col-1></ion-col>
+                      </ion-row>
+      
+                  <!-- <ion-grid> -->
+                      <ion-row>
+                      
+                        <ion-col col-2> <button ion-button outline (click)="decrement4oz(bf,true)">
+                            <ion-icon name="remove"></ion-icon>
+                          </button>
+                        </ion-col>
+                        <ion-col col-2>
+                          <!-- <div style="text-align:center"> -->
+                            <button ion-button >{{bf.count4oz}}</button>
+                          <!-- </div> -->
+                        </ion-col>
+                        <ion-col col-2> <button ion-button outline (click)="increment4oz(bf,true)">
+                            <ion-icon name="add"></ion-icon>
+                          </button>
+                        </ion-col>
+      
+      
+                        <ion-col col-2> <button ion-button outline (click)="decrement8oz(bf,true)">
+                            <ion-icon name="remove"></ion-icon>
+                          </button>
+                        </ion-col>
+                        <ion-col col-2>
+                            <!-- <div style="text-align:center"> -->
+                              <button ion-button >{{bf.count8oz}}</button>
+                            <!-- </div> -->
+                          </ion-col>
+                        <ion-col col-2> <button ion-button outline (click)="increment8oz(bf,true)">
+                            <ion-icon name="add"></ion-icon>
+                          </button>
+                        </ion-col>
+                      </ion-row>
+      
+                      <!-- <ion-item>
+                          <ion-label  style="    font-size: 1.4rem;
+                          color: #666;"> {{mealSize}}</ion-label>
+                          <ion-toggle color="energized" [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+                        </ion-item> -->
+      
+                      <!-- <button  ion-button block  (click)="openModal(itemDetails)">Add to Cart</button> -->
+                      
+                    <!-- </ion-grid> -->
+      
+               
+                
+                </ion-card>
           </ion-list>
     </div>
 
