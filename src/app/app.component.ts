@@ -16,7 +16,7 @@ import { PlansPage } from '../pages/plans/plans';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PlansPage;
+  rootPage: any = ListPage;
   name:string;
   email:string;
   pic:string;
