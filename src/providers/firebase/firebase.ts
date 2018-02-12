@@ -30,7 +30,7 @@ export class FirebaseProvider {
   }
 
   updateItem(item,isBreakfast) {
-    console.log('Updating for  ',item.$key);
+    // console.log('Updating for  ',item.$key);
     let str:string;
     if(!isBreakfast) {
       str = '/mealList/';
@@ -39,7 +39,7 @@ export class FirebaseProvider {
     }
     this.afd.object(str + item.$key)
     .update({ count4oz: item.count4oz, count8oz: item.count8oz });
-  console.log('Update successful');
+  // console.log('Update successful');
   }  
   
   
