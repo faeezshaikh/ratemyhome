@@ -38,19 +38,45 @@ export class ListPage {
         modal.present();
       }
 
-  increment(meal) {
-    meal.count++;
-    this.totalMeals++;
+  increment4oz(meal) {
+    
+    if(this.totalMeals == 14) { // This will change for 21 meals 
+      return;
+    } else {
+      meal.count4oz++;
+      this.totalMeals++;
+    }
   }
 
 
-  decrement(meal) {
-    if(meal.count > 0)  {
-      meal.count--; 
+  decrement4oz(meal) {
+    if(meal.count4oz > 0)  {
+      meal.count4oz--; 
       this.totalMeals--;
     }
 
-      if(meal.count == 0) return
+      if(meal.count4oz == 0) return
+  }
+
+
+  increment8oz(meal) {
+   
+    if(this.totalMeals == 14) { // This will change for 21 meals 
+      return;
+    } else {
+      meal.count8oz++;
+      this.totalMeals++;
+    }
+  }
+
+
+  decrement8oz(meal) {
+    if(meal.count8oz > 0)  {
+      meal.count8oz--; 
+      this.totalMeals--;
+    }
+
+      if(meal.count8oz == 0) return
   }
 
   public notify() {

@@ -15,6 +15,15 @@
             right: -3px;
             border-radius: 100%;
         }
+
+
+    .sizeDish {
+      text-align:center;
+      font-family: 'Learning Curve';
+      font-size: 1.5em;
+      font-weight: bold;
+      color: fuchsia;
+    }
 </style>
 
 
@@ -115,27 +124,53 @@
               </ion-row>
 
 
-            <!-- <ion-grid> -->
-                <ion-row>
-                    <ion-col col-1></ion-col>
-
-                  <ion-col col-2> <button ion-button outline (click)="decrement(meal)">
-                      <ion-icon name="remove"></ion-icon>
-                    </button>
-                  </ion-col>
-                  <ion-col col-6><div style="text-align:center"><button ion-button round>{{meal.count}}</button></div></ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment(meal)">
-                      <ion-icon name="add"></ion-icon>
-                    </button>
-                  </ion-col>
+              <ion-row>
+                  <ion-col col-1></ion-col>
+                  <ion-col col-4 class="sizeDish">4 oz dish</ion-col>
+                  <ion-col col-1></ion-col>
+                  <ion-col col-1></ion-col>
+                  <ion-col col-4 class="sizeDish">8 oz dish</ion-col>
                   <ion-col col-1></ion-col>
                 </ion-row>
 
-                <ion-item>
+            <!-- <ion-grid> -->
+                <ion-row>
+                
+                  <ion-col col-2> <button ion-button outline (click)="decrement4oz(meal)">
+                      <ion-icon name="remove"></ion-icon>
+                    </button>
+                  </ion-col>
+                  <ion-col col-2>
+                    <!-- <div style="text-align:center"> -->
+                      <button ion-button >{{meal.count4oz}}</button>
+                    <!-- </div> -->
+                  </ion-col>
+                  <ion-col col-2> <button ion-button outline (click)="increment4oz(meal)">
+                      <ion-icon name="add"></ion-icon>
+                    </button>
+                  </ion-col>
+
+
+                  <ion-col col-2> <button ion-button outline (click)="decrement8oz(meal)">
+                      <ion-icon name="remove"></ion-icon>
+                    </button>
+                  </ion-col>
+                  <ion-col col-2>
+                      <!-- <div style="text-align:center"> -->
+                        <button ion-button >{{meal.count8oz}}</button>
+                      <!-- </div> -->
+                    </ion-col>
+                  <ion-col col-2> <button ion-button outline (click)="increment8oz(meal)">
+                      <ion-icon name="add"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
+
+                <!-- <ion-item>
                     <ion-label  style="    font-size: 1.4rem;
                     color: #666;"> {{mealSize}}</ion-label>
                     <ion-toggle color="energized" [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
-                  </ion-item>
+                  </ion-item> -->
 
                 <!-- <button  ion-button block  (click)="openModal(itemDetails)">Add to Cart</button> -->
                 
