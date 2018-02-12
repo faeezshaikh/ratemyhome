@@ -14,7 +14,7 @@
 
 
 
-    <ion-card>
+    <ion-card (click)="itemTapped($event,2)">
         <img src="https://image.freepik.com/free-photo/various-mexican-food-on-dark-background_23-2147740705.jpg"/>
         <div class="card-title">2</div>
         <div class="card-subtitle">meals per week</div>
@@ -23,7 +23,7 @@
       </ion-card>
 
       <!-- https://image.shutterstock.com/z/avopix-446808109.jpg -->
-      <ion-card>
+      <ion-card (click)="itemTapped($event,3)">
           <img src="https://image.freepik.com/free-photo/various-mexican-food-on-dark-background_23-2147740705.jpg"/>
           <div class="card-title">3</div>
           <div class="card-subtitle">meals per week</div>

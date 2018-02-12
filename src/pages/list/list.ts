@@ -16,9 +16,17 @@ export class ListPage {
   totalMeals:number=0;
   isToggled:boolean = false;
   mealSize:string = '4 oz at $9 per meal';
+  selectedMealPlan:any;
+  banner:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     this.icoList = this.firebaseProvider.getIcoList();
+    this.selectedMealPlan = navParams.get('plan');
+    if(this.selectedMealPlan == 2) {
+      this.banner = 'Plan: 2 meals per day (14 | week)';
+    } else if (this.selectedMealPlan == 3) {
+      this.banner = 'Plan: 3 meals per day (21 | week)';
+    }
 
   }
 

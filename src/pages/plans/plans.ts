@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ListPage } from '../list/list';
 
 
 @IonicPage()
@@ -15,5 +16,12 @@ export class PlansPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlansPage');
   }
+
+  itemTapped(event, item) {
+    
+        this.navCtrl.push(ListPage, {
+          plan: item
+        });
+      }
 
 }

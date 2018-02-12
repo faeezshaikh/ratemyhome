@@ -16,7 +16,7 @@ import { PlansPage } from '../pages/plans/plans';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ListPage;
+  rootPage: any = PlansPage;
   name:string;
   email:string;
   pic:string;
@@ -29,7 +29,7 @@ export class MyApp {
 
     this.pages = [
       // { title: 'Create Pool', component: CreatePoolPage, icon:'fa fa-cart-plus' },
-      { title: 'Shop Meals', component: ListPage, icon:'fa fa-cart-plus' },
+      { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
       { title: 'My Profile', component: MycontributionsPage, icon:'fa fa-users' }
       // { title: 'Home', component: HomePage, icon:'fa fa-users' }
     ];
