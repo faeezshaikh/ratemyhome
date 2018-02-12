@@ -13,6 +13,7 @@ export class ListPage {
   icoList: FirebaseListObservable<any[]>;
   poolSegment:string = "presale";
   count:number = 0;
+  totalMeals:number=0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     this.icoList = this.firebaseProvider.getIcoList();
@@ -27,12 +28,19 @@ export class ListPage {
   }
 
   increment(meal) {
-    this.count++;
+    meal.count++;
+    this.totalMeals++;
   }
 
 
   decrement(meal) {
-    if(this.count > 0) 
-      this.count--; 
+    if(meal.count > 0)  {
+      meal.count--; 
+      this.totalMeals--;
+    }
+
+      if(meal.count == 0) return
+      // if(this.totalMeals>0)
+      //   this.totalMeals--;
   }
 }

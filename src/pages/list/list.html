@@ -30,7 +30,7 @@
     <ion-buttons end> 
     <button id="notification-button" ion-button >
         <ion-icon name="cart">
-          <ion-badge id="notifications-badge" >1</ion-badge>
+          <ion-badge id="notifications-badge" *ngIf="totalMeals>0" >{{totalMeals}}</ion-badge>
         </ion-icon>              
     </button>
 
@@ -121,7 +121,7 @@
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
-                  <ion-col col-6><div style="text-align:center"><button ion-button round>{{count}}</button></div></ion-col>
+                  <ion-col col-6><div style="text-align:center"><button ion-button round>{{meal.count}}</button></div></ion-col>
                   <ion-col col-2> <button ion-button outline (click)="increment(meal)">
                       <ion-icon name="add"></ion-icon>
                     </button>
