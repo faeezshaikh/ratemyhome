@@ -52,7 +52,7 @@
 
           <ion-card>
               <ion-card-content>
-                  Plan: 2 meals per day
+                  <div style="font-family: 'Learning Curve' !important; font-size:2em" color="primary">Plan: 2 meals per day</div>
               </ion-card-content>
             
             </ion-card>
@@ -79,55 +79,61 @@
     
         <ion-list *ngSwitchCase="'presale'">
         <!-- <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)"> -->
-            <ion-card   *ngFor="let ico of icoList | async" >
-            <img style="width:100%;max-height:50%" src="{{ico.img}}"/>
+            <ion-card   *ngFor="let meal of icoList | async" >
+            <img style="width:100%;max-height:50%" src="{{meal.img}}" (click)="itemTapped($event,meal)"/>
             <ion-card-content>
               <ion-card-title>
-                  {{ico.title}}
+                  {{meal.title}}
                 </ion-card-title>
-              <p>
-                {{ico.description | slice:0:200}} ...
+              <p (click)="itemTapped($event,meal)">
+                {{meal.description | slice:0:200}} ...
               </p>
             </ion-card-content>
-            <ion-grid>
+
+            <ion-row no-padding>
+                <ion-col>
+                  <button ion-button clear small color="primary" icon-start>
+                    <ion-icon *ngFor="let i of [0,1,2]" name='star'></ion-icon><ion-icon name='star-half'></ion-icon>
+                    <!-- <img src="https://res.cloudinary.com/freshly/image/upload/badge_icon_soy_free.png" alt="Soy Free"> -->
+
+                  </button>
+                </ion-col>
+                <ion-col text-center>
+                  <button ion-button clear small color="primary" icon-start>
+                    <ion-icon name="speedometer"></ion-icon>
+                    {{meal.cals}} calories
+                  </button>
+                </ion-col>
+                <ion-col text-right>
+                  <button ion-button clear small color="primary" icon-start>
+                     <ion-icon name="flame" style="color:red"></ion-icon>
+                     Hot
+                  </button>
+                </ion-col>
+              </ion-row>
+
+
+            <!-- <ion-grid> -->
                 <ion-row>
                     <ion-col col-1></ion-col>
 
-                  <ion-col col-2> <button ion-button outline >
+                  <ion-col col-2> <button ion-button outline (click)="decrement(meal)">
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
-                  <ion-col col-6><div style="text-align:center"><button ion-button round >5</button></div></ion-col>
-                  <ion-col col-2> <button ion-button outline >
+                  <ion-col col-6><div style="text-align:center"><button ion-button round>{{count}}</button></div></ion-col>
+                  <ion-col col-2> <button ion-button outline (click)="increment(meal)">
                       <ion-icon name="add"></ion-icon>
                     </button>
                   </ion-col>
                   <ion-col col-1></ion-col>
                 </ion-row>
-                
-              </ion-grid>
 
-            <ion-row no-padding>
-                <ion-col>
-                  <button ion-button clear small color="primary" icon-start>
-                    <ion-icon name='star'></ion-icon>
-                    Favorite
-                  </button>
-                </ion-col>
-                <ion-col text-center>
-                  <button ion-button clear small color="primary" icon-start>
-                    <ion-icon name="flame"></ion-icon>
-                    <ion-icon name="flame"></ion-icon>
-                    Hot
-                  </button>
-                </ion-col>
-                <ion-col text-right>
-                  <button ion-button clear small color="primary" icon-start>
-                    <ion-icon name='share-alt'></ion-icon>
-                    Share
-                  </button>
-                </ion-col>
-              </ion-row>
+                <button  ion-button block  (click)="openModal(itemDetails)">Add to Cart</button>
+                
+              <!-- </ion-grid> -->
+
+         
           
           </ion-card>
           </ion-list>

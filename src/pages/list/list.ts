@@ -12,7 +12,7 @@ import { DetailsPage } from '../details/details';
 export class ListPage {
   icoList: FirebaseListObservable<any[]>;
   poolSegment:string = "presale";
-
+  count:number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     this.icoList = this.firebaseProvider.getIcoList();
@@ -24,5 +24,15 @@ export class ListPage {
     this.navCtrl.push(DetailsPage, {
       item: item
     });
+  }
+
+  increment(meal) {
+    this.count++;
+  }
+
+
+  decrement(meal) {
+    if(this.count > 0) 
+      this.count--; 
   }
 }
