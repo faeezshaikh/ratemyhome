@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { DetailsPage } from '../details/details';
@@ -17,17 +17,26 @@ export class ListPage {
   isToggled:boolean = false;
   mealSize:string = '4 oz at $9 per meal';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     this.icoList = this.firebaseProvider.getIcoList();
 
   }
 
   itemTapped(event, item) {
 
-    this.navCtrl.push(DetailsPage, {
-      item: item
-    });
+    // this.navCtrl.push(DetailsPage, {
+    //   item: item
+    // });
+    this.openModal(item);
   }
+
+
+  openModal(item) {
+    
+        console.log("Item key for Opening modal ==> ", item.id);
+        let modal = this.modalCtrl.create(DetailsPage, { id:item.id});
+        modal.present();
+      }
 
   increment(meal) {
     meal.count++;

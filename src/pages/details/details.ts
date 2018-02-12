@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController,ViewController } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { CustomizePlanPage } from '../customize-plan/customize-plan';
@@ -16,11 +16,14 @@ export class DetailsPage {
   item:any;
   
   public icoDetails$: FirebaseObjectObservable<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,
             public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
-    this.item = this.navParams.get('item');
+    // this.item = this.navParams.get('item');
+    let id = this.navParams.get('id');
   
-    this.itemDetails$ = this.firebaseProvider.getItemDetails(this.item.id);
+    // this.itemDetails$ = this.firebaseProvider.getItemDetails(this.item.id);
+    this.itemDetails$ = this.firebaseProvider.getItemDetails(id);
+
     console.log("Ico Details ===> ", this.itemDetails$);
 
 
@@ -30,16 +33,20 @@ export class DetailsPage {
     console.log('ionViewDidLoad IcodetailsPage');
   }
 
-  openModal(icodetails) {
+  // openModal(icodetails) {
     
-        console.log("Ico details ==> ", icodetails);
-        let modal = this.modalCtrl.create(CustomizePlanPage, { icotitle: icodetails.title,
-               presaleMin: icodetails.presaleMinimum, 
-               presaleBonus: icodetails.presaleBonu,
-              presalePrice: icodetails.presalePrice,
-            status:icodetails.status,
-          id:icodetails.$key});
-        modal.present();
+  //       console.log("Ico details ==> ", icodetails);
+  //       let modal = this.modalCtrl.create(CustomizePlanPage, { icotitle: icodetails.title,
+  //              presaleMin: icodetails.presaleMinimum, 
+  //              presaleBonus: icodetails.presaleBonu,
+  //             presalePrice: icodetails.presalePrice,
+  //           status:icodetails.status,
+  //         id:icodetails.$key});
+  //       modal.present();
+  //     }
+
+      closeModal() {
+        this.viewCtrl.dismiss();
       }
 
 }
