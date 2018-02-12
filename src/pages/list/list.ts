@@ -14,6 +14,8 @@ export class ListPage {
   poolSegment:string = "presale";
   count:number = 0;
   totalMeals:number=0;
+  isToggled:boolean = false;
+  mealSize:string = '4 oz at $9 per meal';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     this.icoList = this.firebaseProvider.getIcoList();
@@ -40,7 +42,11 @@ export class ListPage {
     }
 
       if(meal.count == 0) return
-      // if(this.totalMeals>0)
-      //   this.totalMeals--;
+  }
+
+  public notify() {
+    console.log("Toggled: "+ this.isToggled); 
+    if(this.isToggled) this.mealSize = '8 oz at $12 per meal'; // Will change for 3 meals.
+    else this.mealSize = '4 oz at $9 per meal';
   }
 }

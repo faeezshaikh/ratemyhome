@@ -40,6 +40,14 @@
   </ion-navbar>
 
   <ion-toolbar no-border-top >
+      <ion-card>
+          <ion-card-content>
+              <div style="text-align:center; font-family: 'Learning Curve' !important; font-size:2em; font-weight:bold;" color="primary">Plan: 2 meals per day (14 | week)</div>
+          </ion-card-content>
+        
+        </ion-card>
+      </ion-toolbar>
+  <ion-toolbar no-border-top >
       <ion-segment [(ngModel)]="poolSegment" >
           <ion-segment-button value="presale">
             Entrees
@@ -48,17 +56,11 @@
               Breakfast
             </ion-segment-button>
         </ion-segment>
-
-
-          <ion-card>
-              <ion-card-content>
-                  <div style="font-family: 'Learning Curve' !important; font-size:2em" color="primary">Plan: 2 meals per day</div>
-              </ion-card-content>
-            
-            </ion-card>
-
-      
       </ion-toolbar>
+
+     
+      
+     
 </ion-header>
 <ion-content class="card-background-page">
 
@@ -86,7 +88,7 @@
                   {{meal.title}}
                 </ion-card-title>
               <p (click)="itemTapped($event,meal)">
-                {{meal.description | slice:0:200}} ...
+                {{meal.description | slice:0:100}} ...Read more
               </p>
             </ion-card-content>
 
@@ -128,6 +130,12 @@
                   </ion-col>
                   <ion-col col-1></ion-col>
                 </ion-row>
+
+                <ion-item>
+                    <ion-label  style="    font-size: 1.4rem;
+                    color: #666;"> {{mealSize}}</ion-label>
+                    <ion-toggle color="energized" [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+                  </ion-item>
 
                 <button  ion-button block  (click)="openModal(itemDetails)">Add to Cart</button>
                 
