@@ -137,7 +137,7 @@
             <!-- <ion-grid> -->
                 <ion-row>
                 
-                  <ion-col col-2> <button ion-button outline (click)="decrement4oz(meal,false)">
+                  <ion-col col-2> <button ion-button outline (click)="decrement(meal,false,false)">
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
@@ -146,13 +146,13 @@
                       <button ion-button >{{meal.count4oz}}</button>
                     <!-- </div> -->
                   </ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment4oz(meal,false)">
+                  <ion-col col-2> <button ion-button outline (click)="increment(meal,false,false)">
                       <ion-icon name="add"></ion-icon>
                     </button>
                   </ion-col>
 
 
-                  <ion-col col-2> <button ion-button outline (click)="decrement8oz(meal,false)">
+                  <ion-col col-2> <button ion-button outline (click)="decrement(meal,false,true)">
                       <ion-icon name="remove"></ion-icon>
                     </button>
                   </ion-col>
@@ -161,7 +161,7 @@
                         <button ion-button >{{meal.count8oz}}</button>
                       <!-- </div> -->
                     </ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment8oz(meal,false)">
+                  <ion-col col-2> <button ion-button outline (click)="increment(meal,false,true)">
                       <ion-icon name="add"></ion-icon>
                     </button>
                   </ion-col>
@@ -231,7 +231,7 @@
                   <!-- <ion-grid> -->
                       <ion-row>
                       
-                        <ion-col col-2> <button ion-button outline (click)="decrement4oz(bf,true)">
+                        <ion-col col-2> <button ion-button outline (click)="decrement(bf,true,false)">
                             <ion-icon name="remove"></ion-icon>
                           </button>
                         </ion-col>
@@ -240,13 +240,13 @@
                             <button ion-button >{{bf.count4oz}}</button>
                           <!-- </div> -->
                         </ion-col>
-                        <ion-col col-2> <button ion-button outline (click)="increment4oz(bf,true)">
+                        <ion-col col-2> <button ion-button outline (click)="increment(bf,true,false)">
                             <ion-icon name="add"></ion-icon>
                           </button>
                         </ion-col>
       
       
-                        <ion-col col-2> <button ion-button outline (click)="decrement8oz(bf,true)">
+                        <ion-col col-2> <button ion-button outline (click)="decrement(bf,true,true)">
                             <ion-icon name="remove"></ion-icon>
                           </button>
                         </ion-col>
@@ -255,7 +255,7 @@
                               <button ion-button >{{bf.count8oz}}</button>
                             <!-- </div> -->
                           </ion-col>
-                        <ion-col col-2> <button ion-button outline (click)="increment8oz(bf,true)">
+                        <ion-col col-2> <button ion-button outline (click)="increment(bf,true,true)">
                             <ion-icon name="add"></ion-icon>
                           </button>
                         </ion-col>

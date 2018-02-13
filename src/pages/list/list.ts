@@ -19,6 +19,15 @@ export class ListPage {
   selectedMealPlan:any;
   banner:string;
   breakfastList:any;
+  maxAllowedMeals:number;
+
+  order = {
+    currentTotal: 0,
+    maxAllowed: 0,
+    userId:'',
+    breakfasts: [],
+    entrees: [],
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     this.icoList = this.firebaseProvider.getIcoList();
@@ -27,8 +36,12 @@ export class ListPage {
     this.selectedMealPlan = navParams.get('plan');
     if(this.selectedMealPlan == 2) {
       this.banner = 'Plan: 2 meals per day (14 | week)';
+      this.maxAllowedMeals = 14;
+      this.order.maxAllowed = 14;
     } else if (this.selectedMealPlan == 3) {
       this.banner = 'Plan: 3 meals per day (21 | week)';
+      this.maxAllowedMeals = 21;
+      this.order.maxAllowed = 21;
     }
 
   }
@@ -49,51 +62,62 @@ export class ListPage {
         modal.present();
       }
 
-  increment4oz(meal,isBreakfast:boolean) {
+  increment(meal,isBreakfast:boolean,is8oz:boolean) {
     
-    if(this.totalMeals == 14) { // This will change for 21 meals 
+    if(this.totalMeals == this.maxAllowedMeals) { // This will change for 21 meals 
       return;
     } else {
-      meal.count4oz++;
+      is8oz ? meal.count8oz++ : meal.count4oz++;
       this.totalMeals++;
+      this.firebaseProvider.updateItem(meal,isBreakfast);
     }
-
-    this.firebaseProvider.updateItem(meal,isBreakfast);
   }
 
 
-  decrement4oz(meal,isBreakfast:boolean) {
-    if(meal.count4oz > 0)  {
-      meal.count4oz--; 
+  decrement(meal,isBreakfast:boolean,is8oz:boolean) {
+     let x ;
+     if(is8oz) {
+        x = meal.count8oz; 
+      } else { 
+        x = meal.count4oz;
+      }
+      
+    if(x > 0)  {
+      x--; 
       this.totalMeals--;
+      if(is8oz) {
+        meal.count8oz = x;
+      } else { 
+        meal.count4oz = x;
+      }
       this.firebaseProvider.updateItem(meal,isBreakfast);
     }
 
-      if(meal.count4oz == 0) return
+      if(x == 0) return
   }
 
 
-  increment8oz(meal,isBreakfast:boolean) {
+  // increment8oz(meal,isBreakfast:boolean) {
    
-    if(this.totalMeals == 14) { // This will change for 21 meals 
-      return;
-    } else {
-      meal.count8oz++;
-      this.totalMeals++;
-      this.firebaseProvider.updateItem(meal,isBreakfast);
-    }
-  }
+  //   if(this.totalMeals == this.maxAllowedMeals) { // This will change for 21 meals 
+  //     return;
+  //   } else {
+  //     meal.count8oz++;
+  //     this.totalMeals++;
+  //     this.firebaseProvider.updateItem(meal,isBreakfast);
+  //   }
+  // }
 
 
-  decrement8oz(meal,isBreakfast:boolean) {
-    if(meal.count8oz > 0)  {
-      meal.count8oz--; 
-      this.totalMeals--;
-      this.firebaseProvider.updateItem(meal,isBreakfast);
-    }
+  // decrement8oz(meal,isBreakfast:boolean) {
+  //   if(meal.count8oz > 0)  {
+  //     meal.count8oz--; 
+  //     this.totalMeals--;
+  //     this.firebaseProvider.updateItem(meal,isBreakfast);
+  //   }
 
-      if(meal.count8oz == 0) return;
-  }
+  //     if(meal.count8oz == 0) return;
+  // }
 
   public notify() {
     console.log("Toggled: "+ this.isToggled); 
