@@ -9,54 +9,74 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class FirebaseProvider {
 
+  openOrderId:any = null;
 
+  getOpenOrderId() {
+    return this.openOrderId;
+  }
+  setOpenOrderId(orderId) {
+    this.openOrderId = orderId;
+  }
 
   constructor(public afd: AngularFireDatabase, private afAuth : AngularFireAuth) { }
-  getIcoList() {
+  // getIcoList() {
+  //   return this.afd.list('/mealList/');
+  // }
+
+  getEntreesList() {
     return this.afd.list('/mealList/');
   }
 
   getBreakfastList() {
     return this.afd.list('/breakfastList/');
   }
-  getMyContributions(id: number) {
-    id = 1;
-    return this.afd.list('/contributions/' + id + '/');
-  }
+
 
   getItemDetails(id: number) {
     console.log('Fetching Details for: ', id);
     return this.afd.object('/mealDetails/' + id + '/');
   }
 
-  updateItem(item,isBreakfast) {
-    // console.log('Updating for  ',item.$key);
+  updateItem(item,isBreakfast,orderId) {
+    console.log('Updating for Item .... ',item);
+    // console.log('Updating for .... ',item.$key);
     let str:string;
     if(!isBreakfast) {
-      str = '/mealList/';
+      str = '/orders/' + orderId + '/entreesList/';
     } else {
-      str =  '/breakfastList/';
+      str =  '/orders/' + orderId + '/breakfastList/';
     }
+    console.log('Updating for .... ',str + item.$key);
     this.afd.object(str + item.$key)
-    .update({ count4oz: item.count4oz, count8oz: item.count8oz });
+    .update(item);
   // console.log('Update successful');
   }  
+
+  getEntree(orderId,mealId) {
+   return  this.afd.list('/orders/' + orderId + '/entreesList/',{
+      query: {
+        orderByChild:'id',
+        equalTo:mealId
+      }
+    });
+  }
   
   
-  addItem(name) {
-    this.afd.list('/shoppingItems/').push(name);
+ 
+  addOpenOrder(order) {
+    return this.afd.list('/orders/').push(order).key;
   }
 
+  getOrder(orderId) {
+    return this.afd.object('/orders/' + orderId + '/');
+  }
+
+  updateOrder(key,order){
+    console.log('Updating order with key:', key);
+    this.afd.list('/orders/').update(key,order);
+  }
   removeItem(id) {
     this.afd.list('/shoppingItems/').remove(id);
   }
 
-
-
- 
-
-  isUserLoggedin() {
-    // return this.isLoggedin;
-    // return firebase.auth().currentUser
-  }
 }

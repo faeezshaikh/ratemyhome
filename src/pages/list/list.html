@@ -52,7 +52,7 @@
       <ion-card>
           <ion-card-content>
               <div style="text-align:center; font-family: 'Learning Curve' !important; font-size:2em; font-weight:bold;" color="primary">{{banner}}</div>
-              <button *ngIf="totalMeals == 14" ion-button outline block>Checkout</button>
+              <button  ion-button outline block (click)="checkout()">Checkout</button>
           </ion-card-content>
         
         </ion-card>
@@ -91,7 +91,7 @@
     
         <ion-list *ngSwitchCase="'presale'">
         <!-- <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)"> -->
-            <ion-card   *ngFor="let meal of icoList | async" >
+            <ion-card   *ngFor="let meal of entreesList" >
             <img style="width:100%;max-height:50%" src="{{meal.img}}" (click)="itemTapped($event,meal)"/>
             <ion-card-content>
               <ion-card-title>
@@ -143,7 +143,7 @@
                   </ion-col>
                   <ion-col col-2>
                     <!-- <div style="text-align:center"> -->
-                      <button ion-button >{{meal.count4oz}}</button>
+                      <button    ion-button >{{meal.count4oz}}</button>
                     <!-- </div> -->
                   </ion-col>
                   <ion-col col-2> <button ion-button outline (click)="increment(meal,false,false)">
@@ -158,7 +158,7 @@
                   </ion-col>
                   <ion-col col-2>
                       <!-- <div style="text-align:center"> -->
-                        <button ion-button >{{meal.count8oz}}</button>
+                        <input  id="{{'meal8oz'+meal.id}}" >{{meal.count8oz}}
                       <!-- </div> -->
                     </ion-col>
                   <ion-col col-2> <button ion-button outline (click)="increment(meal,false,true)">
@@ -185,7 +185,7 @@
 
 
           <ion-list *ngSwitchCase="'crowdsale'">
-              <ion-card   *ngFor="let bf of breakfastList | async" >
+              <ion-card   *ngFor="let bf of breakfastList" >
                   <img style="width:100%;max-height:50%" src="{{bf.img}}" (click)="itemTapped($event,bf)"/>
                   <ion-card-content>
                     <ion-card-title>

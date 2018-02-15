@@ -16,7 +16,7 @@ export class MycontributionsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  public firebaseProvider: FirebaseProvider,
   private loginService: LoginProvider) {
-    this.mycontributions = this.firebaseProvider.getMyContributions(1);
+    // this.mycontributions = this.firebaseProvider.getMyContributions(1);
   }
 
   logoutOfFacebook() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListPage } from '../list/list';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 
 @IonicPage()
@@ -10,7 +11,43 @@ import { ListPage } from '../list/list';
 })
 export class PlansPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  order = {
+    userId: 'faeez',
+    maxallowed:0,
+    breakfastList:[],
+    entreesList:[]
+  };
+  orderKey:any;
+  entreesList:any;
+  breakfastList:any;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,public firebaseProvider: FirebaseProvider) {
+    
+    this.orderKey = this.firebaseProvider.getOpenOrderId();
+    if(this.orderKey == null) {
+      console.log('Open Order id was null..Creating new order');
+      this.orderKey = this.firebaseProvider.addOpenOrder(this.order);
+      this.firebaseProvider.setOpenOrderId(this.orderKey);
+  } else {
+    console.log('Found existing order..',this.orderKey);
+    
+  }
+
+    this.firebaseProvider.getEntreesList().subscribe(res => {
+      this.entreesList = res;
+      this.order.entreesList = this.entreesList;
+      this.firebaseProvider.updateOrder(this.orderKey,this.order);
+      console.log('Got Entrees list',this.entreesList);
+    });
+
+    this.firebaseProvider.getBreakfastList().subscribe(res => {
+      this.breakfastList = res;
+      this.order.breakfastList = this.breakfastList;
+      this.firebaseProvider.updateOrder(this.orderKey,this.order);
+      console.log('Got breakfastList list',this.breakfastList);
+    });
+
+  
   }
 
   ionViewDidLoad() {
@@ -18,9 +55,13 @@ export class PlansPage {
   }
 
   itemTapped(event, item) {
-    
-        this.navCtrl.push(ListPage, {
-          plan: item
+       
+    this.order.maxallowed = (item == 2) ? 14 : 21 ;
+    this.firebaseProvider.updateOrder(this.orderKey,this.order);
+    this.navCtrl.push(ListPage, {
+          plan: item,
+          orderKey: this.orderKey,
+          order: this.order //kinda redundant
         });
       }
 
