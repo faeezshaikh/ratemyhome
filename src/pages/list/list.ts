@@ -19,6 +19,7 @@ export class ListPage {
   poolSegment:string = "presale";
   orderId:any;
   order:any = {};
+  warning = '' ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
 
@@ -36,6 +37,9 @@ export class ListPage {
     } else if (selectedMealPlan == 3) {
       this.banner = 'Plan: 3 meals per day (21 | week)';
       this.maxAllowedMeals = 21;
+    }
+    if(this.order.totalMeals > this.maxAllowedMeals) {
+      this.warning = "Please remove items from cart.";
     }
   }
 
@@ -82,6 +86,13 @@ export class ListPage {
 
 
   decrement(meal,isBreakfast:boolean,is8oz:boolean) {
+    // if(this.order.totalMeals == this.maxAllowedMeals) {
+    //   this.warning = "";
+    // }
+    // if(this.order.totalMeals <= this.maxAllowedMeals) {
+    //   this.warning = "";
+    // }
+    
      let x ;
      if(is8oz) {
         x = meal.count8oz; 
@@ -107,7 +118,7 @@ export class ListPage {
      });
     }
 
-      if(x == 0) return
+      if(x == 0) return;
   }
 
 
