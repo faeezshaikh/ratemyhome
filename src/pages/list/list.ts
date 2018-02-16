@@ -52,6 +52,7 @@ export class ListPage {
 
   checkout() {
     console.log('Checking out');
+    this.showCart();
     
   }
 
