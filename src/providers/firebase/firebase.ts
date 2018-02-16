@@ -45,7 +45,7 @@ export class FirebaseProvider {
     } else {
       str =  '/orders/' + orderId + '/breakfastList/';
     }
-    console.log('Updating for .... ',str + item.$key);
+    // console.log('Updating for .... ',str + item.$key);
     this.afd.object(str + item.$key)
     .update(item);
   }  

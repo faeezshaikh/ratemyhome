@@ -21,14 +21,14 @@ export class CartPage {
     console.log('Got orderId..', this.orderId);
 
     let res = this.firebaseProvider.getCartItems(this.orderId).subscribe(res => {
-      console.log("Results ===>" ,res);
+      // console.log("Results ===>" ,res);
       this.cartItems = res;
 
       this.firebaseProvider.getCartItemsBreakfast(this.orderId).subscribe(results => {
         results.forEach(item => {
           this.cartItems.push(item);
         })
-        console.log('Final Cart items', this.cartItems);
+        // console.log('Final Cart items', this.cartItems);
         
       });
     });
