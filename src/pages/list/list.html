@@ -39,7 +39,7 @@
     <ion-buttons end> 
     <button id="notification-button" ion-button >
         <ion-icon name="cart">
-          <ion-badge id="notifications-badge" *ngIf="totalMeals>0" >{{totalMeals}}</ion-badge>
+          <ion-badge id="notifications-badge" *ngIf="order.totalMeals>0" >{{order.totalMeals}}</ion-badge>
         </ion-icon>              
     </button>
 
@@ -52,7 +52,7 @@
       <ion-card>
           <ion-card-content>
               <div style="text-align:center; font-family: 'Learning Curve' !important; font-size:2em; font-weight:bold;" color="primary">{{banner}}</div>
-              <button  ion-button outline block (click)="checkout()">Checkout</button>
+              <button  *ngIf="order.totalMeals == maxAllowedMeals" ion-button outline block (click)="checkout()">Checkout</button>
           </ion-card-content>
         
         </ion-card>
@@ -134,22 +134,22 @@
                   <ion-col col-1></ion-col>
                 </ion-row>
 
-            <!-- <ion-grid> -->
+            <ion-grid>
                 <ion-row>
-                
-                  <ion-col col-2> <button ion-button outline (click)="decrement(meal,false,false)">
-                      <ion-icon name="remove"></ion-icon>
-                    </button>
-                  </ion-col>
-                  <ion-col col-2>
-                    <!-- <div style="text-align:center"> -->
-                      <button  ion-button >{{meal.count4oz}}</button>
-                    <!-- </div> -->
-                  </ion-col>
-                  <ion-col col-2> <button ion-button outline (click)="increment(meal,false,false)">
-                      <ion-icon name="add"></ion-icon>
-                    </button>
-                  </ion-col>
+                      <ion-col col-2> <button ion-button outline (click)="decrement(meal,false,false)">
+                          <ion-icon name="remove"></ion-icon>
+                        </button>
+                      </ion-col>
+                      <ion-col col-2>
+                        <div style="text-align:center">
+                          <button  ion-button  >{{meal.count4oz}}</button>
+                        </div>
+                      </ion-col>
+                      <ion-col col-2> <button ion-button outline (click)="increment(meal,false,false)">
+                          <ion-icon name="add"></ion-icon>
+                        </button>
+                      </ion-col>
+
 
 
                   <ion-col col-2> <button ion-button outline (click)="decrement(meal,false,true)">
@@ -157,9 +157,9 @@
                     </button>
                   </ion-col>
                   <ion-col col-2>
-                      <!-- <div style="text-align:center"> -->
-                          <button  ion-button >{{meal.count8oz}}</button>
-                      <!-- </div> -->
+                      <div style="text-align:center">
+                          <button  ion-button>{{meal.count8oz}}</button>
+                      </div>
                     </ion-col>
                   <ion-col col-2> <button ion-button outline (click)="increment(meal,false,true)">
                       <ion-icon name="add"></ion-icon>
@@ -175,7 +175,7 @@
 
                 <!-- <button  ion-button block  (click)="openModal(itemDetails)">Add to Cart</button> -->
                 
-              <!-- </ion-grid> -->
+              </ion-grid>
 
          
           

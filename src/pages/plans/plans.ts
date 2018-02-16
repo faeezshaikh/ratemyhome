@@ -15,7 +15,8 @@ export class PlansPage {
     userId: 'faeez',
     maxallowed:0,
     breakfastList:[],
-    entreesList:[]
+    entreesList:[],
+    totalMeals:0
   };
   orderKey:any;
   entreesList:any;
