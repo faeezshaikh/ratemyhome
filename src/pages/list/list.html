@@ -37,7 +37,7 @@
     <ion-title>Meals</ion-title>
 
     <ion-buttons end> 
-    <button id="notification-button" ion-button >
+    <button id="notification-button" ion-button (click)="showCart()">
         <ion-icon name="cart">
           <ion-badge id="notifications-badge" *ngIf="order.totalMeals>0" >{{order.totalMeals}}</ion-badge>
         </ion-icon>              

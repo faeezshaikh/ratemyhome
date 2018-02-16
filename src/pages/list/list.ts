@@ -4,6 +4,7 @@ import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { DetailsPage } from '../details/details';
 import * as firebase from 'firebase/app';
+import { CartPage } from '../cart/cart';
  
 
 @Component({
@@ -122,5 +123,8 @@ export class ListPage {
   }
 
 
+  showCart(){
+    this.navCtrl.push(CartPage, {order: this.order,orderId:this.orderId});
+  }
 
 }

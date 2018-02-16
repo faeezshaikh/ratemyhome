@@ -21,6 +21,7 @@ import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
 import { CustomizePlanPage } from '../pages/customize-plan/customize-plan';
 import { PlansPage } from '../pages/plans/plans';
+import { CartPage } from '../pages/cart/cart';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -43,7 +44,8 @@ const firebaseConfig = {
     MycontributionsPage,
     ContributionDetailsPage,
     LoginPage,
-    PlansPage
+    PlansPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ const firebaseConfig = {
     MycontributionsPage,
     ContributionDetailsPage,
     LoginPage,
-    PlansPage
+    PlansPage,
+    CartPage
   ],
   providers: [
     StatusBar,
