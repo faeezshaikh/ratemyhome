@@ -59,7 +59,7 @@
         </ion-card>
       </ion-toolbar>
   <ion-toolbar no-border-top >
-      <ion-segment [(ngModel)]="poolSegment" >
+      <ion-segment [(ngModel)]="poolSegment" (click)="scrollToTop()">
           <ion-segment-button value="presale">
             Entrees
           </ion-segment-button>

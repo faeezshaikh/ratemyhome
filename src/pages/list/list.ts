@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { NavController, NavParams, ModalController, Content } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { DetailsPage } from '../details/details';
 import * as firebase from 'firebase/app';
 import { CartPage } from '../cart/cart';
+// import {Content } ;
  
 
 @Component({
@@ -21,6 +22,7 @@ export class ListPage {
   orderId:any;
   order:any = {};
   warning = '' ;
+  @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
 
@@ -42,6 +44,10 @@ export class ListPage {
     if(this.order.totalMeals > this.maxAllowedMeals) {
       this.warning = "Please remove items from cart.";
     }
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop();
   }
 
   checkout() {
