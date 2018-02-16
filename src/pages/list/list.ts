@@ -50,10 +50,6 @@ export class ListPage {
   }
 
   itemTapped(event, item) {
-
-    // this.navCtrl.push(DetailsPage, {
-    //   item: item
-    // });
     this.openModal(item);
   }
 
@@ -66,8 +62,6 @@ export class ListPage {
       }
 
   increment(meal,isBreakfast:boolean,is8oz:boolean) {
-
-    
     if(this.order.totalMeals >= this.maxAllowedMeals) { // This will change for 21 meals 
       return;
     } else {
@@ -75,11 +69,14 @@ export class ListPage {
       this.order.totalMeals++;
       this.firebaseProvider.updateOrder(this.orderId,this.order);
       let fbMeal;
-       this.firebaseProvider.getEntree(this.orderId,meal.id).subscribe(res => {
+       this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
         fbMeal =res[0];
         fbMeal.count4oz = meal.count4oz;
         fbMeal.count8oz = meal.count8oz;
-        // fbMeal.totalMeals = meal.totalMeals;
+
+        if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
+        if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
+
         this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
       });
     }
@@ -87,12 +84,7 @@ export class ListPage {
 
 
   decrement(meal,isBreakfast:boolean,is8oz:boolean) {
-    // if(this.order.totalMeals == this.maxAllowedMeals) {
-    //   this.warning = "";
-    // }
-    // if(this.order.totalMeals <= this.maxAllowedMeals) {
-    //   this.warning = "";
-    // }
+   
     
      let x ;
      if(is8oz) {
@@ -111,10 +103,12 @@ export class ListPage {
         meal.count4oz = x;
       }
       let fbMeal;
-      this.firebaseProvider.getEntree(this.orderId,meal.id).subscribe(res => {
+      this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
        fbMeal =res[0];
        fbMeal.count4oz = meal.count4oz;
        fbMeal.count8oz = meal.count8oz;
+       if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
+       if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
        this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
      });
     }

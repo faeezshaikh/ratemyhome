@@ -5,11 +5,15 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import {AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Rx';
+import * as _ from 'lodash';
 
 @Injectable()
 export class FirebaseProvider {
 
   openOrderId:any = null;
+   /// Active filter rules
+   filters = {}
+   cartItems:any;
 
   getOpenOrderId() {
     return this.openOrderId;
@@ -19,10 +23,7 @@ export class FirebaseProvider {
   }
 
   constructor(public afd: AngularFireDatabase, private afAuth : AngularFireAuth) { }
-  // getIcoList() {
-  //   return this.afd.list('/mealList/');
-  // }
-
+ 
   getEntreesList() {
     return this.afd.list('/mealList/');
   }
@@ -49,73 +50,52 @@ export class FirebaseProvider {
     .update(item);
   }  
 
-  getEntree(orderId,mealId) {
-   return  this.afd.list('/orders/' + orderId + '/entreesList/',{
-      query: {
-        orderByChild:'id',
-        equalTo:mealId
-      }
-    });
-  }
-  
-  getAll4ozEntreesMoreThanZero(orderId) {
-    return  this.afd.list('/orders/' + orderId + '/entreesList/',{
-      query: {
-        orderByChild:'count4oz',
-        startAt:1
-      }
-    });
-  }
-  
-  getAll8ozEntreesMoreThanZero(orderId) {
-    return  this.afd.list('/orders/' + orderId + '/entreesList/',{
-      query: {
-        orderByChild:'count8oz',
-        startAt:1
-      }
-    });
-  }
-  getAll4ozBreakfastsMoreThanZero(orderId) {
-    return  this.afd.list('/orders/' + orderId + '/breakfastList/',{
-      query: {
-        orderByChild:'count4oz',
-        startAt:1
-      }
-    });
-  }
-  
-  getAll8ozBreakfastsMoreThanZero(orderId) {
-    return  this.afd.list('/orders/' + orderId + '/breakfastList/',{
-      query: {
-        orderByChild:'count8oz',
-        startAt:1
-      }
-    });
-  }
+ 
 
+  getPath(isBreakfast,orderId) {
+    let str;
+    if(!isBreakfast) {
+      str = '/orders/' + orderId + '/entreesList/';
+    } else {
+      str =  '/orders/' + orderId + '/breakfastList/';
+    }
+    return str;
+  }
+  getItem(orderId,mealId,isBreakfast) {
+   let str = this.getPath(isBreakfast,orderId);
+    return  this.afd.list(str,{
+       query: {
+         orderByChild:'id',
+         equalTo:mealId
+       }
+     });
+   }
+  
+
+  // See documentation : https://angularfirebase.com/lessons/multi-property-data-filtering-with-firebase-and-angular-4/
   getCartItems(orderId) {
     console.log('Called Get Cart Items');
-    
-    return Observable.forkJoin([
-      // this.getAll8ozBreakfastsMoreThanZero(orderId),
-      // this.getAll4ozBreakfastsMoreThanZero(orderId),
-      this.getAll8ozEntreesMoreThanZero(orderId),
-      this.getAll4ozBreakfastsMoreThanZero(orderId)
-    ])
-    .map((data: any[]) => {
-      let list1: any[] = data[0];
-      let list2: any[] = data[1];
-      // let list3: any[] = data[2];
-      // let list4: any[] = data[3];
-      list1.push(list2);
-      // list1.push(list3);
-      // list1.push(list4);
-      console.log('Returning List...',list1);
-      return list1;
+ 
+    return this.afd.list('/orders/' + orderId + '/entreesList/', {
+      query: {
+        orderByChild: 'inCart',
+        equalTo: true
+      }
     });
-
    
   }
+
+  getCartItemsBreakfast(orderId){
+    console.log('Called Get Cart Items Breakfast');
+    return this.afd.list('/orders/' + orderId + '/breakfastList/', {
+      query: {
+        orderByChild: 'inCart',
+        equalTo: true
+      }
+    });
+  }
+
+
  
   addOpenOrder(order) {
     return this.afd.list('/orders/').push(order).key;
