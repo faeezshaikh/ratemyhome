@@ -18,19 +18,22 @@ export class CartPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
     // this.order = navParams.get('order');
     this.orderId = navParams.get('orderId');
-    this.order = this.firebaseProvider.getOrder(this.orderId);
-    
-    console.log('Got order..', this.order);
-    console.log('Got orderId..', this.orderId);
-
-    console.log('Max allowed:',this.order.maxAllowedMeals );
-    console.log('Total:',this.order.totalMeals);
-    
-    if(this.order.maxAllowedMeals == this.order.totalMeals) {
-      this.readyToCheckout = true;
-      console.log("Flag:" ,this.readyToCheckout);
+    this.order = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
+      this.order = res;
+      console.log('Got order..', this.order);
+      console.log('Got orderId..', this.orderId);
+  
+      console.log('Max allowed:',this.order.maxallowed );
+      console.log('Total:',this.order.totalMeals);
       
-    }
+      if(this.order.maxallowed == this.order.totalMeals) {
+        this.readyToCheckout = true;
+        console.log("Flag:" ,this.readyToCheckout);
+        
+      }
+    });
+
+  
 
     let res = this.firebaseProvider.getCartItems(this.orderId).subscribe(res => {
       // console.log("Results ===>" ,res);
