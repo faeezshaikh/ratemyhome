@@ -3,10 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { ListPage } from '../pages/list/list';
+// import { ListPage } from '../pages/list/list';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { LoginPage } from '../pages/login/login';
-import { FirebaseProvider } from '../providers/firebase/firebase';
+// import { FirebaseProvider } from '../providers/firebase/firebase';
 import * as firebase from 'firebase/app';
 import { PlansPage } from '../pages/plans/plans';
 
@@ -23,7 +23,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any,icon:string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private fb: FirebaseProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
   
 

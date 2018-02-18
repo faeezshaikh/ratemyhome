@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
-import {AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import {Observable} from 'rxjs/Rx';
-import * as _ from 'lodash';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+// import {AngularFireAuth } from 'angularfire2/auth';
+// import * as firebase from 'firebase/app';
+// import {Observable} from 'rxjs/Rx';
+// import * as _ from 'lodash';
 
 @Injectable()
 export class FirebaseProvider {
@@ -22,7 +22,7 @@ export class FirebaseProvider {
     this.openOrderId = orderId;
   }
 
-  constructor(public afd: AngularFireDatabase, private afAuth : AngularFireAuth) { }
+  constructor(public afd: AngularFireDatabase) { }
  
   getEntreesList() {
     return this.afd.list('/mealList/');

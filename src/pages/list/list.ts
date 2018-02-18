@@ -1,9 +1,9 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams, ModalController, Content } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database-deprecated';
+// import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { DetailsPage } from '../details/details';
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 import { CartPage } from '../cart/cart';
 // import {Content } ;
  
@@ -26,7 +26,7 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
 
-    let key;
+    // let key;
     let selectedMealPlan = navParams.get('plan');
     this.orderId = navParams.get('orderKey');
     this.order = navParams.get('order');

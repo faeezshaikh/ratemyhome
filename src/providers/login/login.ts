@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 
 import {AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { FirebaseProvider } from '../../providers/firebase/firebase';
+// import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 
 @Injectable()
 export class LoginProvider {
 
-  constructor(public http: HttpClient,private afAuth : AngularFireAuth,private fbService: FirebaseProvider) {
+  constructor(public http: HttpClient,private afAuth : AngularFireAuth) {
     console.log('Hello LoginProvider Provider');
   }
 

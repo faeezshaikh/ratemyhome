@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-import {AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+// import {AngularFireAuth } from 'angularfire2/auth';
+// import * as firebase from 'firebase/app';
 // import { ListPage } from '../list/list';
-import { FirebaseProvider } from '../../providers/firebase/firebase';
+// import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { LoginProvider } from '../../providers/login/login';
 import { PlansPage } from '../plans/plans';
 
@@ -17,9 +17,11 @@ import { PlansPage } from '../plans/plans';
 export class LoginPage {
 
   rootPage: any = PlansPage; // This is overriden by the rootPage in app.component.ts
+  toastMsg:any;
  
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast:ToastController,
-    private afAuth : AngularFireAuth,private fbService: FirebaseProvider,private login: LoginProvider) {
+    private login: LoginProvider) {
+      this.toastMsg = this.toast;
   }
 
   ionViewDidLoad() {
@@ -27,11 +29,12 @@ export class LoginPage {
   }
 
   loginWithFacebook() {
+    let that = this;
     this.login.loginWithFacebook().then(res => {
       this.navCtrl.setRoot(this.rootPage);
     }).catch(function(error) {
       console.log("Error with Facebook:" ,error.message);
-      this.toast(error.message,7000);
+      that.toastMsg(error.message,7000);
     });;
   }
 
@@ -41,11 +44,12 @@ export class LoginPage {
   }
 
   loginWithGoogle() {
+    let that = this;
     this.login.loginWithGoogle().then(res => {
       this.navCtrl.setRoot(this.rootPage);
     }).catch(function(error) {
       console.log("Error with Google:" ,error.message);
-      this.toast(error.message,7000);
+      that.toastMsg(error.message,7000);
     });;
   }
   loginWithTwitter() {
@@ -55,7 +59,7 @@ export class LoginPage {
       this.navCtrl.setRoot(this.rootPage);
     }).catch(function(error) {
       console.log("Error with Twitter:" ,error.message);
-      this.toast(error.message,7000);
+      that.toastMsg(error.message,7000);
     });
   }
 
