@@ -20,5 +20,5 @@
     </ion-item>
   </ion-list>
 
-  <button *ngIf="readyToCheckout == true"  ion-button outline block >Checkout</button>
+  <button *ngIf="readyToCheckout == true"  ion-button outline block (click)="checkout()">Checkout</button>
 </ion-content>

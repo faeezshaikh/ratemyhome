@@ -22,6 +22,8 @@ import { LoginProvider } from '../providers/login/login';
 import { CustomizePlanPage } from '../pages/customize-plan/customize-plan';
 import { PlansPage } from '../pages/plans/plans';
 import { CartPage } from '../pages/cart/cart';
+import { Stripe } from '@ionic-native/stripe';
+import { CheckoutPage } from '../pages/checkout/checkout';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -45,7 +47,8 @@ const firebaseConfig = {
     ContributionDetailsPage,
     LoginPage,
     PlansPage,
-    CartPage
+    CartPage,
+    CheckoutPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ const firebaseConfig = {
     ContributionDetailsPage,
     LoginPage,
     PlansPage,
-    CartPage
+    CartPage,
+    CheckoutPage
   ],
   providers: [
     StatusBar,
@@ -74,7 +78,8 @@ const firebaseConfig = {
     FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    LoginProvider
+    LoginProvider,
+    Stripe
   ]
 })
 export class AppModule {}

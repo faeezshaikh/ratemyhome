@@ -55,7 +55,6 @@ export class LoginPage {
       this.navCtrl.setRoot(this.rootPage);
     }).catch(function(error) {
       console.log("Error with Twitter:" ,error.message);
-      
       this.toast(error.message,7000);
     });
   }

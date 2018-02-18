@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import {Observable} from 'rxjs/Rx';
+import { CheckoutPage } from '../checkout/checkout';
 
 
 @IonicPage()
@@ -53,6 +54,11 @@ export class CartPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
+  }
+  checkout() {
+    console.log('Opening checkout');
+    this.navCtrl.push(CheckoutPage);
+    
   }
 
 }

@@ -18,3 +18,6 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore awsArch-key.key
 
 C:\Users\FSHAI\AppData\Local\Android\android-sdk\build-tools\23.0.1\zipalign -v 4 android-release-unsigned.apk AWS-Certified-Arch.apk
 /Users/faeezshaikh/Library/Android/sdk/build-tools/27.0.0/zipalign -v 4 app-release-unsigned.apk FineBites.apk
+
+
+sudo chmod -R a+rw ios/
