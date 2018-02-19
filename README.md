@@ -21,3 +21,8 @@ C:\Users\FSHAI\AppData\Local\Android\android-sdk\build-tools\23.0.1\zipalign -v 
 
 
 sudo chmod -R a+rw ios/
+
+For Google 403 Error: Disallowed_Useragent added 
+<preference name="OverrideUserAgent" value="Mozilla/5.0 Google" />
+
+https://javebratt.com/ionic-social-login-firebase/

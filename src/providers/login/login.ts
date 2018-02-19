@@ -15,17 +15,31 @@ export class LoginProvider {
 
   loginWithFacebook() {
     console.log('Login with FB called');
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
   }
 
   loginWithTwitter() {
     console.log('Login with Twitter called');
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    return this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
   }
 
   loginWithGoogle() {
     console.log('Login with Google called');
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    // const provider = new firebase.auth.GoogleAuthProvider();
+    // return  firebase.auth().signInWithRedirect(provider).then( () => {
+    //   firebase.auth().getRedirectResult().then( result => {
+    //     // This gives you a Google Access Token.
+    //     // You can use it to access the Google API.
+    //     var token = result.credential.accessToken;
+    //     // The signed-in user info.
+    //     var user = result.user;
+    //     console.log(token, user);
+    //   }).catch(function(error) {
+    //     // Handle Errors here.
+    //     console.log(error.message);
+    //   });
+    // });
   }
 
   logoutOfFacebook() {

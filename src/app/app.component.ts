@@ -61,6 +61,33 @@ export class MyApp {
           that.nav.setRoot(LoginPage);
         }
       });
+
+
+      // firebase.auth().getRedirectResult().then(function(result) {
+      //   if (result.credential) {
+      //     var token = result.credential.accessToken;
+      //     var user = result.user;
+      //     console.log(token, user);
+
+      //     that.nav.setRoot(that.rootPage);
+      //     console.log('Found user logged in. User details :' ,user);
+      //     that.name = user.displayName;
+      //     that.email = user.email;
+      //     that.pic = user.photoURL;
+
+      //   }
+      // }).catch(function(error) {
+      //   // Handle Errors here.
+      //   var errorMessage = error.message;
+      //   console.log(errorMessage);
+      //    // No user is signed in.
+      //    that.nav.setRoot(LoginPage);
+      // });
+
+
+
+
+
     });
   }
 

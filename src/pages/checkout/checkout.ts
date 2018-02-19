@@ -29,10 +29,12 @@ export class CheckoutPage {
     this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
     this.stripe.createCardToken(this.cardinfo).then((token) => {
       console.log('Received Token from Stripe:', token);
+      console.log('JSON Version: Received Token from Stripe:', JSON.stringify(token));
       
       var data = 'stripetoken=' + token + '&amount=50';
       var headers = new Headers();
-      headers.append('Conent-Type', 'application/x-www-form-urlencoded');
+      // headers.append('Conent-Type', 'application/x-www-form-urlencoded');
+      headers.append('Conent-Type', 'application/json');
       this.http.post('http://localhost:3333/processpay', data, { headers: headers }).subscribe((res) => {
         if (res.json().success)
         alert('transaction Successfull!!')  
