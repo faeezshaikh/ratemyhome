@@ -33,12 +33,12 @@
      
     </ion-item>
     <ion-item  *ngIf="cartItems?.length!=0" >
-      <p style="text-align:right;">4oz ($9 per item)  x 7 = $63</p>
-      <p style="text-align:right;">8oz ($12 per item) x 7 = $84</p>
+      <p style="text-align:right;">4oz ($9 per item)  x {{noOf4ozItems}} = ${{product4oz}}</p>
+      <p style="text-align:right;">8oz ($12 per item) x {{noOf8ozItems}} = ${{product8oz}}</p>
     </ion-item>
     <ion-list-header *ngIf="cartItems?.length!=0" >
         Total:
-        <p item-end> $147</p>
+        <p item-end> ${{totalAmount}}</p>
       </ion-list-header>
 
       <ion-list-header *ngIf="cartItems?.length==0" style="text-align:center;">
