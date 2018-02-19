@@ -42,6 +42,7 @@ export class CartPage {
 
       this.firebaseProvider.getCartItemsBreakfast(this.orderId).subscribe(results => {
         results.forEach(item => {
+          item.bfast = true;
           this.cartItems.push(item);
         })
         // console.log('Final Cart items', this.cartItems);

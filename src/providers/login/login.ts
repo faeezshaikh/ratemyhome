@@ -8,24 +8,40 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LoginProvider {
-
+  isApp = (!document.URL.startsWith("http") || document.URL.startsWith("http://localhost:8080"));
+  // https://forum.ionicframework.com/t/how-to-determine-if-browser-or-app/89149/15
   constructor(public http: HttpClient,private afAuth : AngularFireAuth) {
     console.log('Hello LoginProvider Provider');
   }
 
   loginWithFacebook() {
     console.log('Login with FB called');
-    return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+   // return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+
+   if(this.isApp) 
+   return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+  else 
+  return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+
   }
 
   loginWithTwitter() {
     console.log('Login with Twitter called');
-    return this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
+    if(this.isApp) 
+      return this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
+     else 
+     return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
 
   loginWithGoogle() {
     console.log('Login with Google called');
+    // return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+
+    if(this.isApp) 
     return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+   else 
+   return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
     // const provider = new firebase.auth.GoogleAuthProvider();
     // return  firebase.auth().signInWithRedirect(provider).then( () => {
     //   firebase.auth().getRedirectResult().then( result => {
