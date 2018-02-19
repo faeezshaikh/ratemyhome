@@ -21,15 +21,15 @@ export class CartPage {
     this.orderId = navParams.get('orderId');
     this.order = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
       this.order = res;
-      console.log('Got order..', this.order);
-      console.log('Got orderId..', this.orderId);
+      // console.log('Got order..', this.order);
+      // console.log('Got orderId..', this.orderId);
   
-      console.log('Max allowed:',this.order.maxallowed );
-      console.log('Total:',this.order.totalMeals);
+      // console.log('Max allowed:',this.order.maxallowed );
+      // console.log('Total:',this.order.totalMeals);
       
       if(this.order.maxallowed == this.order.totalMeals) {
         this.readyToCheckout = true;
-        console.log("Flag:" ,this.readyToCheckout);
+        // console.log("Flag:" ,this.readyToCheckout);
         
       }
     });
@@ -57,7 +57,7 @@ export class CartPage {
     console.log('ionViewDidLoad CartPage');
   }
   checkout() {
-    console.log('Opening checkout');
+    // console.log('Opening checkout');
     this.navCtrl.push(CheckoutPage);
     
   }
