@@ -24,6 +24,7 @@
       font-weight: bold;
       color: fuchsia;
     }
+
 </style>
 
 
@@ -52,7 +53,7 @@
       <ion-card>
           <ion-card-content>
               <div style="text-align:center; font-family: 'Learning Curve' !important; font-size:2em; font-weight:bold;" color="primary">{{banner}}</div>
-              <button  *ngIf="order.totalMeals == maxAllowedMeals" ion-button outline block (click)="checkout()">Checkout</button>
+              <button  *ngIf="order.totalMeals == maxAllowedMeals" ion-button  block (click)="checkout()">Continue</button>
               <p *ngIf="order.totalMeals > maxAllowedMeals"  style="text-align:center;font-weight:bold;color:red">{{warning}}</p>
           </ion-card-content>
         
@@ -73,6 +74,17 @@
       
      
 </ion-header>
+
+<style>
+
+
+.spacing
+{
+     margin-bottom: 45px !important;
+     margin-top: 15px !important;
+}
+
+</style>
 <ion-content class="card-background-page">
 
 
@@ -92,11 +104,11 @@
     
         <ion-list *ngSwitchCase="'presale'">
         <!-- <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)"> -->
-            <ion-card   *ngFor="let meal of entreesList" >
+            <ion-card  class="spacing" *ngFor="let meal of entreesList" >
             <img style="width:100%;max-height:50%" src="{{meal.img}}" (click)="itemTapped($event,meal)"/>
             <ion-card-content>
               <ion-card-title>
-                  {{meal.title}}
+                  {{meal.name}}
                 </ion-card-title>
               <p (click)="itemTapped($event,meal)">
                 {{meal.description | slice:0:100}} ...Read more
@@ -186,11 +198,11 @@
 
 
           <ion-list *ngSwitchCase="'crowdsale'">
-              <ion-card   *ngFor="let bf of breakfastList" >
+              <ion-card  class="spacing" *ngFor="let bf of breakfastList" >
                   <img style="width:100%;max-height:50%" src="{{bf.img}}" (click)="itemTapped($event,bf)"/>
                   <ion-card-content>
                     <ion-card-title>
-                        {{bf.title}}
+                        {{bf.name}}
                       </ion-card-title>
                     <p (click)="itemTapped($event,meal)">
                       {{bf.description | slice:0:100}} ...Read more
