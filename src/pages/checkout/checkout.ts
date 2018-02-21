@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Stripe } from '@ionic-native/stripe';
 import { Http } from '@angular/http';
+import { PlansPage } from '../plans/plans';
 
 
 
@@ -27,7 +28,7 @@ export class CheckoutPage {
   }
   amount:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, public http: Http,public alertCtrl: AlertController,public toastCtrl: ToastController) {
     this.amount = this.navParams.get('amt');
   }
 
@@ -35,47 +36,57 @@ export class CheckoutPage {
     console.log('ionViewDidLoad CheckoutPage');
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Order was successfully placed.',
+      duration: 3000
+    });
+    toast.present();
+  }
+
   pay() {
     console.log('Paying...');
-    
-    this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
-
-    // this.stripe.createCardToken(this.cardinfo,onSuccess, onError);
-    // Your Stripe token is: tok_1BxkHCAPEFpkLkhT5Zz9zcgX.
-    this.stripe.createCardToken(this.cardinfo).then((tokenObj) => {
-      console.log('Received Token from Stripe:', tokenObj);
-      console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
-      console.log('Token id:',tokenObj.id);
-      
-
-     
-      // this.http.post('http://localhost:3333/processpay', {tokenid: tokenObj.id})
-      this.http.get('http://localhost:3333/processpay/'+ tokenObj.id + '/' + this.amount)
-      .subscribe((res) => {
-        if (res.json().success)
-        alert('transaction Successfull!!')  
-      })
-    }).catch(err => {
-      alert(err);
-      console.log('Error !!!',err);
-      
-    })
-      
-    //   var data = 'stripetoken=' + token + '&amount=50';
-    //   var headers = new Headers();
-    //   headers.append('Conent-Type', 'application/json');
-
-
-    //   this.http.post('http://localhost:3333/processpay', data, { headers: headers }).subscribe((res) => {
+    this.presentToast();
+    this.navCtrl.setRoot(PlansPage);
+    // this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
+    // this.stripe.createCardToken(this.cardinfo).then((tokenObj) => {
+    //   console.log('Received Token from Stripe:', tokenObj);
+    //   console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
+    //   console.log('Token id:',tokenObj.id);
+    //   this.http.get('http://localhost:3333/processpay/'+ tokenObj.id + '/' + this.amount)
+    //   .subscribe((res) => {
     //     if (res.json().success)
     //     alert('transaction Successfull!!')  
     //   })
     // }).catch(err => {
     //   alert(err);
     //   console.log('Error !!!',err);
-    // })
+    // });
+      
+  
   }
 
-// 
+  showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Confirm Purchase?',
+      message: 'Are you sure you want to purchase this order for $' + this.amount + ' ?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Agree clicked');
+            this.pay();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 
 }
