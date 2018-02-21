@@ -78,13 +78,15 @@ export class ListPage {
       let fbMeal;
        this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
         fbMeal =res[0];
-        fbMeal.count4oz = meal.count4oz;
-        fbMeal.count8oz = meal.count8oz;
+        if(fbMeal) {
+            fbMeal.count4oz = meal.count4oz;
+            fbMeal.count8oz = meal.count8oz;
 
-        if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
-        if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
+            if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
+            if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
 
-        this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
+            this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
+        }
       });
     }
   }

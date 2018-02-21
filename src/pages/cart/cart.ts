@@ -66,7 +66,7 @@ export class CartPage {
   }
   checkout() {
     // console.log('Opening checkout');
-    this.navCtrl.push(CheckoutPage);
+    this.navCtrl.push(CheckoutPage,{amt: this.totalAmount});
     
   }
 

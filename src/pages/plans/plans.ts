@@ -37,6 +37,8 @@ export class PlansPage {
     this.firebaseProvider.getEntreesList().subscribe(res => {
       this.entreesList = res;
       this.order.entreesList = this.entreesList;
+      console.log('Attempting to update entreeslist');
+      
       this.firebaseProvider.updateOrder(this.orderKey,this.order);
       console.log('Got Entrees list',this.entreesList);
     });
@@ -44,6 +46,7 @@ export class PlansPage {
     this.firebaseProvider.getBreakfastList().subscribe(res => {
       this.breakfastList = res;
       this.order.breakfastList = this.breakfastList;
+      console.log('Attempting to update breakfastlist');
       this.firebaseProvider.updateOrder(this.orderKey,this.order);
       console.log('Got breakfastList list',this.breakfastList);
     });

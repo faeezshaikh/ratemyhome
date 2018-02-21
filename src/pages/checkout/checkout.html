@@ -18,5 +18,6 @@
   <ion-input [(ngModel)]="cardinfo.expMonth" placeholder="expiry month" ></ion-input>
   <ion-input [(ngModel)]="cardinfo.expYear" placeholder="expiry year" >2020</ion-input>
   <ion-input [(ngModel)]="cardinfo.cvc" placeholder="cvc"></ion-input>
+  <p>Amount: {{amount}}</p>
   <button ion-button (click)="pay()"> Pay Now </button>
 </ion-content>
