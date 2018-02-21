@@ -6,6 +6,7 @@ import { DetailsPage } from '../details/details';
 // import * as firebase from 'firebase/app';
 import { CartPage } from '../cart/cart';
 // import {Content } ;
+import _ from "lodash";
  
 
 @Component({
@@ -29,11 +30,14 @@ export class ListPage {
     // let key;
     let selectedMealPlan = navParams.get('plan');
     this.orderId = navParams.get('orderKey');
-    this.order = navParams.get('order');
+    // this.order = navParams.get('order');
+    let subscription = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
+      this.order = res;
+      this.entreesList = this.order.entreesList;
+      this.breakfastList = this.order.breakfastList;
+    });
     // this.totalMeals = this.order.totalMeals;
 
-    this.entreesList = this.order.entreesList;
-    this.breakfastList = this.order.breakfastList;
     if(selectedMealPlan == 2) {
       this.banner = 'Plan: 2 meals per day (14 | week)';
       this.maxAllowedMeals = 14;
@@ -72,57 +76,84 @@ export class ListPage {
     if(this.order.totalMeals >= this.maxAllowedMeals) { // This will change for 21 meals 
       return;
     } else {
-      is8oz ? meal.count8oz++ : meal.count4oz++;
+      // is8oz ? meal.count8oz++ : meal.count4oz++;
+      // this.order.totalMeals++;
+      // this.firebaseProvider.updateOrder(this.orderId,this.order);
+      // let fbMeal;
+      //  this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
+      //   fbMeal =res[0];
+      //   if(fbMeal) {
+      //       fbMeal.count4oz = meal.count4oz;
+      //       fbMeal.count8oz = meal.count8oz;
+
+      //       if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
+      //       if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
+
+      //       this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
+      //   }
+      // });
+      let array;
+      if(isBreakfast) 
+        array = this.order.breakfastList;
+      else 
+        array = this.order.entreesList;
+      let item = _.find(array,{'id':meal.id});
+      is8oz ? item.count8oz++ : item.count4oz++;
       this.order.totalMeals++;
+      if(item.count4oz > 0 || item.count8oz > 0) item.inCart = true;
+      if(item.count4oz == 0 && item.count8oz == 0) item.inCart = false;
       this.firebaseProvider.updateOrder(this.orderId,this.order);
-      let fbMeal;
-       this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
-        fbMeal =res[0];
-        if(fbMeal) {
-            fbMeal.count4oz = meal.count4oz;
-            fbMeal.count8oz = meal.count8oz;
-
-            if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
-            if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
-
-            this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
-        }
-      });
     }
   }
 
 
   decrement(meal,isBreakfast:boolean,is8oz:boolean) {
-   
-    
      let x ;
      if(is8oz) {
         x = meal.count8oz; 
       } else { 
         x = meal.count4oz;
       }
+      if(x == 0) return;
       
     if(x > 0)  {
-      x--; 
-      this.order.totalMeals--;
-      this.firebaseProvider.updateOrder(this.orderId,this.order);
-      if(is8oz) {
-        meal.count8oz = x;
-      } else { 
-        meal.count4oz = x;
-      }
-      let fbMeal;
-      this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
-       fbMeal =res[0];
-       fbMeal.count4oz = meal.count4oz;
-       fbMeal.count8oz = meal.count8oz;
-       if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
-       if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
-       this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
-     });
+    //   x--; 
+    //   this.order.totalMeals--;
+    //   this.firebaseProvider.updateOrder(this.orderId,this.order);
+    //   if(is8oz) {
+    //     meal.count8oz = x;
+    //   } else { 
+    //     meal.count4oz = x;
+    //   }
+    //   let fbMeal;
+    //   this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
+    //    fbMeal =res[0];
+    //    fbMeal.count4oz = meal.count4oz;
+    //    fbMeal.count8oz = meal.count8oz;
+    //    if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
+    //    if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
+    //    this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
+    //  });
+
+
+     let array;
+     if(isBreakfast) 
+       array = this.order.breakfastList;
+     else 
+       array = this.order.entreesList;
+     let item = _.find(array,{'id':meal.id});
+     is8oz ? item.count8oz-- : item.count4oz--;
+     this.order.totalMeals--;
+     if(item.count4oz > 0 || item.count8oz > 0) item.inCart = true;
+     if(item.count4oz == 0 && item.count8oz == 0) item.inCart = false;
+     this.firebaseProvider.updateOrder(this.orderId,this.order);
+
+
+
+
     }
 
-      if(x == 0) return;
+      
   }
 
 

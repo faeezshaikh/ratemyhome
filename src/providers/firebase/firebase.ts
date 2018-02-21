@@ -25,10 +25,13 @@ export class FirebaseProvider {
   constructor(public afd: AngularFireDatabase) { }
  
   getEntreesList() {
+    console.log('Getting Entrees list...');
+    
     return this.afd.list('/mealList/');
   }
 
   getBreakfastList() {
+    console.log('Getting breakfast list...');
     return this.afd.list('/breakfastList/');
   }
 
@@ -39,6 +42,7 @@ export class FirebaseProvider {
   }
 
   updateItem(item,isBreakfast,orderId) {
+    console.log('Updating item: '+ item + ' order id:',orderId);
     let str:string;
     if(!isBreakfast) {
       str = '/orders/' + orderId + '/entreesList/';
@@ -53,6 +57,7 @@ export class FirebaseProvider {
  
 
   getPath(isBreakfast,orderId) {
+   // console.log('Getting path');
     let str;
     if(!isBreakfast) {
       str = '/orders/' + orderId + '/entreesList/';
@@ -62,6 +67,7 @@ export class FirebaseProvider {
     return str;
   }
   getItem(orderId,mealId,isBreakfast) {
+    console.log('Getting item: ' + orderId + ' Meal id:', mealId);
    let str = this.getPath(isBreakfast,orderId);
     return  this.afd.list(str,{
        query: {
@@ -74,7 +80,7 @@ export class FirebaseProvider {
 
   // See documentation : https://angularfirebase.com/lessons/multi-property-data-filtering-with-firebase-and-angular-4/
   getCartItems(orderId) {
-    console.log('Called Get Cart Items');
+    console.log('Called Get Cart Items',orderId);
  
     return this.afd.list('/orders/' + orderId + '/entreesList/', {
       query: {
@@ -86,7 +92,7 @@ export class FirebaseProvider {
   }
 
   getCartItemsBreakfast(orderId){
-    console.log('Called Get Cart Items Breakfast');
+    console.log('Called Get Cart Items Breakfast',orderId);
     return this.afd.list('/orders/' + orderId + '/breakfastList/', {
       query: {
         orderByChild: 'inCart',
@@ -98,18 +104,21 @@ export class FirebaseProvider {
 
  
   addOpenOrder(order) {
+    console.log('Adding order',order);
     return this.afd.list('/orders/').push(order).key;
   }
 
   getOrder(orderId) {
+    console.log('Getting Order',orderId);
     return this.afd.object('/orders/' + orderId + '/');
   }
 
   updateOrder(key,order){
-    // console.log('Updating order with key:', key);
+    console.log('Updating order with key:', key);
     this.afd.list('/orders/').update(key,order);
   }
   removeItem(id) {
+    console.log('Removing item:',id);
     this.afd.list('/shoppingItems/').remove(id);
   }
 
