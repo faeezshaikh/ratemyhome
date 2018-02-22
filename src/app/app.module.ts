@@ -15,7 +15,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { DetailsPage } from '../pages/details/details';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
-import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
+// import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 import {AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
@@ -44,7 +44,6 @@ const firebaseConfig = {
     DetailsPage,
     CustomizePlanPage,
     MycontributionsPage,
-    ContributionDetailsPage,
     LoginPage,
     PlansPage,
     CartPage,
@@ -66,7 +65,6 @@ const firebaseConfig = {
     DetailsPage,
     CustomizePlanPage,
     MycontributionsPage,
-    ContributionDetailsPage,
     LoginPage,
     PlansPage,
     CartPage,

@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { Stripe } from '@ionic-native/stripe';
 import { Http } from '@angular/http';
 import { PlansPage } from '../plans/plans';
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 
