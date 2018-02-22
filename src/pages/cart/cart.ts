@@ -22,6 +22,7 @@ export class CartPage {
   product4oz:number=1;
   product8oz:number=1;
   totalAmount:number;
+  remainder:number;
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
     this.orderId = navParams.get('orderId');
     
@@ -31,6 +32,8 @@ export class CartPage {
       if(navParams.get('maxAllowedMeals') == this.order.totalMeals) {
         this.readyToCheckout = true;
       }
+
+      this.remainder = navParams.get('maxAllowedMeals');
     });
 
   
@@ -54,6 +57,9 @@ export class CartPage {
         this.product4oz = this.noOf4ozItems*9;  // Rates set by business.
         this.product8oz = this.noOf8ozItems*12;
         this.totalAmount = this.product4oz + this.product8oz;
+
+        let x = this.noOf4ozItems + this.noOf8ozItems;
+        this.remainder = navParams.get('maxAllowedMeals') - x;
         
       });
     });

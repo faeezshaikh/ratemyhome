@@ -46,6 +46,14 @@
               Your cart is empty.
       </ion-list-header>
 
+      <!-- <p>&nbsp;</p> -->
+      <!-- <ion-list-header *ngIf="readyToCheckout == false && cartItems?.length!=0" style="text-align:center;">
+              Select {{remainder}} more to continue.
+      </ion-list-header> -->
+
+      <p *ngIf="readyToCheckout == false && cartItems?.length!=0" style="text-align:center; font-style:oblique;">
+          Select {{remainder}} more to continue.
+      </p>
     
   </ion-list>
  

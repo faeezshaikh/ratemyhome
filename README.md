@@ -30,9 +30,7 @@ https://javebratt.com/ionic-social-login-firebase/
 
 
 1. Form validation for Checkout page.
-2. Enable / Disable increment decrement buttons
 3. MEal Details page
-4. Shopping cart bigger
 5. select 'x' tro continue message
 6. Error conditions. no internet. bad card etc
 4. Stars and other tiny icons
