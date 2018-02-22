@@ -28,7 +28,10 @@ For Google 403 Error: Disallowed_Useragent added
 https://javebratt.com/ionic-social-login-firebase/
 
 
-
+0. Icon and splash screen
+1. Disable + button when 'Remove items to continue' scenario arises.
+3. iPhone , CART COUNTER IS NOT ON CART
+4. Android login not working.
 1. Form validation for Checkout page.
 3. MEal Details page
 6. Error conditions. no internet. bad card etc

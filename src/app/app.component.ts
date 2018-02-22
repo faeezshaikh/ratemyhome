@@ -44,6 +44,9 @@ export class MyApp {
       
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.statusBar.backgroundColorByHexString('#FF00FF');
+      this.statusBar.overlaysWebView(false);
+      
    
       let that = this;
       firebase.auth().onAuthStateChanged(function(user) {
