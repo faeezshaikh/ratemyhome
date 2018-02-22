@@ -27,16 +27,13 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
 
-    // let key;
     let selectedMealPlan = navParams.get('plan');
     this.orderId = navParams.get('orderKey');
-    // this.order = navParams.get('order');
     let subscription = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
       this.order = res;
       this.entreesList = this.order.entreesList;
       this.breakfastList = this.order.breakfastList;
     });
-    // this.totalMeals = this.order.totalMeals;
 
     if(selectedMealPlan == 2) {
       this.banner = 'Plan: 2 meals per day (14 | week)';

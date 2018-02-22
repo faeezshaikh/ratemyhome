@@ -13,7 +13,6 @@ export class PlansPage {
 
   order = {
     userId: 'faeez',
-  //  maxallowed: 0,
     breakfastList: [],
     entreesList: [],
     totalMeals: 0

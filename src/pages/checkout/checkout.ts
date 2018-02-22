@@ -15,22 +15,22 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 })
 export class CheckoutPage {
   cardinfo: any = {
-    number: '4242424242424242',
-    expMonth: 12,
-    expYear: 2020,
-    cvc: '123',
-    name: 'John Smith', // card holder name (optional)
-    address_line1: '123 Some Street', // address line 1 (optional)
-    address_line2: 'Suite #220', // address line 2 (optional)
-    address_city: 'Las Vegas', // city (optional)
-    address_state: 'NV', // state/province (optional)
-    address_country: 'Canada', // country (optional)
-    postalCode: '63101', // Postal Code / Zip Code (optional)
+    number: '',
+    expMonth: '',
+    expYear: '',
+    cvc: '',
+    name: '', // card holder name (optional)
+    address_line1: '', // address line 1 (optional)
+    address_city: '', // city (optional)
+    address_state: '', // state/province (optional)
+    address_country: '', // country (optional)
+    postalCode: '', // Postal Code / Zip Code (optional)
     currency: 'USD' // Three-letter ISO currency code (optional)
   }
   amount:any;
   order:any;
   orderId:any;
+  bool:boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, 
       public http: Http,public alertCtrl: AlertController,public toastCtrl: ToastController,public firebaseProvider: FirebaseProvider) {
@@ -51,10 +51,48 @@ export class CheckoutPage {
     toast.present();
   }
 
+  populateForm() {
+    if(this.bool)  {
+      this.cardinfo  = {
+        number: '4242424242424242',
+        expMonth: 12,
+        expYear: 2020,
+        cvc: '123',
+        name: 'John Smith', // card holder name (optional)
+        address_line1: '123 Some Street', // address line 1 (optional)
+        address_city: 'Las Vegas', // city (optional)
+        address_state: 'NV', // state/province (optional)
+        address_country: 'USA', // country (optional)
+        postalCode: '63101', // Postal Code / Zip Code (optional)
+        currency: 'USD' // Three-letter ISO currency code (optional)
+      }
+      this.bool=false;
+    } else {
+      this.resetForm();
+    }
+  }
+
+  resetForm() {
+    this.cardinfo = {
+      number: '',
+      expMonth: '',
+      expYear: '',
+      cvc: '',
+      name: '', // card holder name (optional)
+      address_line1: '', // address line 1 (optional)
+      address_city: '', // city (optional)
+      address_state: '', // state/province (optional)
+      address_country: '', // country (optional)
+      postalCode: '', // Postal Code / Zip Code (optional)
+      currency: 'USD' // Three-letter ISO currency code (optional)
+    }
+    this.bool=true;
+  }
   pay() {
     console.log('Paying...');
     this.presentToast();
     this.order.status = 'paid';
+    this.order.cardInfo = this.cardinfo;
     this.firebaseProvider.updateOrder(this.orderId,this.order);
     this.firebaseProvider.setOpenOrderId(null); // close the order;
     this.navCtrl.setRoot(PlansPage);

@@ -23,7 +23,6 @@ export class CartPage {
   product8oz:number=1;
   totalAmount:number;
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
-    // this.order = navParams.get('order');
     this.orderId = navParams.get('orderId');
     
     this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
