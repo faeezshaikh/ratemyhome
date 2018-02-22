@@ -4,6 +4,7 @@
             width: 42px;
             top:1px;
             right: 1px;
+            zoom:1.4;
             overflow: visible!important;
         }
 
@@ -11,8 +12,8 @@
    #notifications-badge {
             background-color: #990066;
             position: absolute;
-            top: -3px;
-            right: -3px;
+            top: -6px;
+            right: -4px;
             border-radius: 100%;
         }
 
@@ -38,9 +39,9 @@
     <ion-title>Meals</ion-title>
 
     <ion-buttons end> 
-    <button id="notification-button" ion-button (click)="showCart()">
-        <ion-icon name="cart">
-          <ion-badge id="notifications-badge" *ngIf="order.totalMeals>0" >{{order.totalMeals}}</ion-badge>
+    <button id="notification-button" ion-button  (click)="showCart()">
+        <ion-icon name="cart" >
+          <ion-badge  id="notifications-badge" *ngIf="order.totalMeals>0" >{{order.totalMeals}}</ion-badge>
         </ion-icon>              
     </button>
 

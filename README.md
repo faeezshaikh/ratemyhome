@@ -29,6 +29,11 @@ https://javebratt.com/ionic-social-login-firebase/
 
 
 
-1. After Successful Pay , page returns to Plan page.. (New order not created). Select a plan and start adding to cartß. Goes into infinite loop
-2. After adding to card, go back all the way to sidemeny and then select on the 'Shop Plan' menu item. (Select a different plan) and then add to cart (increment)..it goes in infinite loop
+1. Form validation for Checkout page.
+2. Enable / Disable increment decrement buttons
+3. MEal Details page
+4. Shopping cart bigger
+5. select 'x' tro continue message
+6. Error conditions. no internet. bad card etc
+4. Stars and other tiny icons
 3. Payment for browser doesnt work
