@@ -13,51 +13,51 @@ export class PlansPage {
 
   order = {
     userId: 'faeez',
-    maxallowed:0,
-    breakfastList:[],
-    entreesList:[],
-    totalMeals:0
+  //  maxallowed: 0,
+    breakfastList: [],
+    entreesList: [],
+    totalMeals: 0
   };
-  orderKey:any;
-  entreesList:any;
-  breakfastList:any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public firebaseProvider: FirebaseProvider) {
-    
+  orderKey: any;
+  entreesList: any;
+  breakfastList: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+
     this.orderKey = this.firebaseProvider.getOpenOrderId();
-    if(this.orderKey == null) {
+    if (this.orderKey == null) {
       console.log('Open Order id was null..Creating new order');
       this.orderKey = this.firebaseProvider.addOpenOrder(this.order);
       this.firebaseProvider.setOpenOrderId(this.orderKey);
 
 
-  // This is where the new order is first populated with the master Entrees list and Master Breakfast list. For existing orders skip it.
- 
+      // This is where the new order is first populated with the master Entrees list and Master Breakfast list. For existing orders skip it.
+
       this.firebaseProvider.getEntreesList().subscribe(res => {
         this.entreesList = res;
         this.order.entreesList = this.entreesList;
         console.log('Attempting to update entreeslist');
-        
-        this.firebaseProvider.updateOrder(this.orderKey,this.order);
-        console.log('Got Entrees list',this.entreesList);
+
+        this.firebaseProvider.updateOrder(this.orderKey, this.order);
+        console.log('Got Entrees list', this.entreesList);
       });
-    
-  
+
+
       this.firebaseProvider.getBreakfastList().subscribe(res => {
         this.breakfastList = res;
         this.order.breakfastList = this.breakfastList;
         console.log('Attempting to update breakfastlist');
-        this.firebaseProvider.updateOrder(this.orderKey,this.order);
-        console.log('Got breakfastList list',this.breakfastList);
+        this.firebaseProvider.updateOrder(this.orderKey, this.order);
+        console.log('Got breakfastList list', this.breakfastList);
       });
 
 
 
-  } else {
-    console.log('Found existing order id in Session..Fetching its details',this.orderKey);
-  }
+    } else {
+      console.log('Found existing order id in Session..Fetching its details', this.orderKey);
+    }
 
-  
+
   }
 
   ionViewDidLoad() {
@@ -65,13 +65,10 @@ export class PlansPage {
   }
 
   itemTapped(event, item) {
-       
-    // this.order.maxallowed = (item == 2) ? 14 : 21 ;
-    // this.firebaseProvider.updateOrder(this.orderKey,this.order);
     this.navCtrl.push(ListPage, {
-          plan: item,
-          orderKey: this.orderKey
-        });
-      }
+      plan: item,
+      orderKey: this.orderKey
+    });
+  }
 
 }

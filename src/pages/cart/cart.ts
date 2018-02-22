@@ -25,10 +25,11 @@ export class CartPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
     // this.order = navParams.get('order');
     this.orderId = navParams.get('orderId');
-    this.order = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
+    
+    this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
       this.order = res;
       
-      if(this.order.maxallowed == this.order.totalMeals) {
+      if(navParams.get('maxAllowedMeals') == this.order.totalMeals) {
         this.readyToCheckout = true;
       }
     });
@@ -66,7 +67,7 @@ export class CartPage {
   }
   checkout() {
     // console.log('Opening checkout');
-    this.navCtrl.push(CheckoutPage,{amt: this.totalAmount});
+    this.navCtrl.push(CheckoutPage,{amt: this.totalAmount, orderId: this.orderId, order:this.order});
     
   }
 

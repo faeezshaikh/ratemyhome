@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { Stripe } from '@ionic-native/stripe';
 import { Http } from '@angular/http';
 import { PlansPage } from '../plans/plans';
+import * as firebase from 'firebase/app';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 
 
@@ -27,9 +29,14 @@ export class CheckoutPage {
     currency: 'USD' // Three-letter ISO currency code (optional)
   }
   amount:any;
+  order:any;
+  orderId:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, public http: Http,public alertCtrl: AlertController,public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, 
+      public http: Http,public alertCtrl: AlertController,public toastCtrl: ToastController,public firebaseProvider: FirebaseProvider) {
     this.amount = this.navParams.get('amt');
+    this.orderId = this.navParams.get('orderId');
+    this.order = this.navParams.get('order');
   }
 
   ionViewDidLoad() {
@@ -47,6 +54,9 @@ export class CheckoutPage {
   pay() {
     console.log('Paying...');
     this.presentToast();
+    this.order.status = 'paid';
+    this.firebaseProvider.updateOrder(this.orderId,this.order);
+    this.firebaseProvider.setOpenOrderId(null); // close the order;
     this.navCtrl.setRoot(PlansPage);
     // this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
     // this.stripe.createCardToken(this.cardinfo).then((tokenObj) => {

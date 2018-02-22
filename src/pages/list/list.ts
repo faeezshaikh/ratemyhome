@@ -76,22 +76,7 @@ export class ListPage {
     if(this.order.totalMeals >= this.maxAllowedMeals) { // This will change for 21 meals 
       return;
     } else {
-      // is8oz ? meal.count8oz++ : meal.count4oz++;
-      // this.order.totalMeals++;
-      // this.firebaseProvider.updateOrder(this.orderId,this.order);
-      // let fbMeal;
-      //  this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
-      //   fbMeal =res[0];
-      //   if(fbMeal) {
-      //       fbMeal.count4oz = meal.count4oz;
-      //       fbMeal.count8oz = meal.count8oz;
-
-      //       if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
-      //       if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
-
-      //       this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
-      //   }
-      // });
+   
       let array;
       if(isBreakfast) 
         array = this.order.breakfastList;
@@ -117,25 +102,7 @@ export class ListPage {
       if(x == 0) return;
       
     if(x > 0)  {
-    //   x--; 
-    //   this.order.totalMeals--;
-    //   this.firebaseProvider.updateOrder(this.orderId,this.order);
-    //   if(is8oz) {
-    //     meal.count8oz = x;
-    //   } else { 
-    //     meal.count4oz = x;
-    //   }
-    //   let fbMeal;
-    //   this.firebaseProvider.getItem(this.orderId,meal.id,isBreakfast).subscribe(res => {
-    //    fbMeal =res[0];
-    //    fbMeal.count4oz = meal.count4oz;
-    //    fbMeal.count8oz = meal.count8oz;
-    //    if(fbMeal.count4oz > 0 || fbMeal.count8oz > 0) fbMeal.inCart = true;
-    //    if(fbMeal.count4oz == 0 && fbMeal.count8oz == 0) fbMeal.inCart = false;
-    //    this.firebaseProvider.updateItem(fbMeal,isBreakfast,this.orderId);
-    //  });
-
-
+ 
      let array;
      if(isBreakfast) 
        array = this.order.breakfastList;
@@ -147,18 +114,12 @@ export class ListPage {
      if(item.count4oz > 0 || item.count8oz > 0) item.inCart = true;
      if(item.count4oz == 0 && item.count8oz == 0) item.inCart = false;
      this.firebaseProvider.updateOrder(this.orderId,this.order);
-
-
-
-
     }
-
-      
   }
 
 
   showCart(){
-    this.navCtrl.push(CartPage, {order: this.order,orderId:this.orderId});
+    this.navCtrl.push(CartPage, {order: this.order,orderId:this.orderId, maxAllowedMeals: this.maxAllowedMeals});
   }
 
 }
