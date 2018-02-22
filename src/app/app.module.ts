@@ -15,11 +15,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireModule } from 'angularfire2';
 import { DetailsPage } from '../pages/details/details';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
-// import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 import {AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
-import { CustomizePlanPage } from '../pages/customize-plan/customize-plan';
 import { PlansPage } from '../pages/plans/plans';
 import { CartPage } from '../pages/cart/cart';
 import { Stripe } from '@ionic-native/stripe';
@@ -42,7 +40,6 @@ const firebaseConfig = {
     MyApp,
     ListPage,
     DetailsPage,
-    CustomizePlanPage,
     MycontributionsPage,
     LoginPage,
     PlansPage,
@@ -63,7 +60,6 @@ const firebaseConfig = {
     MyApp,
     ListPage,
     DetailsPage,
-    CustomizePlanPage,
     MycontributionsPage,
     LoginPage,
     PlansPage,

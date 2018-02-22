@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
-// import { ContributionDetailsPage } from '../contribution-details/contribution-details';
 import { LoginProvider } from '../../providers/login/login';
 
 
@@ -16,7 +15,6 @@ export class MycontributionsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  public firebaseProvider: FirebaseProvider,
   private loginService: LoginProvider) {
-    // this.mycontributions = this.firebaseProvider.getMyContributions(1);
   }
 
   logoutOfFacebook() {
@@ -30,9 +28,9 @@ export class MycontributionsPage {
 
   itemTapped(event, item) {
     console.log("Contribution ==> ", item);
-    this.navCtrl.push(ContributionDetailsPage, {
-      contribution: item
-    });
+    // this.navCtrl.push(ContributionDetailsPage, {
+    //   contribution: item
+    // });
   }
 
 }
