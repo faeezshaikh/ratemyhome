@@ -29,7 +29,7 @@ export class ListPage {
 
     let selectedMealPlan = navParams.get('plan');
     this.orderId = navParams.get('orderKey');
-    let subscription = this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
+    this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
       this.order = res;
       this.entreesList = this.order.entreesList;
       this.breakfastList = this.order.breakfastList;

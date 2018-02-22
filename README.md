@@ -31,7 +31,6 @@ https://javebratt.com/ionic-social-login-firebase/
 
 1. Form validation for Checkout page.
 3. MEal Details page
-5. select 'x' tro continue message
 6. Error conditions. no internet. bad card etc
 4. Stars and other tiny icons
 3. Payment for browser doesnt work
