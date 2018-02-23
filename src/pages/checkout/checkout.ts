@@ -25,7 +25,8 @@ export class CheckoutPage {
     address_state: '', // state/province (optional)
     address_country: '', // country (optional)
     postalCode: '', // Postal Code / Zip Code (optional)
-    currency: 'USD' // Three-letter ISO currency code (optional)
+    currency: 'USD', // Three-letter ISO currency code (optional)
+    email:''
   }
   amount:any;
   order:any;
@@ -43,13 +44,13 @@ export class CheckoutPage {
     console.log('ionViewDidLoad CheckoutPage');
   }
 
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Order was successfully placed.',
-      duration: 3000
-    });
-    toast.present();
-  }
+  // presentToast() {
+  //   let toast = this.toastCtrl.create({
+  //     message: 'Order was successfully placed.',
+  //     duration: 3000
+  //   });
+  //   toast.present();
+  // }
 
   populateForm() {
     if(this.bool)  {
@@ -64,7 +65,8 @@ export class CheckoutPage {
         address_state: 'NV', // state/province (optional)
         address_country: 'USA', // country (optional)
         postalCode: '63101', // Postal Code / Zip Code (optional)
-        currency: 'USD' // Three-letter ISO currency code (optional)
+        currency: 'USD', // Three-letter ISO currency code (optional),
+        email: 'faeez.shaikh@gmail.com'
       }
       this.bool=false;
     } else {
@@ -84,32 +86,46 @@ export class CheckoutPage {
       address_state: '', // state/province (optional)
       address_country: '', // country (optional)
       postalCode: '', // Postal Code / Zip Code (optional)
-      currency: 'USD' // Three-letter ISO currency code (optional)
+      currency: 'USD', // Three-letter ISO currency code (optional)
+      email:''
     }
     this.bool=true;
   }
   pay() {
     console.log('Paying...');
-    this.presentToast();
-    this.order.status = 'paid';
-    this.order.cardInfo = this.cardinfo;
-    this.firebaseProvider.updateOrder(this.orderId,this.order);
-    this.firebaseProvider.setOpenOrderId(null); // close the order;
-    this.navCtrl.setRoot(PlansPage);
-    // this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
-    // this.stripe.createCardToken(this.cardinfo).then((tokenObj) => {
-    //   console.log('Received Token from Stripe:', tokenObj);
-    //   console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
-    //   console.log('Token id:',tokenObj.id);
-    //   this.http.get('http://localhost:3333/processpay/'+ tokenObj.id + '/' + this.amount)
-    //   .subscribe((res) => {
-    //     if (res.json().success)
-    //     alert('transaction Successfull!!')  
-    //   })
-    // }).catch(err => {
-    //   alert(err);
-    //   console.log('Error !!!',err);
-    // });
+    // this.showConfirmation();
+    // this.order.status = 'paid';
+    // this.order.cardInfo = this.cardinfo;
+    // this.firebaseProvider.updateOrder(this.orderId,this.order);
+    // this.firebaseProvider.setOpenOrderId(null); // close the order;
+    // this.navCtrl.setRoot(PlansPage);
+
+    this.stripe.setPublishableKey('pk_test_T8prTKTUFNC3Z47mJCTg6ZNa');
+    this.stripe.createCardToken(this.cardinfo).then((tokenObj) => {
+      console.log('Received Token from Stripe:', tokenObj);
+      console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
+      console.log('Token id:',tokenObj.id);
+      this.http.get('http://localhost:3333/processpay/'+ tokenObj.id + '/' + this.amount)
+      .subscribe((res) => {
+        if (res.json().success) {
+          console.log('Transaction Successfull. Card was charged $' + this.amount);
+          this.http.get('http://localhost:3300/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
+            console.log(res.json());
+            alert('Order was successfully placed. You should receive confirmation by email shortly. ');
+            this.showConfirmation();
+            this.order.status = 'paid';
+            this.order.cardInfo = this.cardinfo;
+            this.firebaseProvider.updateOrder(this.orderId,this.order);
+            this.firebaseProvider.setOpenOrderId(null); // close the order;
+            this.navCtrl.setRoot(PlansPage);
+          })
+
+        }
+      })
+    }).catch(err => {
+      alert(err);
+      console.log('Error !!!',err);
+    });
       
   
   }
@@ -135,6 +151,15 @@ export class CheckoutPage {
       ]
     });
     confirm.present();
+  }
+
+  showConfirmation() {
+    let alert = this.alertCtrl.create({
+      title: 'Success',
+      subTitle: 'Order was successfully placed. You should receive confirmation by email shortly.  ',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

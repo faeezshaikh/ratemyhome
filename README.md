@@ -31,9 +31,14 @@ https://javebratt.com/ionic-social-login-firebase/
 0. Icon and splash screen
 1. Disable + button when 'Remove items to continue' scenario arises.
 3. iPhone , CART COUNTER IS NOT ON CART
+5. Admin page for all orders
+
 4. Android login not working.
 1. Form validation for Checkout page.
 3. MEal Details page
 6. Error conditions. no internet. bad card etc
 4. Stars and other tiny icons
 3. Payment for browser doesnt work
+
+
+4. Send email on order completion. buyer and admin

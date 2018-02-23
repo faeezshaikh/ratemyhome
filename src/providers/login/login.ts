@@ -8,7 +8,8 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LoginProvider {
-  isApp = (!document.URL.startsWith("http") || document.URL.startsWith("http://localhost:8080"));
+  // isApp = (!document.URL.startsWith("http") || document.URL.startsWith("http://localhost:8080"));
+  isApp = true;
   // https://forum.ionicframework.com/t/how-to-determine-if-browser-or-app/89149/15
   constructor(public http: HttpClient,private afAuth : AngularFireAuth) {
     console.log('Hello LoginProvider Provider');
