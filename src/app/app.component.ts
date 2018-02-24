@@ -91,6 +91,12 @@ export class MyApp {
 
 
 
+    },err => {
+      console.log("Errr in Platform ready",err);
+      
+    }).catch(e => {
+      console.log('In Platform ready catch',e);
+      
     });
   }
 

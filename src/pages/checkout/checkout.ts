@@ -111,7 +111,7 @@ export class CheckoutPage {
           console.log('Transaction Successfull. Card was charged $' + this.amount);
           this.http.get('http://localhost:3300/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
             console.log(res.json());
-            alert('Order was successfully placed. You should receive confirmation by email shortly. ');
+            // alert('Order was successfully placed. You should receive confirmation by email shortly. ');
             this.showConfirmation();
             this.order.status = 'paid';
             this.order.cardInfo = this.cardinfo;
