@@ -30,8 +30,6 @@ https://javebratt.com/ionic-social-login-firebase/
 
 0. Validate session cart contents. When deleted?
 1. Add new 'Contact us' page.
-2. MEal Details page
-3. Add 8 meals. 4 bkfasts
 4. Stars and other tiny icons
 5. iPhone , CART COUNTER IS NOT ON CART
 6. Icon and splash screen
@@ -42,6 +40,8 @@ https://javebratt.com/ionic-social-login-firebase/
 11. Android login not working.
 
 ---------------
+2. MEal Details page
+3. Add 8 meals. 4 bkfasts
 1. Form validation for Checkout page
 2. Send email on order completion. buyer and admin
 3. Disable + button when 'Remove items to continue' scenario arises.

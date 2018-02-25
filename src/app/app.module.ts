@@ -22,6 +22,7 @@ import { PlansPage } from '../pages/plans/plans';
 import { CartPage } from '../pages/cart/cart';
 import { Stripe } from '@ionic-native/stripe';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { CheckOrderStatusPage } from '../pages/check-order-status/check-order-status';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
@@ -44,7 +45,8 @@ const firebaseConfig = {
     LoginPage,
     PlansPage,
     CartPage,
-    CheckoutPage
+    CheckoutPage,
+    CheckOrderStatusPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ const firebaseConfig = {
     LoginPage,
     PlansPage,
     CartPage,
-    CheckoutPage
+    CheckoutPage,
+    CheckOrderStatusPage
   ],
   providers: [
     StatusBar,

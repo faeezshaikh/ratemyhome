@@ -8,16 +8,16 @@
 
 
 <ion-content padding>
-  <ion-list >
+  <ion-list>
     <ion-item text-wrap *ngFor="let item of cartItems ">
       <ion-thumbnail item-start>
         <img src="{{item.img}}">
       </ion-thumbnail>
       <h2>{{item.name}}</h2>
       <p>{{item.cals}} calories </p>
-      <p *ngIf="item.bfast" > <ion-icon name="cafe"></ion-icon></p>
-      <!-- <button *ngIf="item.count4oz>0" ion-button clear item-end>4 oz x {{item.count4oz}}</button>
-      <button *ngIf="item.count8oz>0" ion-button clear item-end>8 oz x {{item.count8oz}}  </button> -->
+      <p *ngIf="item.bfast">
+        <ion-icon name="cafe"></ion-icon>
+      </p>
 
       <p item-end>
         <ion-row>
@@ -27,36 +27,29 @@
           8 oz x {{item.count8oz}}
         </ion-row>
       </p>
-      <!-- <p *ngIf="item.count4oz>0"  item-end>4 oz x {{item.count4oz}}</p>
-      <p *ngIf="item.count8oz>0"  item-end>8 oz x {{item.count8oz}}  </p> -->
 
-     
+
     </ion-item>
-    <ion-item  *ngIf="cartItems?.length!=0" >
-      <p style="text-align:right;">4oz ($9 per item)  x {{noOf4ozItems}} = ${{product4oz}}</p>
+    <ion-item *ngIf="cartItems?.length!=0">
+      <p style="text-align:right;">4oz ($9 per item) x {{noOf4ozItems}} = ${{product4oz}}</p>
       <p style="text-align:right;">8oz ($12 per item) x {{noOf8ozItems}} = ${{product8oz}}</p>
     </ion-item>
-    <ion-list-header *ngIf="cartItems?.length!=0" >
-        Total:
-        <p item-end> ${{totalAmount}}</p>
-      </ion-list-header>
+    <ion-list-header *ngIf="cartItems?.length!=0">
+      Total:
+      <p item-end> ${{totalAmount}}</p>
+    </ion-list-header>
 
-      <ion-list-header *ngIf="cartItems?.length==0" style="text-align:center;">
-          
-              Your cart is empty.
-      </ion-list-header>
+    <ion-list-header *ngIf="cartItems?.length==0" style="text-align:center;">
 
-      <!-- <p>&nbsp;</p> -->
-      <!-- <ion-list-header *ngIf="readyToCheckout == false && cartItems?.length!=0" style="text-align:center;">
-              Select {{remainder}} more to continue.
-      </ion-list-header> -->
+      Your cart is empty.
+    </ion-list-header>
 
-      <p *ngIf="readyToCheckout == false && cartItems?.length!=0" style="text-align:center; font-style:oblique;">
-          Select {{remainder}} more to continue.
-      </p>
-    
+
+    <p *ngIf="readyToCheckout == false && cartItems?.length!=0" style="text-align:center; font-style:oblique;">
+      Select {{remainder}} more to continue.
+    </p>
+
   </ion-list>
- 
-  <button *ngIf="readyToCheckout == true"  ion-button outline block (click)="checkout()">Continue</button>
-  <!-- <button  ion-button outline block (click)="checkout()">Continue</button> -->
+
+  <button *ngIf="readyToCheckout == true" ion-button outline block (click)="checkout()">Continue</button>
 </ion-content>

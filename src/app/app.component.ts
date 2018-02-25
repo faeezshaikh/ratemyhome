@@ -4,10 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
-import { LoginPage } from '../pages/login/login';
+// import { LoginPage } from '../pages/login/login';
 // import { FirebaseProvider } from '../providers/firebase/firebase';
 import * as firebase from 'firebase/app';
 import { PlansPage } from '../pages/plans/plans';
+import { CheckOrderStatusPage } from '../pages/check-order-status/check-order-status';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,6 +29,7 @@ export class MyApp {
 
     this.pages = [
       { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
+      { title: 'Order Status', component: CheckOrderStatusPage, icon:'fa fas fa-clock' },
       { title: 'My Profile', component: MycontributionsPage, icon:'fa fa-users' }
     ];
 

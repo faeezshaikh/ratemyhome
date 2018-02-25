@@ -17,28 +17,28 @@ export class CartPage {
   cartItems: any;
   readyToCheckout: boolean = false;
 
-  noOf4ozItems:number = 0;
-  noOf8ozItems:number = 0;
-  product4oz:number=1;
-  product8oz:number=1;
-  totalAmount:number;
-  remainder:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
+  noOf4ozItems: number = 0;
+  noOf8ozItems: number = 0;
+  product4oz: number = 1;
+  product8oz: number = 1;
+  totalAmount: number;
+  remainder: number;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebaseProvider: FirebaseProvider) {
     this.orderId = navParams.get('orderId');
-    
+
     this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
       this.order = res;
-      
-      if(navParams.get('maxAllowedMeals') == this.order.totalMeals) {
+
+      if (navParams.get('maxAllowedMeals') == this.order.totalMeals) {
         this.readyToCheckout = true;
       }
 
       this.remainder = navParams.get('maxAllowedMeals');
     });
 
-  
 
-     this.firebaseProvider.getCartItems(this.orderId).subscribe(res => {
+
+    this.firebaseProvider.getCartItems(this.orderId).subscribe(res => {
       this.cartItems = res;
       this.firebaseProvider.getCartItemsBreakfast(this.orderId).subscribe(results => {
         results.forEach(item => {
@@ -46,24 +46,20 @@ export class CartPage {
           this.cartItems.push(item);
         });
         this.cartItems.forEach(cItem => {
-          // console.log('CartItem 4oz:',cItem.count4oz);
-          // console.log('CartItem 8oz:',cItem.count8oz);
-          
-          if(cItem.count4oz > 0) this.noOf4ozItems = this.noOf4ozItems + cItem.count4oz;
-          if(cItem.count8oz > 0) this.noOf8ozItems = this.noOf8ozItems + cItem.count8oz;
+
+          if (cItem.count4oz > 0) this.noOf4ozItems = this.noOf4ozItems + cItem.count4oz;
+          if (cItem.count8oz > 0) this.noOf8ozItems = this.noOf8ozItems + cItem.count8oz;
         });
-        // console.log('4 oz items x', this.noOf4ozItems);
-        // console.log('8 oz items x', this.noOf8ozItems);
-        this.product4oz = this.noOf4ozItems*9;  // Rates set by business.
-        this.product8oz = this.noOf8ozItems*12;
+        this.product4oz = this.noOf4ozItems * 9;  // Rates set by business.
+        this.product8oz = this.noOf8ozItems * 12;
         this.totalAmount = this.product4oz + this.product8oz;
 
         let x = this.noOf4ozItems + this.noOf8ozItems;
         this.remainder = navParams.get('maxAllowedMeals') - x;
-        
+
       });
     });
-    
+
 
   }
 
@@ -71,9 +67,8 @@ export class CartPage {
     console.log('ionViewDidLoad CartPage');
   }
   checkout() {
-    // console.log('Opening checkout');
-    this.navCtrl.push(CheckoutPage,{amt: this.totalAmount, orderId: this.orderId, order:this.order});
-    
+    this.navCtrl.push(CheckoutPage, { amt: this.totalAmount, orderId: this.orderId, order: this.order });
+
   }
 
 }

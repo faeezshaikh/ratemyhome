@@ -106,6 +106,5 @@
         <variable name="ANDROID_PATHPREFIX" value="/" />
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
-    <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
     <engine name="android" spec="^7.1.0" />
 </widget>
