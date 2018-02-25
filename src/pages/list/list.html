@@ -105,14 +105,13 @@
     <div [ngSwitch]="poolSegment">
     
         <ion-list *ngSwitchCase="'presale'">
-        <!-- <ion-card   *ngFor="let ico of icoList | async" (click)="itemTapped($event,ico)"> -->
             <ion-card  class="spacing" *ngFor="let meal of entreesList" >
-            <img style="width:100%;max-height:50%" src="{{meal.img}}" (click)="itemTapped($event,meal)"/>
+            <img style="width:100%;max-height:50%" src="{{meal.img}}" (click)="itemTapped($event,meal,false)"/>
             <ion-card-content>
               <ion-card-title>
                   {{meal.name}}
                 </ion-card-title>
-              <p (click)="itemTapped($event,meal)">
+              <p (click)="itemTapped($event,meal,false)">
                 {{meal.description | slice:0:100}} ...Read more
               </p>
             </ion-card-content>
@@ -201,12 +200,12 @@
 
           <ion-list *ngSwitchCase="'crowdsale'">
               <ion-card  class="spacing" *ngFor="let bf of breakfastList" >
-                  <img style="width:100%;max-height:50%" src="{{bf.img}}" (click)="itemTapped($event,bf)"/>
+                  <img style="width:100%;max-height:50%" src="{{bf.img}}" (click)="itemTapped($event,bf,true)"/>
                   <ion-card-content>
                     <ion-card-title>
                         {{bf.name}}
                       </ion-card-title>
-                    <p (click)="itemTapped($event,meal)">
+                    <p (click)="itemTapped($event,meal,true)">
                       {{bf.description | slice:0:100}} ...Read more
                     </p>
                   </ion-card-content>

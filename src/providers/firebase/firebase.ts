@@ -36,9 +36,12 @@ export class FirebaseProvider {
   }
 
 
-  getItemDetails(id: number) {
+  getItemDetails(id: number, isBreakfast: boolean) {
     console.log('Fetching Details for: ', id);
-    return this.afd.object('/mealDetails/' + id + '/');
+    if (isBreakfast)
+      return this.afd.object('/breakfastDetails/' + id + '/');
+    else
+      return this.afd.object('/mealDetails/' + id + '/');
   }
 
   updateItem(item,isBreakfast,orderId) {

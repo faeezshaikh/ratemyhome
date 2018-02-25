@@ -20,9 +20,10 @@ export class DetailsPage {
             public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
     // this.item = this.navParams.get('item');
     let id = this.navParams.get('id');
+    let isBreakfast = this.navParams.get('isBreakfast');
   
     // this.itemDetails$ = this.firebaseProvider.getItemDetails(this.item.id);
-    this.itemDetails$ = this.firebaseProvider.getItemDetails(id);
+    this.itemDetails$ = this.firebaseProvider.getItemDetails(id,isBreakfast);
 
     console.log("Ico Details ===> ", this.itemDetails$);
 

@@ -67,15 +67,15 @@ export class ListPage {
     
   }
 
-  itemTapped(event, item) {
-    this.openModal(item);
+  itemTapped(event, item,isBreakfast) {
+    this.openModal(item,isBreakfast);
   }
 
 
-  openModal(item) {
+  openModal(item,isBreakfast) {
     
         console.log("Item key for Opening modal ==> ", item.id);
-        let modal = this.modalCtrl.create(DetailsPage, { id:item.id});
+        let modal = this.modalCtrl.create(DetailsPage, { id:item.id, isBreakfast: isBreakfast});
         modal.present();
       }
 
