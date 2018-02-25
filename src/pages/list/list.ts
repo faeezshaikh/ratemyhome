@@ -112,6 +112,7 @@ export class ListPage {
       
     if(x > 0)  {
       this.remainder++;
+      
      let array;
      if(isBreakfast) 
        array = this.order.breakfastList;
