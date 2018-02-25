@@ -23,6 +23,8 @@ export class ListPage {
   orderId:any;
   order:any = {};
   warning = '' ;
+  direction = '';
+  remainder;
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider,public modalCtrl: ModalController) {
@@ -38,9 +40,13 @@ export class ListPage {
     if(selectedMealPlan == 2) {
       this.banner = 'Plan: 2 meals per day (14 | week)';
       this.maxAllowedMeals = 14;
+      let totalMeals = (this.order.totalMeals) ? this.order.totalMeals : 0;
+      this.remainder = this.maxAllowedMeals - totalMeals;
     } else if (selectedMealPlan == 3) {
       this.banner = 'Plan: 3 meals per day (21 | week)';
       this.maxAllowedMeals = 21;
+      let totalMeals = (this.order.totalMeals) ? this.order.totalMeals : 0;
+      this.remainder = this.maxAllowedMeals - totalMeals;
     }
     if(this.order.totalMeals > this.maxAllowedMeals) {
       this.warning = "Please remove items from cart.";
@@ -51,6 +57,10 @@ export class ListPage {
     this.content.scrollToTop();
   }
 
+  // calculateRemainder(maxAllowedMeals,totalMeals) {
+  //   let remainder = maxAllowedMeals - this.order.totalMeals;
+  //     return 'Select' + remainder + ' meals to continue';
+  // }
   checkout() {
     console.log('Checking out');
     this.showCart();
@@ -73,6 +83,8 @@ export class ListPage {
     if(this.order.totalMeals >= this.maxAllowedMeals) { // This will change for 21 meals 
       return;
     } else {
+
+      this.remainder--;
    
       let array;
       if(isBreakfast) 
@@ -99,7 +111,7 @@ export class ListPage {
       if(x == 0) return;
       
     if(x > 0)  {
- 
+      this.remainder++;
      let array;
      if(isBreakfast) 
        array = this.order.breakfastList;

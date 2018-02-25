@@ -42,3 +42,11 @@ https://javebratt.com/ionic-social-login-firebase/
 
 
 4. Send email on order completion. buyer and admin
+
+
+ERROR:
+Cannot read property 'manifest' of undefined after defining host for universal links
+
+https://github.com/nordnet/cordova-universal-links-plugin/issues/134
+
+https://github.com/nordnet/cordova-universal-links-plugin/commit/b2c5784764225319648e26aa5d3f42ede6d1b289#diff-d5955d9f4d88b42e5efd7a3385be79e9

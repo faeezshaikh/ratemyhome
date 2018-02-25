@@ -32,6 +32,8 @@ export class CheckoutPage {
   order:any;
   orderId:any;
   bool:boolean = true;
+  showSpinner:boolean = false;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public stripe: Stripe, 
       public http: Http,public alertCtrl: AlertController,public toastCtrl: ToastController,public firebaseProvider: FirebaseProvider) {
@@ -105,11 +107,11 @@ export class CheckoutPage {
       console.log('Received Token from Stripe:', tokenObj);
       console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
       console.log('Token id:',tokenObj.id);
-      this.http.get('http://localhost:3333/processpay/'+ tokenObj.id + '/' + this.amount)
+      this.http.get('https://526f76d7.ngrok.io/processpay/'+ tokenObj.id + '/' + this.amount)
       .subscribe((res) => {
         if (res.json().success) {
           console.log('Transaction Successfull. Card was charged $' + this.amount);
-          this.http.get('http://localhost:3300/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
+          this.http.get('https://6c71f7df.ngrok.io/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
             console.log(res.json());
             // alert('Order was successfully placed. You should receive confirmation by email shortly. ');
             this.showConfirmation();
@@ -123,6 +125,7 @@ export class CheckoutPage {
         }
       })
     }).catch(err => {
+      this.showSpinner = false;
       alert(err);
       console.log('Error !!!',err);
     });
@@ -145,6 +148,7 @@ export class CheckoutPage {
           text: 'Yes',
           handler: () => {
             console.log('Agree clicked');
+            this.showSpinner = true;
             this.pay();
           }
         }
@@ -154,6 +158,7 @@ export class CheckoutPage {
   }
 
   showConfirmation() {
+    this.showSpinner = false;
     let alert = this.alertCtrl.create({
       title: 'Success',
       subTitle: 'Order was successfully placed. You should receive confirmation by email shortly.  ',

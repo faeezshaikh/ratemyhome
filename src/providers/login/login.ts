@@ -17,46 +17,62 @@ export class LoginProvider {
 
   loginWithFacebook() {
     console.log('Login with FB called');
-   // return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
 
-   if(this.isApp) 
-   return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
-  else 
-  return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  //  if(this.isApp) 
+  //  return this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+  // else 
+  // return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+
+  const provider = new firebase.auth.FacebookAuthProvider();
+  return  firebase.auth().signInWithRedirect(provider);
 
   }
 
   loginWithTwitter() {
     console.log('Login with Twitter called');
-    if(this.isApp) 
-      return this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
-     else 
-     return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    // if(this.isApp) 
+    //   return this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
+    //  else 
+    //  return this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+
+    const provider = new firebase.auth.TwitterAuthProvider();
+    return  firebase.auth().signInWithRedirect(provider).then( () => {
+      firebase.auth().getRedirectResult().then( result => {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        // var user = result.user;
+        console.log("Got Twitter Redirect Result:" , result);
+      }).catch(function(error) {
+        // Handle Errors here.
+        console.log(error.message);
+      });
+    });
   }
 
   loginWithGoogle() {
     console.log('Login with Google called');
-    // return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
 
-    if(this.isApp) 
-    return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-   else 
-   return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  //   if(this.isApp) 
+  //   return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  //  else 
+  //  return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // return  firebase.auth().signInWithRedirect(provider).then( () => {
-    //   firebase.auth().getRedirectResult().then( result => {
-    //     // This gives you a Google Access Token.
-    //     // You can use it to access the Google API.
-    //     var token = result.credential.accessToken;
-    //     // The signed-in user info.
-    //     var user = result.user;
-    //     console.log(token, user);
-    //   }).catch(function(error) {
-    //     // Handle Errors here.
-    //     console.log(error.message);
-    //   });
-    // });
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return  firebase.auth().signInWithRedirect(provider).then( () => {
+      firebase.auth().getRedirectResult().then( result => {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        // var user = result.user;
+        console.log("Got Google Redirect Result:" , result);
+      }).catch(function(error) {
+        // Handle Errors here.
+        console.log(error.message);
+      });
+    });
   }
 
   logoutOfFacebook() {

@@ -3,7 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { ListPage } from '../pages/list/list';
 import { MycontributionsPage } from '../pages/mycontributions/mycontributions';
 import { LoginPage } from '../pages/login/login';
 // import { FirebaseProvider } from '../providers/firebase/firebase';
@@ -28,10 +27,8 @@ export class MyApp {
   
 
     this.pages = [
-      // { title: 'Create Pool', component: CreatePoolPage, icon:'fa fa-cart-plus' },
       { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
       { title: 'My Profile', component: MycontributionsPage, icon:'fa fa-users' }
-      // { title: 'Home', component: HomePage, icon:'fa fa-users' }
     ];
 
   }
@@ -53,7 +50,7 @@ export class MyApp {
         if (user) {
           // User is signed in.
           that.nav.setRoot(that.rootPage);
-          console.log('Found user logged in. User details :' ,user);
+          console.log('Found user logged in!!. User details :' ,user);
           that.name = user.displayName;
           that.email = user.email;
           that.pic = user.photoURL;
@@ -61,11 +58,15 @@ export class MyApp {
           
         } else {
           // No user is signed in.
-          that.nav.setRoot(LoginPage);
+          that.nav.setRoot(that.rootPage);
+          // that.pic = "assets/imgs/finebites-logo.png";
+          // that.nav.setRoot(LoginPage);
         }
       });
 
 
+
+      ////// Experiment ///////
       // firebase.auth().getRedirectResult().then(function(result) {
       //   if (result.credential) {
       //     var token = result.credential.accessToken;
@@ -87,6 +88,7 @@ export class MyApp {
       //    that.nav.setRoot(LoginPage);
       // });
 
+      ////// Experiment Till here ///////
 
 
 

@@ -53,6 +53,14 @@
             <ion-label floating >City</ion-label>
             <ion-input [(ngModel)]="cardinfo.address_city" type="text"></ion-input>
           </ion-item>
+
+          <div *ngIf="showSpinner" style="text-align: center">
+          <ion-spinner name="bubbles"></ion-spinner>
+          <!-- <ion-spinner name="crescent"></ion-spinner>
+          <ion-spinner name="dots"></ion-spinner>
+          <ion-spinner name="ios"></ion-spinner>
+          <ion-spinner name="ios-small"></ion-spinner> -->
+        </div>
         <ion-row>
          
           <ion-col col-8>
@@ -186,5 +194,5 @@
 
       </ion-list>
     </ion-card>
-    <button block ion-button (click)="showConfirm()"> Checkout </button>
+    <button block ion-button (click)="showConfirm()" [disabled]="showSpinner"> Checkout </button>
 </ion-content>

@@ -56,6 +56,7 @@
               <div style="text-align:center; font-family: 'Learning Curve' !important; font-size:2em; font-weight:bold;" color="primary">{{banner}}</div>
               <button  *ngIf="order.totalMeals == maxAllowedMeals" ion-button  block (click)="checkout()">Continue</button>
               <p *ngIf="order.totalMeals > maxAllowedMeals"  style="text-align:center;font-weight:bold;color:red">{{warning}}</p>
+              <p *ngIf="order.totalMeals < maxAllowedMeals"  style="text-align:center;font-weight:bold;color:green;font-style:oblique">Select {{remainder}} to continue</p>
           </ion-card-content>
         
         </ion-card>

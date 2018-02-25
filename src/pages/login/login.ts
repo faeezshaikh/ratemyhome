@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { LoginProvider } from '../../providers/login/login';
 import { PlansPage } from '../plans/plans';
+import * as firebase from 'firebase/app';
 
 
 @IonicPage()
@@ -29,13 +30,23 @@ export class LoginPage {
   }
 
   loginWithFacebook() {
-    // let that = this;
-    this.login.loginWithFacebook().then(res => {
-      this.navCtrl.setRoot(this.rootPage);
-    }).catch(function(error) {
+    this.login.loginWithFacebook()
+    // .then(res => {
+    //   this.navCtrl.setRoot(this.rootPage);
+    // })
+    .then( () => {
+      firebase.auth().getRedirectResult().then( result => {
+        // var token = result.credential.accessToken;
+        // var user = result.user;
+        console.log("Got Facebook Redirect Result:" , result);
+      }).catch(function(error) {
+        console.log(error.message);
+      });
+    })
+    
+    .catch(function(error) {
       console.log("Error with Facebook:" ,error.message);
-      // that.toastMsg(error.message,7000);
-    });;
+    });
   }
 
   logoutOfFacebook() {
@@ -44,12 +55,10 @@ export class LoginPage {
   }
 
   loginWithGoogle() {
-    // let that = this;
     this.login.loginWithGoogle().then(res => {
       this.navCtrl.setRoot(this.rootPage);
     }).catch(function(error) {
       console.log("Error with Google:" ,error.message);
-      // that.toastMsg(error.message,7000);
     });;
   }
   loginWithTwitter() {
