@@ -32,7 +32,7 @@ https://javebratt.com/ionic-social-login-firebase/
   - Show total meals and totla amount
 1. Add new 'Contact us' page.
 2. Remove MY profile page.
-6. Icon and splash screen - Remove splash screen.
+6. Icon and splash screen - Remove splash screen.i
 4. Stars and other tiny icons
 7. Admin page for all orders
 9. Error conditions. no internet. bad card etc

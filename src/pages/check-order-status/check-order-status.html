@@ -35,7 +35,15 @@
       </ion-card>
       <button ion-button block (click)="getOrderStatus()"  [disabled]="orderid.invalid" >Check Status</button>
 
+     
       <ion-list>
+
+          <ion-card *ngIf="cartItems">
+              <p>Total Meals: {{totalMeals}}</p>
+              <p>Total Amount: {{totalAmt}}</p>
+              <p>Status: {{orderStatus}}</p>
+    
+          </ion-card>
           <ion-item text-wrap *ngFor="let item of cartItems ">
             <ion-thumbnail item-start>
               <img src="{{item.img}}">

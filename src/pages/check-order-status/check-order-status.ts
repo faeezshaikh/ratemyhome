@@ -12,6 +12,9 @@ export class CheckOrderStatusPage {
 
   cartItems:any;
   orderId:any;
+  totalAmt:number;
+  totalMeals:number;
+  orderStatus:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
   }
 
@@ -20,6 +23,15 @@ export class CheckOrderStatusPage {
   }
 
   getOrderStatus() {
+
+
+    this.firebaseProvider.getOrder(this.orderId).subscribe(res => {
+      console.log('RESULT:',res);
+      
+      this.orderStatus = res.status;
+      this.totalAmt = res.cardInfo.amount;
+      this.totalMeals = res.totalMeals;
+  });
 
     this.firebaseProvider.getCartItems(this.orderId).subscribe(res => {
       this.cartItems = res;
@@ -32,6 +44,8 @@ export class CheckOrderStatusPage {
         
       });
     });
+
+
   }
 
 }

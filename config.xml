@@ -107,4 +107,5 @@
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <engine name="android" spec="^7.1.0" />
+    <engine name="browser" spec="~5.0.3" />
 </widget>

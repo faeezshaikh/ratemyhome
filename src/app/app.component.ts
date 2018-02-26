@@ -29,8 +29,8 @@ export class MyApp {
 
     this.pages = [
       { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
-      { title: 'Order Status', component: CheckOrderStatusPage, icon:'fa fas fa-clock' },
-      { title: 'My Profile', component: MycontributionsPage, icon:'fa fa-users' }
+      { title: 'Order Status', component: CheckOrderStatusPage, icon:'fa fa-tasks' },
+      { title: 'Contact Us', component: MycontributionsPage, icon:'fa fa-users' }
     ];
 
   }
