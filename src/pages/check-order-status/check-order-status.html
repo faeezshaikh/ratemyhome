@@ -39,9 +39,40 @@
       <ion-list>
 
           <ion-card *ngIf="cartItems">
-              <p>Total Meals: {{totalMeals}}</p>
-              <p>Total Amount: {{totalAmt}}</p>
-              <p>Status: {{orderStatus}}</p>
+           <div style="text-align:center">
+                  <ion-row>
+                      <ion-col>
+                          <ion-item>
+                              <ion-label fixed><strong>Total Meals:</strong></ion-label>
+                              <ion-label fixed>{{totalMeals}}</ion-label>
+                            </ion-item>
+                      </ion-col>
+                      <ion-col>
+
+                          <ion-item>
+                              <ion-label fixed><strong>Amount:</strong></ion-label>
+                              <ion-label fixed>{{totalAmt}}</ion-label>
+                            </ion-item>
+                      </ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col>
+                          <ion-item>
+                              <ion-label fixed><strong>Order Status:</strong></ion-label>
+                              <ion-label fixed>{{orderStatus}}</ion-label>
+                            </ion-item>
+                      </ion-col>
+                      <ion-col>
+                          <ion-item>
+                              <ion-label fixed><strong>Order Date:</strong></ion-label>
+                              <ion-label fixed>Feb 28,2018</ion-label>
+                            </ion-item>
+                      </ion-col>
+                  </ion-row>
+                   
+                </div>
+                   
+                  
     
           </ion-card>
           <ion-item text-wrap *ngFor="let item of cartItems ">

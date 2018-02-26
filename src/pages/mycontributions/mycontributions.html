@@ -5,7 +5,7 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Profile</ion-title>
+      <ion-title>Contact Us</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -13,17 +13,30 @@
 
 <ion-content padding>
 
-    <button ion-button block  (click)="logoutOfFacebook()">Logout</button>
+    <!-- <button ion-button block  (click)="logoutOfFacebook()">Logout</button> -->
+    <ion-card>
+        <ion-card-header>
+          Contact Us
+        </ion-card-header>
+        <ion-card-content>
+          Thank you for using FineBites. For questions, comments, feedback call us at 314-124-3456 or email us at dine@finebites.com
+        </ion-card-content>
+      </ion-card>
 
-    <ion-list>
-        <ion-item *ngFor="let contribution of mycontributions | async" (click)="itemTapped($event,contribution)">
-          <ion-thumbnail item-start>
-            <img src="{{contribution.logoUrl}}">
-          </ion-thumbnail>
-          <h2>{{contribution.title}}</h2>
-          <p>My contribution: {{contribution.contribution}} ETH</p>
-          <button ion-button clear item-end>View</button>
-        </ion-item>
-
-      </ion-list>
+      <ion-fab center middle>
+          <button ion-fab color="danger"><ion-icon name="md-share"></ion-icon></button>
+          <ion-fab-list side="top">
+            <button ion-fab color="primary"><ion-icon name="logo-vimeo"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="bottom">
+            <button ion-fab color="secondary"><ion-icon name="logo-facebook"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="left">
+            <button ion-fab color="light"><ion-icon name="logo-googleplus"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="right">
+            <button ion-fab color="dark"><ion-icon name="logo-twitter"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
+ 
 </ion-content>
