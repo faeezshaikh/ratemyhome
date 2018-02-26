@@ -31,7 +31,7 @@ export class CheckOrderStatusPage {
       
       this.orderStatus = res.status;
       this.totalAmt = res.cardInfo.amount;
-      this.orderDate = res.cardInfo.orderDate;
+      this.orderDate = new Date(res.cardInfo.orderDate);
       this.totalMeals = res.totalMeals;
   });
 
