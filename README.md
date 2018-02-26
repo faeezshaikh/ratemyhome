@@ -27,11 +27,7 @@ For Google 403 Error: Disallowed_Useragent added
 
 https://javebratt.com/ionic-social-login-firebase/
 
-8. Finish Check order status page.
-  - Add Final amount to order.
-  - Show total meals and totla amount
-1. Add new 'Contact us' page.
-2. Remove MY profile page.
+
 6. Icon and splash screen - Remove splash screen.i
 4. Stars and other tiny icons
 7. Admin page for all orders
@@ -41,6 +37,12 @@ https://javebratt.com/ionic-social-login-firebase/
 
 ---------------
 
+1. Add new 'Contact us' page.
+2. Remove MY profile page.
+
+8. Finish Check order status page.
+  - Add Final amount to order.
+  - Show total meals and totla amount
 1. Merge NodeJS services into one.
 0. Deploy service to Lambda or Heroku
 

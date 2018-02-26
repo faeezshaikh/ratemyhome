@@ -115,8 +115,10 @@ export class CheckoutPage {
             console.log(res.json());
             // alert('Order was successfully placed. You should receive confirmation by email shortly. ');
             this.showConfirmation();
-            this.order.status = 'paid';
+            this.order.status = 'Processing';
             this.order.cardInfo = this.cardinfo;
+            this.order.cardInfo.amount = this.amount;
+            this.order.cardInfo.orderDate = Date.now();
             this.firebaseProvider.updateOrder(this.orderId,this.order);
             this.firebaseProvider.setOpenOrderId(null); // close the order;
             this.navCtrl.setRoot(PlansPage);

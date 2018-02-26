@@ -15,6 +15,7 @@ export class CheckOrderStatusPage {
   totalAmt:number;
   totalMeals:number;
   orderStatus:any;
+  orderDate:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseProvider: FirebaseProvider) {
   }
 
@@ -30,6 +31,7 @@ export class CheckOrderStatusPage {
       
       this.orderStatus = res.status;
       this.totalAmt = res.cardInfo.amount;
+      this.orderDate = res.cardInfo.orderDate;
       this.totalMeals = res.totalMeals;
   });
 
