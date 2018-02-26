@@ -107,11 +107,11 @@ export class CheckoutPage {
       console.log('Received Token from Stripe:', tokenObj);
       console.log('JSON Version: Received Token from Stripe:', JSON.stringify(tokenObj));
       console.log('Token id:',tokenObj.id);
-      this.http.get('https://526f76d7.ngrok.io/processpay/'+ tokenObj.id + '/' + this.amount)
+      this.http.get('https://finebites.herokuapp.com/processpay/'+ tokenObj.id + '/' + this.amount)
       .subscribe((res) => {
         if (res.json().success) {
           console.log('Transaction Successfull. Card was charged $' + this.amount);
-          this.http.get('https://6c71f7df.ngrok.io/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
+          this.http.get('https://finebites.herokuapp.com/sendemail/'+ this.orderId + '/' + this.amount + '/' + this.cardinfo.email ).subscribe(res => {
             console.log(res.json());
             // alert('Order was successfully placed. You should receive confirmation by email shortly. ');
             this.showConfirmation();

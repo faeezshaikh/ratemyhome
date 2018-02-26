@@ -27,19 +27,25 @@ For Google 403 Error: Disallowed_Useragent added
 
 https://javebratt.com/ionic-social-login-firebase/
 
-
-0. Validate session cart contents. When deleted?
+8. Finish Check order status page.
+  - Add Final amount to order.
+  - Show total meals and totla amount
 1. Add new 'Contact us' page.
+2. Remove MY profile page.
+6. Icon and splash screen - Remove splash screen.
 4. Stars and other tiny icons
-5. iPhone , CART COUNTER IS NOT ON CART
-6. Icon and splash screen
 7. Admin page for all orders
-8. Add 'My Orders' page. or Check order status page.
 9. Error conditions. no internet. bad card etc
 10. Payment for browser doesnt work
 11. Android login not working.
 
 ---------------
+
+1. Merge NodeJS services into one.
+0. Deploy service to Lambda or Heroku
+
+0. Validate session cart contents. When deleted - Deleted on shutting the app down.
+5. iPhone , CART COUNTER IS NOT ON CART
 2. MEal Details page
 3. Add 8 meals. 4 bkfasts
 1. Form validation for Checkout page
