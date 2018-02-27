@@ -28,9 +28,12 @@ export class MyApp {
   
 
     this.pages = [
-      { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
-      { title: 'Order Status', component: CheckOrderStatusPage, icon:'fa fa-tasks' },
-      { title: 'Contact Us', component: MycontributionsPage, icon:'fa fa-users' }
+      // { title: 'Shop Plans', component: PlansPage, icon:'fa fa-cart-plus' },
+      // { title: 'Order Status', component: CheckOrderStatusPage, icon:'fa fa-tasks' },
+      // { title: 'Contact Us', component: MycontributionsPage, icon:'fa fa-users' }
+      { title: 'Shop Plans', component: PlansPage, icon:'cart' },
+      { title: 'Order Status', component: CheckOrderStatusPage, icon:'list-box' },
+      { title: 'Contact Us', component: MycontributionsPage, icon:'people' }
     ];
 
   }

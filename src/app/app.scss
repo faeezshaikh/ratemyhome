@@ -14,3 +14,35 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.center {
+    text-align: center;
+  }
+
+.card-background-page {
+
+  #menucard {
+    position: relative;
+    text-align: center;
+    margin: 0px !important;
+    width: 100% !important;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 55%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color:black;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    color: #f8f8f8;
+  }
+}
