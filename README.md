@@ -1,4 +1,4 @@
-# FineBites
+# RateMyHome
 
 
 https://lipis.github.io/bootstrap-social/
@@ -26,34 +26,6 @@ For Google 403 Error: Disallowed_Useragent added
 <preference name="OverrideUserAgent" value="Mozilla/5.0 Google" />
 
 https://javebratt.com/ionic-social-login-firebase/
-
-
-6. Icon and splash screen - Remove splash screen.i
-4. Stars and other tiny icons
-7. Admin page for all orders
-9. Error conditions. no internet. bad card etc
-10. Payment for browser doesnt work
-11. Android login not working.
-
----------------
-
-1. Add new 'Contact us' page.
-2. Remove MY profile page.
-
-8. Finish Check order status page.
-  - Add Final amount to order.
-  - Show total meals and totla amount
-1. Merge NodeJS services into one.
-0. Deploy service to Lambda or Heroku
-
-0. Validate session cart contents. When deleted - Deleted on shutting the app down.
-5. iPhone , CART COUNTER IS NOT ON CART
-2. MEal Details page
-3. Add 8 meals. 4 bkfasts
-1. Form validation for Checkout page
-2. Send email on order completion. buyer and admin
-3. Disable + button when 'Remove items to continue' scenario arises.
-
 
 ERROR:
 Cannot read property 'manifest' of undefined after defining host for universal links

@@ -16,7 +16,7 @@ import { CheckOrderStatusPage } from '../pages/check-order-status/check-order-st
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PlansPage;
+  rootPage: any = CheckOrderStatusPage;
   name:string;
   email:string;
   pic:string;

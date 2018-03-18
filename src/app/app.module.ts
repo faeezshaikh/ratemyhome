@@ -25,12 +25,12 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 import { CheckOrderStatusPage } from '../pages/check-order-status/check-order-status';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBDue_wbx8sEmNvUeev6uJgN6fgV5ahgmc",
-  authDomain: "finebites-ab56b.firebaseapp.com",
-  databaseURL: "https://finebites-ab56b.firebaseio.com",
-  projectId: "finebites-ab56b",
+  apiKey: "AIzaSyAzT9HZCjvdeVnFBvDk48HaCDOcFX0LA30",
+  authDomain: "ratemyhome-ceeb9.firebaseapp.com",
+  databaseURL: "https://ratemyhome-ceeb9.firebaseio.com",
+  projectId: "ratemyhome-ceeb9",
   storageBucket: "",
-  messagingSenderId: "478181878634"
+  messagingSenderId: "980899854920"
 };
 
 
