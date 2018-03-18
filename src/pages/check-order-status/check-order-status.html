@@ -1,3 +1,20 @@
+<style>
+
+  .inputclass {
+    margin: 13px 8px;
+    padding: 0;
+    width: calc(100% - 8px - 8px);
+    position: static;
+    display: block;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR…fnQ8EtFRdFneBDKWhCW8EVGbdUQfxESR6qKhaHBrSgCe3fbLTpPlS70M0AAAAASUVORK5CYII=);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: auto;
+  }
+</style>
+
 <ion-header>
 
   <ion-navbar color="primary">
@@ -18,9 +35,36 @@
         </ion-card-header>
         <ion-card-content>
 
-            <ion-item>
+
+          <input type="text" class="inputclass form-control" [(ngModel)] = "address" placeholder=" Enter a Location"
+          [options]='options' name="addressField" #addressField="ngModel"
+          (setAddress) = "getAddress($event)"
+          (FormatAddress)="getFormattedAddress($event)"
+          (street_number) = 'street_number=$event'
+          (street)= 'street=$event'
+          (city)= 'city=$event'
+          (state)='state=$event'
+          (district)='district=$event'
+          (country)='country=$event'
+          (postal_code)='postal_code=$event'
+          (lat)='lat=$event' 
+          (lng)='lng=$event' 
+          (adr_address)='adr_address=$event' 
+          (name)='name=$event' 
+          (place_id)='place_id=$event' 
+          (types)='types=$event' 
+          (url)='url=$event'  
+          (utc_offset)='utc_offset=$event' 
+          (vicinity)='vicinity=$event' 
+          (photos)='photos=$event' 
+          (CountryCodes)='CountryCodes=$event'
+           id="autocomplete" required
+          angularGooglePlace/>
+
+            <!-- <ion-item>
                 <ion-label fixed>Address:</ion-label>
                 <ion-input type="text" name [(ngModel)]="orderId" name="orderid" class="form-control" required minlength="20" #orderid="ngModel"></ion-input>
+                
               </ion-item>
 
               <div *ngIf="orderid.invalid && (orderid.dirty || orderid.touched)" class="alert alert-danger">
@@ -30,10 +74,10 @@
                   <div *ngIf="orderid.errors.minlength">
                     Order id is at least 20 characters long.
                   </div>
-                </div>
+                </div> -->
         </ion-card-content>
       </ion-card>
-      <button ion-button block (click)="getOrderStatus()"  [disabled]="orderid.invalid" >Run Comps</button>
+      <button ion-button block (click)="getOrderStatus()"  [disabled]="addressField.invalid" >Run Comps</button>
 
      
       <ion-list>

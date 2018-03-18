@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
+import { Address } from 'angular-google-place';
+
 
 @IonicPage()
 @Component({
@@ -22,7 +24,17 @@ export class CheckOrderStatusPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckOrderStatusPage');
   }
+////////
 
+  public options = {type : 'address', componentRestrictions: { country: 'USA' }};
+  getAddress(place: Address) {
+         console.log('Address', place);
+     }
+  getFormattedAddress(event: any) {
+         console.log(event);
+     } 
+
+     ///////
   getOrderStatus() {
 
 

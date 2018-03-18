@@ -28,6 +28,7 @@
     "@ionic/pro": "1.0.16",
     "@ionic/storage": "2.1.3",
     "@types/lodash": "^4.14.103",
+    "angular-google-place": "0.0.3",
     "angularfire2": "5.0.0-rc.3",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.3",

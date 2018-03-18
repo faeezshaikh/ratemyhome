@@ -23,6 +23,7 @@ import { CartPage } from '../pages/cart/cart';
 import { Stripe } from '@ionic-native/stripe';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { CheckOrderStatusPage } from '../pages/check-order-status/check-order-status';
+import {AngularGooglePlaceModule} from 'angular-google-place';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAzT9HZCjvdeVnFBvDk48HaCDOcFX0LA30",
@@ -54,6 +55,7 @@ const firebaseConfig = {
     HttpClientModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularGooglePlaceModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
