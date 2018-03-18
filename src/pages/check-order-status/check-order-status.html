@@ -28,7 +28,7 @@
 
 
 <ion-content padding>
-
+  <form name="myform">
     <ion-card>
         <ion-card-header style="text-align:center;" (click)="populateForm()">
           <strong>Find Comparable Sales:</strong>
@@ -36,8 +36,8 @@
         <ion-card-content>
 
 
-          <input type="text" class="inputclass form-control" [(ngModel)] = "address" placeholder=" Enter a Location"
-          [options]='options' name="addressField" #addressField="ngModel"
+          <input type="text" class="inputclass form-control" [(ngModel)] = "location" placeholder=" Enter a Location"
+          [options]='options' name="addressField" #addressField="ngModel" (ngModelChange)="textAreaEmpty()"
           (setAddress) = "getAddress($event)"
           (FormatAddress)="getFormattedAddress($event)"
           (street_number) = 'street_number=$event'
@@ -77,7 +77,8 @@
                 </div> -->
         </ion-card-content>
       </ion-card>
-      <button ion-button block (click)="getOrderStatus()"  [disabled]="addressField.invalid" >Run Comps</button>
+      <button ion-button block (click)="getOrderStatus()"  [disabled]="!addressSet" >Run Comps</button>
+</form>
 
      
       <ion-list>
