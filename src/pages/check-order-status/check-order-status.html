@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Order Status</ion-title>
+    <ion-title>CMA</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -14,12 +14,12 @@
 
     <ion-card>
         <ion-card-header style="text-align:center;" (click)="populateForm()">
-          <strong>Check Order Status</strong>
+          <strong>Find Comparable Sales:</strong>
         </ion-card-header>
         <ion-card-content>
 
             <ion-item>
-                <ion-label fixed>Order Id:</ion-label>
+                <ion-label fixed>Address:</ion-label>
                 <ion-input type="text" name [(ngModel)]="orderId" name="orderid" class="form-control" required minlength="20" #orderid="ngModel"></ion-input>
               </ion-item>
 
@@ -33,7 +33,7 @@
                 </div>
         </ion-card-content>
       </ion-card>
-      <button ion-button block (click)="getOrderStatus()"  [disabled]="orderid.invalid" >Check Status</button>
+      <button ion-button block (click)="getOrderStatus()"  [disabled]="orderid.invalid" >Run Comps</button>
 
      
       <ion-list>

@@ -6,8 +6,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { ListPage } from '../list/list';
 // import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { LoginProvider } from '../../providers/login/login';
-import { PlansPage } from '../plans/plans';
+// import { PlansPage } from '../plans/plans';
 import * as firebase from 'firebase/app';
+import { CheckOrderStatusPage } from '../check-order-status/check-order-status'
 
 
 @IonicPage()
@@ -17,7 +18,7 @@ import * as firebase from 'firebase/app';
 })
 export class LoginPage {
 
-  rootPage: any = PlansPage; // This is overriden by the rootPage in app.component.ts
+  rootPage: any = CheckOrderStatusPage; // This is overriden by the rootPage in app.component.ts
   // toastMsg:any;
  
   constructor(public navCtrl: NavController, public navParams: NavParams,
